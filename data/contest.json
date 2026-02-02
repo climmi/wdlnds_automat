@@ -1,0 +1,31 @@
+{
+  "active": true,
+  "start_ts": 1770051001.4687865,
+  "end_ts": 1770061801.4687865,
+  "top_score": 347,
+  "top_name": "BDD",
+  "last_score": 161,
+  "last_name": "CCB",
+  "scores": [
+    {
+      "name": "BDD",
+      "score": 347
+    },
+    {
+      "name": "FFF",
+      "score": 333
+    },
+    {
+      "name": "ADF",
+      "score": 304
+    },
+    {
+      "name": "IDE",
+      "score": 303
+    },
+    {
+      "name": "DCG",
+      "score": 296
+    }
+  ]
+}
