@@ -30,16 +30,10 @@ class SoundManager:
         return sound
 
     def play_beep(self) -> None:
-        if not self._enabled:
-            return
-        self._tone(880.0, 0.08, 0.15).play()
+        return
 
     def play_win(self) -> None:
-        if not self._enabled:
-            return
-        self._tone(1046.5, 0.18, 0.18).play()
+        return
 
     def play_menu(self) -> None:
-        if not self._enabled:
-            return
-        self._tone(660.0, 0.09, 0.12).play()
+        return

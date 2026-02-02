@@ -5,7 +5,7 @@ import pygame
 import random
 
 from . import config
-from .contest import ContestManager
+from .highscores import HighScoreManager
 from .assets import ImageManager
 from .fonts import FontManager
 from .theme import draw_frame, draw_logo, draw_stickers
@@ -16,6 +16,9 @@ from .hardware.payout import PayoutController
 from .hardware.sound import SoundManager
 from .states.idle import IdleState
 from .states.minigame import MiniGameState
+from .states.select import GameSelectState
+from .states.hold import HoldGameState
+from .states.timing import TimingGameState
 from .states.state_machine import StateMachine
 
 
@@ -58,11 +61,15 @@ class App:
         self.sound = SoundManager()
         self.lamps = LampController()
         self.payout = PayoutController()
-        self.contest = ContestManager(os.path.join(config.DATA_DIR, "contest.json"))
+        self.highscores = HighScoreManager(os.path.join(config.DATA_DIR, "highscores.json"))
+        self.current_game = "runner"
 
         self.state_machine = StateMachine({
             "idle": IdleState(self),
+            "select": GameSelectState(self),
             "minigame": MiniGameState(self),
+            "hold": HoldGameState(self),
+            "timing": TimingGameState(self),
         }, "idle")
 
     def add_credit(self, amount: int) -> None:
@@ -90,7 +97,6 @@ class App:
 
             if self.coin_sensor.consume():
                 self.add_credit(1)
-                self.contest.ensure_active()
                 self._coin_event = True
                 self._last_coin_ts = time.time()
 
@@ -179,6 +185,8 @@ class App:
             "logo": logo,
             "form_left": manager.load("forms_0.png"),
             "form_right": manager.load("forms_2.png"),
+            "cursor": manager.load("forms_11.png"),
+            "ball": manager.load("forms_3.png"),
         }
 
 

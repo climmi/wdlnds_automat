@@ -1,0 +1,87 @@
+{
+  "games": {
+    "runner": {
+      "scores": [
+        {
+          "name": "CLM",
+          "score": 281
+        },
+        {
+          "name": "BBB",
+          "score": 182
+        },
+        {
+          "name": "DAA",
+          "score": 70
+        },
+        {
+          "name": "CAA",
+          "score": 24
+        },
+        {
+          "name": "BBB",
+          "score": 22
+        }
+      ],
+      "last_score": 182,
+      "last_name": "BBB"
+    },
+    "timing": {
+      "scores": [
+        {
+          "name": "*AA",
+          "score": 11
+        },
+        {
+          "name": "BAA",
+          "score": 9
+        },
+        {
+          "name": "EAA",
+          "score": 9
+        },
+        {
+          "name": "BAA",
+          "score": 8
+        },
+        {
+          "name": "AAA",
+          "score": 8
+        }
+      ],
+      "last_score": 8,
+      "last_name": "AAA"
+    },
+    "duel": {
+      "scores": [],
+      "last_score": 0,
+      "last_name": "BAA"
+    },
+    "hold": {
+      "scores": [
+        {
+          "name": "AAA",
+          "score": 20
+        },
+        {
+          "name": "BAA",
+          "score": 14
+        },
+        {
+          "name": "AAA",
+          "score": 1
+        },
+        {
+          "name": "BAA",
+          "score": 1
+        },
+        {
+          "name": "AAA",
+          "score": 1
+        }
+      ],
+      "last_score": 20,
+      "last_name": "AAA"
+    }
+  }
+}

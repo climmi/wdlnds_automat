@@ -32,8 +32,7 @@ class IdleState(BaseState):
         if self._transitioning:
             self._fade = min(1.0, self._fade + dt * 2.4)
             if self._fade >= 1.0:
-                self.app.consume_credit()
-                self.app.state_machine.change("minigame")
+                self.app.state_machine.change("select")
             return
 
         if self._coin_anim:
@@ -69,40 +68,7 @@ class IdleState(BaseState):
         if self._coin_anim:
             self._render_coin(surface, panel_rect)
 
-        status = self.app.contest.status()
-        minutes = int(self.app.contest.time_left() // 60) if status.active else 0
-        timer_text = f"Highscore-Runde: {minutes} min verbleibend" if status.active else "Highscore-Runde: ---"
-
-        start_y = 380
-        entries = status.scores[:5]
-        row_count = max(1, len(entries))
-        title_h = 24
-        row_h = 22
-        pad_y = 14
-        panel_height = pad_y * 2 + title_h + row_count * row_h
-        panel_width = 420
-        panel_top = min(start_y - pad_y, self.app.height - panel_height - 18)
-        panel_rect = pygame.Rect(
-            int(self.app.center_x - panel_width / 2),
-            int(panel_top),
-            panel_width,
-            panel_height,
-        )
-        draw_panel(surface, panel_rect, config.COLOR_PANEL, config.COLOR_ACCENT, border=2)
-        title_y = panel_rect.top + pad_y
-        if entries:
-            draw_text(surface, "Highscore Top 5", body_font, config.COLOR_TEXT,
-                      (self.app.center_x, title_y + title_h / 2))
-            for idx, entry in enumerate(entries):
-                line = f"{idx + 1}. {entry['name']}  {entry['score']}"
-                draw_text(surface, line, body_font, config.COLOR_TEXT,
-                          (self.app.center_x, title_y + title_h + row_h / 2 + idx * row_h))
-        else:
-            draw_text(surface, "Highscore: ---", body_font, config.COLOR_TEXT,
-                      (self.app.center_x, title_y + title_h))
-
-        draw_text(surface, timer_text, self.app.fonts.get("body_bold", body_font),
-                  config.COLOR_TEXT_DARK, (self.app.center_x, panel_rect.bottom + 18))
+        # Highscore board is shown only after each game.
 
         if self._transitioning:
             overlay = pygame.Surface((self.app.width, self.app.height), pygame.SRCALPHA)
@@ -110,7 +76,7 @@ class IdleState(BaseState):
             surface.blit(overlay, (0, 0))
 
     def _render_slot(self, surface, panel_rect) -> None:
-        slot_rect = pygame.Rect(panel_rect.centerx - 90, panel_rect.top + 20, 180, 20)
+        slot_rect = pygame.Rect(panel_rect.centerx - 90, panel_rect.top + 170, 180, 20)
         pygame.draw.rect(surface, (12, 12, 12), slot_rect, border_radius=10)
         draw_text(surface, "SLOT", self.app.fonts["body"], config.COLOR_TEXT,
                   (slot_rect.centerx, slot_rect.centery))
@@ -120,7 +86,7 @@ class IdleState(BaseState):
         if not coin:
             return
         slot_x = panel_rect.centerx
-        slot_y = panel_rect.top + 30
+        slot_y = panel_rect.top + 180
         start_x = self.app.width - 120
         start_y = 40
         t = self._coin_t
