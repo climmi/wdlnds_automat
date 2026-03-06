@@ -56,6 +56,30 @@ Dafuer wird `Pillow` benoetigt:
 ```powershell
 python -m pip install pillow
 ```
-## Highscore-Countdown (persistiert)
 
-Der Countdown wird in `data/contest.json` mit Start- und Endzeit gespeichert. Wenn die App beendet oder neu gestartet wird, laeuft der Countdown weiter und wird beim Start wieder geladen.
+## Schneller Pi-Deploy aus VS Code
+
+Lokal testen:
+
+```powershell
+python -m app.main
+```
+
+Deploy auf den Raspberry Pi (Upload + Install + Service-Restart):
+
+```powershell
+powershell -ExecutionPolicy Bypass -File tools/deploy_pi.ps1
+```
+
+Optionen:
+
+```powershell
+# Nur Upload, kein pip install
+powershell -ExecutionPolicy Bypass -File tools/deploy_pi.ps1 -SkipInstall
+
+# Upload + Install, aber ohne Service-Neustart
+powershell -ExecutionPolicy Bypass -File tools/deploy_pi.ps1 -NoRestart
+
+# Host/User ueberschreiben (falls noetig)
+powershell -ExecutionPolicy Bypass -File tools/deploy_pi.ps1 -Host wdlnds-pi -User qwert
+```
