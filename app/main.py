@@ -1,5 +1,6 @@
 import argparse
 import os
+import sys
 import time
 import pygame
 import random
@@ -63,6 +64,7 @@ class App:
         self.payout = PayoutController()
         self.highscores = HighScoreManager(os.path.join(config.DATA_DIR, "highscores.json"))
         self.current_game = "runner"
+        self._attach_gpio_inputs()
 
         self.state_machine = StateMachine({
             "idle": IdleState(self),
@@ -188,6 +190,21 @@ class App:
             "cursor": manager.load("forms_11.png"),
             "ball": manager.load("forms_3.png"),
         }
+
+    def _attach_gpio_inputs(self) -> None:
+        # Raspberry Pi pin mapping (BCM):
+        # left=GPIO17, middle=GPIO27, right=GPIO22, start=GPIO23, coin=GPIO24
+        try:
+            self.buttons.attach_gpio({
+                "left": 17,
+                "middle": 27,
+                "right": 22,
+                "start": 23,
+            })
+            self.coin_sensor.attach_gpio(24)
+        except Exception:
+            # Keep keyboard controls usable on non-Pi systems, but log the reason.
+            print("GPIO init disabled; keyboard fallback active.", file=sys.stderr)
 
 
 def parse_args() -> argparse.Namespace:
