@@ -132,6 +132,8 @@ class App:
             f"last inputs: {self._last_inputs} ({now - self._last_input_ts:.1f}s ago)",
             f"last coin: {now - self._last_coin_ts:.1f}s ago",
             f"fps: {self.clock.get_fps():.1f}",
+            f"gpio btn: {self.buttons.gpio_states()}",
+            f"gpio coin: {self.coin_sensor.gpio_state()}",
         ]
         x, y = 12, 12
         for line in lines:

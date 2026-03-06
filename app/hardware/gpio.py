@@ -32,3 +32,11 @@ class GpioButton:
         if self._button is None:
             return False
         return bool(self._button.is_pressed)
+
+    def set_on_press(self, callback) -> None:
+        if self._button is not None:
+            self._button.when_pressed = callback
+
+    def set_on_release(self, callback) -> None:
+        if self._button is not None:
+            self._button.when_released = callback
