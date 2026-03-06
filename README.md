@@ -81,5 +81,5 @@ powershell -ExecutionPolicy Bypass -File tools/deploy_pi.ps1 -SkipInstall
 powershell -ExecutionPolicy Bypass -File tools/deploy_pi.ps1 -NoRestart
 
 # Host/User ueberschreiben (falls noetig)
-powershell -ExecutionPolicy Bypass -File tools/deploy_pi.ps1 -Host wdlnds-pi -User qwert
+powershell -ExecutionPolicy Bypass -File tools/deploy_pi.ps1 -PiHost wdlnds-pi -User qwert
 ```

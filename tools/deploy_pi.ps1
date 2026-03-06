@@ -1,5 +1,5 @@
 param(
-    [string]$Host = "wdlnds-pi",
+    [string]$PiHost = "wdlnds-pi",
     [string]$User = "qwert",
     [string]$RemoteDir = "",
     [string]$Service = "wdlnds-automat.service",
@@ -53,10 +53,10 @@ finally {
 }
 
 Write-Host "[2/5] Upload archive to Pi..."
-scp $archive "${User}@${Host}:~/wdlnds_automat_deploy.zip"
+scp $archive "${User}@${PiHost}:~/wdlnds_automat_deploy.zip"
 
 Write-Host "[3/5] Extract project on Pi..."
-ssh "${User}@${Host}" "mkdir -p '$RemoteDir' && unzip -oq ~/wdlnds_automat_deploy.zip -d '$RemoteDir'"
+ssh "${User}@${PiHost}" "mkdir -p '$RemoteDir' && unzip -oq ~/wdlnds_automat_deploy.zip -d '$RemoteDir'"
 
 if (-not $SkipInstall) {
     Write-Host "[4/5] Ensure venv and install dependencies..."
@@ -66,7 +66,7 @@ if [ ! -d '$RemoteDir/.venv' ]; then
 fi
 '$RemoteDir/.venv/bin/python' -m pip install -r '$RemoteDir/requirements.txt'
 "@
-    ssh "${User}@${Host}" $installCmd
+    ssh "${User}@${PiHost}" $installCmd
 }
 else {
     Write-Host "[4/5] Skip dependency install (--SkipInstall)."
@@ -74,7 +74,7 @@ else {
 
 if (-not $NoRestart) {
     Write-Host "[5/5] Restart service and print status..."
-    ssh "${User}@${Host}" "sudo systemctl restart '$Service' && systemctl status '$Service' --no-pager"
+    ssh "${User}@${PiHost}" "sudo systemctl restart '$Service' && systemctl status '$Service' --no-pager"
 }
 else {
     Write-Host "[5/5] Skip service restart (--NoRestart)."
