@@ -82,6 +82,39 @@
       ],
       "last_score": 20,
       "last_name": "AAA"
+    },
+    "crowd_control": {
+      "scores": [
+        {
+          "name": "BAA",
+          "score": 96
+        }
+      ],
+      "last_score": 96,
+      "last_name": "BAA"
+    },
+    "beatline": {
+      "scores": [],
+      "last_score": 0,
+      "last_name": "AAA"
+    },
+    "show_control": {
+      "scores": [
+        {
+          "name": "?9-",
+          "score": 24066
+        },
+        {
+          "name": "+AB",
+          "score": 3374
+        },
+        {
+          "name": "+BA",
+          "score": 2110
+        }
+      ],
+      "last_score": 24066,
+      "last_name": "?9-"
     }
   }
 }

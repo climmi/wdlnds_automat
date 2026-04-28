@@ -5,7 +5,7 @@ Leichtgewichtiges Pygame-UI fuer den umgebauten Gluecksspielautomaten.
 ## Projektueberblick
 
 - `app/main.py` startet das Spiel und bindet Eingaben, Credits und State-Machine zusammen.
-- `app/states/` enthaelt die Spielscreens und Minigames.
+- `app/states/` enthaelt Idle, Game-Over/Highscore und das zentrale Minigame.
 - `app/hardware/` kapselt GPIO, Buttons, Coin-Sensor, Lampen, Sound und Sticker-Auswurf.
 - Auf Nicht-Pi-Systemen faellt das Projekt automatisch auf Tastatursteuerung zurueck.
 
@@ -74,11 +74,29 @@ python -m app.main --width 1024 --height 576 --fullscreen
 - Rechte Taste: `D` oder Pfeil rechts
 - Start/OK: `Enter` oder `Space`
 - Pfandmarke (Coin): `C`
+- Beenden: `Esc`
+
+Im Minigame `Show Control`:
+- Links = Move / Crowd bewegen
+- Mitte/Start = Drop
+- Rechts = FX
+- Cues fallen von oben auf die drei Button-Spuren.
+- Zwei Cues gleichzeitig bedeuten: zwei Buttons gleichzeitig druecken.
 
 Im Game-Over-Screen:
 - Links/Rechts: Zeichen wechseln
 - Mitte: Feld wechseln
 - Start: bestaetigen
+
+## Local Dev Shortcuts
+
+Wenn `LOCAL_DEV_MODE = True` in `app/config.py` gesetzt ist:
+
+- `1` = direkt `Show Control`
+- `9` = Credits aufladen
+- `0` = zurueck auf `Idle` und Credits loeschen
+- `Q` = Debug-Overlay an/aus
+- `Esc` = App beenden
 
 ## GPIO-Pins (Platzhalter)
 
@@ -109,6 +127,17 @@ Dafuer wird `Pillow` benoetigt:
 ```bash
 python -m pip install pillow
 ```
+
+## Audio-Cue-Analyse
+
+Lege eine Audiodatei in `audio/` und erzeuge daraus Timing-Cues:
+
+```bash
+python tools/analyze_track.py audio/8bit-small.mp3 --output data/show_cues.json
+```
+
+`Show Control` nutzt `data/show_cues.json` automatisch, wenn die Datei vorhanden ist.
+Der erzeugte Chart ist standardmaessig ca. 4 Minuten lang. Die ersten Sekunden werden bewusst einfacher generiert; ab ca. 10-30 Sekunden steigt die Dichte, danach koennen Hold-Noten und Zwei-Button-Cues entstehen.
 
 ## Pi-Deploy von macOS oder Linux
 

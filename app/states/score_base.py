@@ -1,7 +1,7 @@
 import pygame
 
 from .. import config
-from ..ui import draw_text, draw_panel
+from ..ui import draw_text
 from .base import BaseState
 
 
@@ -69,8 +69,7 @@ class ScoreGameState(BaseState):
         if self._game_over and self._phase == "entry":
             self.app.draw_background(surface)
             title_font = self.app.fonts["title"]
-            draw_text(surface, "HIGH SCORE", title_font, config.COLOR_TEXT_DARK,
-                      (self.app.center_x, 120))
+            draw_text(surface, "HIGH SCORE", title_font, config.COLOR_TEXT_DARK, (self.app.center_x, 120))
             self._render_scoreboard(surface, y=self.app.center_y - 120, include_pending=True)
             self._render_name_entry(surface)
             return
@@ -78,11 +77,10 @@ class ScoreGameState(BaseState):
         self.render_game(surface)
 
         if self._game_over and self._phase == "gameover_wait":
-            overlay = pygame.Surface((self.app.width, self.app.height), pygame.SRCALPHA)
-            overlay.fill((180, 180, 180, 140))
-            surface.blit(overlay, (0, 0))
-            draw_text(surface, "GAME OVER", self.app.fonts["title"], config.COLOR_WARNING,
-                      (self.app.center_x, self.app.center_y))
+            panel = pygame.Rect(self.app.center_x - 250, self.app.center_y - 52, 500, 104)
+            pygame.draw.rect(surface, (255, 253, 240), panel, border_radius=12)
+            pygame.draw.rect(surface, config.COLOR_TEXT_DARK, panel, width=2, border_radius=12)
+            draw_text(surface, "GAME OVER", self.app.fonts["title"], config.COLOR_TEXT_DARK, panel.center)
 
     def render_game(self, surface) -> None:
         pass
@@ -94,7 +92,6 @@ class ScoreGameState(BaseState):
         self._phase = "gameover_wait"
         self._game_over_timer = 0.0
         self._pending_score = int(score)
-        self.app.sound.play_win()
 
     def _handle_name_entry(self, pressed) -> None:
         if self._phase != "entry":
@@ -103,17 +100,14 @@ class ScoreGameState(BaseState):
             current = self._name_chars[self._name_index]
             idx = self._alphabet.index(current) if current in self._alphabet else 0
             self._name_chars[self._name_index] = self._alphabet[(idx - 1) % len(self._alphabet)]
-            self.app.sound.play_beep()
             self._entry_timer = 0.0
         if "right" in pressed:
             current = self._name_chars[self._name_index]
             idx = self._alphabet.index(current) if current in self._alphabet else 0
             self._name_chars[self._name_index] = self._alphabet[(idx + 1) % len(self._alphabet)]
-            self.app.sound.play_beep()
             self._entry_timer = 0.0
         if "middle" in pressed:
             self._name_index = (self._name_index + 1) % len(self._name_chars)
-            self.app.sound.play_beep()
             self._entry_timer = 0.0
         if "start" in pressed:
             self._finalize_score()
@@ -127,11 +121,13 @@ class ScoreGameState(BaseState):
         y = self.app.center_y + 110
         for idx, ch in enumerate(self._name_chars):
             rect = pygame.Rect(int(start_x + idx * (slot_size + gap)), y, slot_size, slot_size)
-            color = config.COLOR_ACCENT if idx == self._name_index else config.COLOR_PANEL
+            color = (255, 253, 240)
             pygame.draw.rect(surface, color, rect, border_radius=8)
-            draw_text(surface, ch, body_font, config.COLOR_TEXT, rect.center)
+            border = config.COLOR_TEXT_DARK if idx == self._name_index else (128, 118, 98)
+            pygame.draw.rect(surface, border, rect, width=2, border_radius=8)
+            draw_text(surface, ch, body_font, config.COLOR_TEXT_DARK, rect.center)
         draw_text(surface, "Links/Rechts: Zeichen | Mitte: Feld | Start: OK", body_font,
-                  config.COLOR_TEXT_DARK, (self.app.center_x, y + 80))
+                  (92, 79, 56), (self.app.center_x, y + 80))
 
     def _render_scoreboard(self, surface, y: int, include_pending: bool = False) -> None:
         body_font = self.app.fonts["body"]
@@ -165,17 +161,18 @@ class ScoreGameState(BaseState):
             panel_width,
             panel_height,
         )
-        draw_panel(surface, panel_rect, config.COLOR_PANEL, config.COLOR_ACCENT, border=2)
+        pygame.draw.rect(surface, (255, 253, 240), panel_rect, border_radius=12)
+        pygame.draw.rect(surface, config.COLOR_TEXT_DARK, panel_rect, width=2, border_radius=12)
         title_y = panel_rect.top + pad_y
         if not entries:
-            draw_text(surface, "Highscore: ---", body_font, config.COLOR_TEXT,
+            draw_text(surface, "Highscore: ---", body_font, config.COLOR_TEXT_DARK,
                       (self.app.center_x, title_y + title_h))
             return
-        draw_text(surface, "Highscore Top 5", body_font, config.COLOR_TEXT,
+        draw_text(surface, "Highscore Top 5", body_font, config.COLOR_TEXT_DARK,
                   (self.app.center_x, title_y + title_h / 2))
         for idx, entry in enumerate(entries):
             line = f"{idx + 1}. {entry['name']}  {entry['score']}"
-            color = config.COLOR_ACCENT if include_pending and pending_index == idx else config.COLOR_TEXT
+            color = config.COLOR_TEXT_DARK if include_pending and pending_index == idx else (92, 79, 56)
             draw_text(surface, line, body_font, color,
                       (self.app.center_x, title_y + title_h + row_h / 2 + idx * row_h))
 

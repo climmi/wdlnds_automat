@@ -2,7 +2,7 @@ import time
 import pygame
 
 from .. import config
-from ..ui import draw_text, draw_panel
+from ..ui import draw_text
 from .base import BaseState
 
 
@@ -32,7 +32,9 @@ class IdleState(BaseState):
         if self._transitioning:
             self._fade = min(1.0, self._fade + dt * 2.4)
             if self._fade >= 1.0:
-                self.app.state_machine.change("select")
+                self.app.current_game = "show_control"
+                self.app.consume_credit()
+                self.app.state_machine.change("minigame")
             return
 
         if self._coin_anim:
@@ -43,43 +45,36 @@ class IdleState(BaseState):
             return
 
         if self.app.consume_coin_event():
-            self.app.sound.play_menu()
             self._coin_anim = True
             self._coin_t = 0.0
 
     def render(self, surface) -> None:
         self.app.draw_background(surface)
         title_font = self.app.fonts["title"]
-        body_font = self.app.fonts["body"]
-        mega_font = self.app.fonts.get("big", title_font)
-        draw_text(surface, "COIN-O-MAT", title_font, config.COLOR_TEXT_DARK,
-                  (self.app.center_x, 160))
+        big_font = self.app.fonts.get("big", title_font)
+        ink = config.COLOR_TEXT_DARK
+        soft = (92, 79, 56)
 
-        panel_rect = pygame.Rect(140, 190, self.app.width - 280, 240)
+        draw_text(surface, "COIN-O-MAT", title_font, ink, (self.app.center_x, 154))
+        draw_text(surface, "WOODLANDS SHOW AUTOMAT", self.app.fonts["body"], soft, (self.app.center_x, 198))
 
-        if self._blink_on:
-            draw_text(surface, "PFANDMARKE EINWERFEN", mega_font, config.COLOR_ACCENT,
-                      (self.app.center_x, 275))
-        else:
-            draw_text(surface, "PFANDMARKE EINWERFEN", mega_font, config.COLOR_DIM,
-                      (self.app.center_x, 275))
+        panel_rect = pygame.Rect(108, 224, self.app.width - 216, 206)
+        pygame.draw.rect(surface, (255, 253, 240), panel_rect, border_radius=12)
+        pygame.draw.rect(surface, ink, panel_rect, width=2, border_radius=12)
+
+        prompt_color = ink if self._blink_on else (128, 118, 98)
+        draw_text(surface, "PFANDMARKE", title_font, prompt_color, (self.app.center_x, 278))
+        draw_text(surface, "EINWERFEN", big_font, prompt_color, (self.app.center_x, 322))
 
         self._render_slot(surface, panel_rect)
         if self._coin_anim:
             self._render_coin(surface, panel_rect)
 
-        # Highscore board is shown only after each game.
-
-        if self._transitioning:
-            overlay = pygame.Surface((self.app.width, self.app.height), pygame.SRCALPHA)
-            overlay.fill((0, 0, 0, int(220 * self._fade)))
-            surface.blit(overlay, (0, 0))
-
     def _render_slot(self, surface, panel_rect) -> None:
-        slot_rect = pygame.Rect(panel_rect.centerx - 90, panel_rect.top + 170, 180, 20)
-        pygame.draw.rect(surface, (12, 12, 12), slot_rect, border_radius=10)
-        draw_text(surface, "SLOT", self.app.fonts["body"], config.COLOR_TEXT,
-                  (slot_rect.centerx, slot_rect.centery))
+        slot_rect = pygame.Rect(panel_rect.centerx - 116, panel_rect.top + 144, 232, 26)
+        pygame.draw.rect(surface, (249, 246, 232), slot_rect, border_radius=12)
+        pygame.draw.rect(surface, config.COLOR_TEXT_DARK, slot_rect, width=2, border_radius=12)
+        draw_text(surface, "INSERT", self.app.fonts["body"], config.COLOR_TEXT_DARK, slot_rect.center)
 
     def _render_coin(self, surface, panel_rect) -> None:
         coin = self.app.images.get("player")

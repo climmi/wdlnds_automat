@@ -3,13 +3,12 @@ import os
 import sys
 import time
 import pygame
-import random
 
 from . import config
 from .highscores import HighScoreManager
 from .assets import ImageManager
 from .fonts import FontManager
-from .theme import draw_frame, draw_logo, draw_stickers
+from .theme import create_background, draw_logo
 from .hardware.buttons import ButtonManager
 from .hardware.coin_sensor import CoinSensor
 from .hardware.lamps import LampController
@@ -17,9 +16,6 @@ from .hardware.payout import PayoutController
 from .hardware.sound import SoundManager
 from .states.idle import IdleState
 from .states.minigame import MiniGameState
-from .states.select import GameSelectState
-from .states.hold import HoldGameState
-from .states.timing import TimingGameState
 from .states.state_machine import StateMachine
 
 
@@ -39,6 +35,7 @@ class App:
 
         self.fonts = FontManager(os.path.dirname(__file__)).build()
         self.images = self._load_images()
+        self._background = create_background(width, height)
 
         self.clock = pygame.time.Clock()
         self.running = True
@@ -56,6 +53,8 @@ class App:
             "left_timer": 0.0,
             "right_timer": 0.0,
         }
+        self._runtime = 0.0
+        self._local_dev_mode = config.LOCAL_DEV_MODE
 
         self.buttons = ButtonManager()
         self.coin_sensor = CoinSensor()
@@ -63,15 +62,12 @@ class App:
         self.lamps = LampController()
         self.payout = PayoutController()
         self.highscores = HighScoreManager(os.path.join(config.DATA_DIR, "highscores.json"))
-        self.current_game = "runner"
+        self.current_game = "show_control"
         self._attach_gpio_inputs()
 
         self.state_machine = StateMachine({
             "idle": IdleState(self),
-            "select": GameSelectState(self),
             "minigame": MiniGameState(self),
-            "hold": HoldGameState(self),
-            "timing": TimingGameState(self),
         }, "idle")
 
     def add_credit(self, amount: int) -> None:
@@ -84,13 +80,19 @@ class App:
     def run(self) -> None:
         while self.running:
             dt = self.clock.tick(config.FPS) / 1000.0
+            self._runtime += dt
 
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     self.running = False
                     break
+                if event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
+                    self.running = False
+                    break
                 if event.type == pygame.KEYDOWN and event.key == pygame.K_q:
                     self._debug_enabled = not self._debug_enabled
+                if self._local_dev_mode and event.type == pygame.KEYDOWN:
+                    self._handle_local_dev_shortcuts(event)
                 self.buttons.handle_event(event)
                 self.coin_sensor.handle_event(event)
 
@@ -129,6 +131,7 @@ class App:
         lines = [
             f"state: {self.state_machine.current.__class__.__name__}",
             f"credits: {self.credits}",
+            f"local dev: {self._local_dev_mode}",
             f"last inputs: {self._last_inputs} ({now - self._last_input_ts:.1f}s ago)",
             f"last coin: {now - self._last_coin_ts:.1f}s ago",
             f"fps: {self.clock.get_fps():.1f}",
@@ -142,21 +145,34 @@ class App:
             self.screen.blit(render, rect)
             y += 20
 
-    def draw_background(self, surface) -> None:
-        surface.fill(config.COLOR_BG_TOP)
-        self._render_decor(surface)
-        if self.images.get("hero_bg"):
-            surface.blit(self.images["hero_bg"], (0, 0))
+    def draw_background(self, surface, logo: bool = True) -> None:
+        surface.blit(self._background, (0, 0))
+        if not logo:
+            return
         if self.images.get("logo"):
             logo = self.images["logo"]
             rect = logo.get_rect(center=(self.center_x, 44))
             surface.blit(logo, rect)
         else:
             draw_logo(surface, (self.center_x, 40), self.fonts["body_bold"])
-        # no frame
 
     def draw_overlays(self, surface) -> None:
         pass
+
+    def _handle_local_dev_shortcuts(self, event: pygame.event.Event) -> None:
+        if event.key == pygame.K_1:
+            self._jump_to_game("show_control")
+        elif event.key == pygame.K_0:
+            self.credits = 0
+            self.state_machine.change("idle")
+        elif event.key == pygame.K_9:
+            self.credits = 9
+
+    def _jump_to_game(self, game_id: str) -> None:
+        self.current_game = "show_control"
+        self.credits = max(self.credits, 1)
+        self.consume_credit()
+        self.state_machine.change("minigame")
 
     def _render_decor(self, surface) -> None:
         pass
@@ -171,13 +187,22 @@ class App:
 
     def _load_images(self) -> dict:
         manager = ImageManager(os.path.dirname(__file__))
-        hero_bg = manager.load("670c13ad0dc40be65dff6e52_about-hero-bg.png", (self.width, self.height))
+        root_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir))
         logo = manager.load("woodlands_logo_images.png")
         if logo:
             target_w = 220
             w, h = logo.get_size()
             target_h = max(1, int(h * (target_w / max(1, w))))
             logo = pygame.transform.smoothscale(logo, (target_w, target_h))
+        level_bg = self._load_graphic(os.path.join(root_dir, "graphic", "level", "isometric_pixel_art_scene_of_an_outdoor_indoor_hyb.png"))
+        if level_bg:
+            level_bg = self._scale_to_cover(level_bg, self.width, self.height)
+        normie_dir = os.path.join(root_dir, "graphic", "charakters", "normie 01")
+        normie = {
+            "normal": self._load_graphic(os.path.join(normie_dir, "normie_anim_normal.png")),
+            "bored": self._load_graphic(os.path.join(normie_dir, "normie_anim_bored.png")),
+            "happy": self._load_graphic(os.path.join(normie_dir, "normie_anim_happy.png")),
+        }
         return {
             "player": manager.load("woodlands_coin_effect1.png"),
             "stickers": [
@@ -185,13 +210,30 @@ class App:
                 manager.load("wdlnds_sticker2.png"),
                 manager.load("wdlnds_sticker3.png"),
             ],
-            "hero_bg": hero_bg,
+            "hero_bg": None,
             "logo": logo,
             "form_left": manager.load("forms_0.png"),
             "form_right": manager.load("forms_2.png"),
             "cursor": manager.load("forms_11.png"),
             "ball": manager.load("forms_3.png"),
+            "level_bg": level_bg,
+            "normie": normie,
         }
+
+    def _load_graphic(self, path: str):
+        if not os.path.exists(path):
+            return None
+        return pygame.image.load(path).convert_alpha()
+
+    def _scale_to_cover(self, image, width: int, height: int):
+        src_w, src_h = image.get_size()
+        scale = max(width / src_w, height / src_h)
+        target_w = max(1, int(src_w * scale))
+        target_h = max(1, int(src_h * scale))
+        scaled = pygame.transform.scale(image, (target_w, target_h))
+        left = max(0, (target_w - width) // 2)
+        top = max(0, (target_h - height) // 2)
+        return scaled.subsurface(pygame.Rect(left, top, width, height)).copy()
 
     def _attach_gpio_inputs(self) -> None:
         # Raspberry Pi pin mapping (BCM):
