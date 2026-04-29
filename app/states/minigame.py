@@ -25,37 +25,39 @@ class MiniGameState(ScoreGameState):
     PERFECT_WINDOW = 0.14
     GOOD_WINDOW = 0.30
     HOLD_RELEASE_GRACE = 0.16
+    HOLD_RELEASE_WINDOW = 0.46
+    HOLD_AUTO_COMPLETE_DELAY = 0.36
     DJ_ACTS = [
-        "Konfusia",
-        "Maka",
-        "Cocoloris",
-        "Elbatos",
-        "Papu",
-        "Federkern",
-        "ELS Music",
-        "Doddy",
-        "DJ KRSN",
-        "Mischluft",
-        "Sarah Wild",
-        "Melbo & Falke",
-        "Horst Haller",
-        "Sinamin",
-        "Carlo Bonanza",
-        "Victor Ruiz",
-        "Susi Paula",
-        "Sabura",
-        "Nina Ozono",
-        "Madria",
-        "Stacy 9_9",
-        "Marlon Margiela",
-        "Dub FX",
-        "Flox",
-        "Benjie",
-        "Illbilly Hitec feat. Longfingah",
-        "Luisa Laakmann",
-        "Singing Gold",
-        "Aio",
-        "Tober&Tober",
+        "Konfluxia",
+        "Mako",
+        "Cocoluma",
+        "Elbarto",
+        "Pabu",
+        "Felderkern",
+        "ELX Sounds",
+        "Dotto",
+        "DJ KRSX",
+        "Nebelluft",
+        "Sira Wald",
+        "Melbo & Finke",
+        "Hurst Haller",
+        "Sinamoon",
+        "Carlo Bonaro",
+        "Vektor Ruiz",
+        "Susi Pola",
+        "Saburo",
+        "Nina Osono",
+        "Madrio",
+        "Stacy 8_8",
+        "Marlon Marea",
+        "Dub Fuzz",
+        "Flux",
+        "Bendji",
+        "Hillbilly HiFi feat. Longfinger",
+        "Luisa Lakuna",
+        "Singing Stone",
+        "Ayo",
+        "Tober & Tabor",
     ]
 
     def __init__(self, app) -> None:
@@ -76,9 +78,10 @@ class MiniGameState(ScoreGameState):
         self._crowd_phase = 0.0
         self._crowd_level = 0.22
         self._crowd_level_target = 0.22
-        self._dj_name = "Konfusia"
+        self._dj_name = "Konfluxia"
         self._beat_interval = self.BEAT_INTERVAL
         self._music_path = None
+        self._led_timer = 0.0
 
     def on_game_start(self) -> None:
         self._time = 0.0
@@ -96,11 +99,14 @@ class MiniGameState(ScoreGameState):
         self._dj_name = random.choice(self.DJ_ACTS)
         self._crowd_seed = self._build_crowd_seed()
         self._cues, self._sections, self._duration = self._build_show()
+        self._led_timer = 0.0
+        self.app.esp32.send("MODE game")
         if self._music_path:
             self.app.sound.play_music(self._music_path)
 
     def on_exit(self) -> None:
         self.app.sound.stop_music()
+        self.app.esp32.send("MODE standby")
 
     def trigger_game_over(self, score: int) -> None:
         self.app.sound.stop_music()
@@ -110,9 +116,11 @@ class MiniGameState(ScoreGameState):
         for control in self.CONTROL_ORDER:
             if control in pressed:
                 self._flash[control] = 0.22
+                self.app.esp32.send(f"LED flash {control}")
                 self._trigger(control)
         if "start" in pressed:
             self._flash["middle"] = 0.22
+            self.app.esp32.send("LED flash middle")
             self._trigger("middle")
 
     def update_game(self, dt: float) -> None:
@@ -125,6 +133,7 @@ class MiniGameState(ScoreGameState):
 
         self._update_beat()
         self._mood = max(0.0, self._mood - dt * 0.42)
+        self._update_led_feedback(dt)
 
         for cue in self._cues:
             if cue["done"]:
@@ -138,6 +147,48 @@ class MiniGameState(ScoreGameState):
 
         if self._mood <= 0 or self._time >= self._duration:
             self.trigger_game_over(self._score)
+
+    def _update_led_feedback(self, dt: float) -> None:
+        self._led_timer += dt
+        if self._led_timer < 0.055:
+            return
+        self._led_timer = 0.0
+
+        lane_state = {
+            control: {"position": 0, "intensity": 0, "prompt": 255 if self._flash[control] > 0 else 0}
+            for control in self.CONTROL_ORDER
+        }
+
+        for cue in self._cues:
+            if cue["done"]:
+                continue
+            active_hold = cue.get("type") == "hold" and cue.get("active")
+            delta = cue["time"] - self._time
+            if not active_hold and (delta < -self.GOOD_WINDOW or delta > self.LEAD_TIME):
+                continue
+
+            if active_hold:
+                position = 100
+                intensity = 210
+                prompt = 255
+            else:
+                position = max(0, min(100, int((1.0 - delta / self.LEAD_TIME) * 100)))
+                closeness = max(0.0, 1.0 - abs(delta) / self.LEAD_TIME)
+                intensity = int(50 + closeness * 155)
+                prompt = 255 if abs(delta) <= self.GOOD_WINDOW * 1.15 else 0
+
+            for control in self._cue_controls(cue):
+                state = lane_state[control]
+                if intensity > state["intensity"]:
+                    state["position"] = position
+                    state["intensity"] = intensity
+                state["prompt"] = max(state["prompt"], prompt)
+
+        for control in self.CONTROL_ORDER:
+            state = lane_state[control]
+            self.app.esp32.send(f"LANE {control} {state['position']} {state['intensity']}")
+            self.app.esp32.send(f"PROMPT {control} {state['prompt']}")
+        self.app.esp32.send(f"MOOD {int(self._mood)}")
 
     def render_game(self, surface) -> None:
         self._draw_level(surface)
@@ -248,9 +299,16 @@ class MiniGameState(ScoreGameState):
             if cue["done"]:
                 continue
             delta = cue["time"] - self._time
-            if delta < -self.GOOD_WINDOW or delta > self.LEAD_TIME:
+            is_active_hold = cue.get("type") == "hold" and cue.get("active")
+            hold_end_time = cue["time"] + float(cue.get("duration", 0.0))
+            if is_active_hold:
+                if self._time > hold_end_time + self.HOLD_AUTO_COMPLETE_DELAY:
+                    continue
+            elif delta < -self.GOOD_WINDOW or delta > self.LEAD_TIME:
                 continue
-            if delta >= 0:
+            if is_active_hold:
+                y = target_y
+            elif delta >= 0:
                 y = target_y - int((delta / self.LEAD_TIME) * (target_y - top_y))
             else:
                 y = target_y + int((-delta / self.GOOD_WINDOW) * (exit_y - target_y))
@@ -272,6 +330,12 @@ class MiniGameState(ScoreGameState):
                     pygame.draw.rect(hold_surface, (*color, 148), hold_surface.get_rect(), border_radius=8)
                     surface.blit(hold_surface, hold_rect.topleft)
                     pygame.draw.rect(surface, (75, 56, 38), hold_rect, width=2, border_radius=8)
+                    if cue.get("active"):
+                        release_rect = pygame.Rect(cx - 48, target_y - 25, 96, 50)
+                        release_surface = pygame.Surface(release_rect.size, pygame.SRCALPHA)
+                        pygame.draw.rect(release_surface, (*color, 70), release_surface.get_rect(), border_radius=10)
+                        surface.blit(release_surface, release_rect.topleft)
+                        pygame.draw.rect(surface, color, release_rect, width=3, border_radius=10)
                     rect = pygame.Rect(cx - 42, y - 17, 84, 34)
                 else:
                     rect = pygame.Rect(cx - 42, y - 17, 84, 34)
@@ -324,11 +388,15 @@ class MiniGameState(ScoreGameState):
             control = cue.get("held_control")
             end_time = cue["time"] + float(cue.get("duration", 0.0))
             grace_until = float(cue.get("release_grace_until", 0.0) or 0.0)
+            release_start = end_time - self.HOLD_RELEASE_WINDOW
             if control and self._time > grace_until and not self._is_control_down(control):
                 cue["done"] = True
-                self._register_miss("LOSGELASSEN")
+                if self._time >= release_start:
+                    self._register_hit(34, 9.0, "GEHALTEN")
+                else:
+                    self._register_miss("LOSGELASSEN")
                 return
-            if self._time >= end_time:
+            if self._time >= end_time + self.HOLD_AUTO_COMPLETE_DELAY:
                 cue["done"] = True
                 self._register_hit(34, 9.0, "GEHALTEN")
             return

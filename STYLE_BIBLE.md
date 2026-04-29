@@ -285,39 +285,40 @@ Spaeter moeglich:
 ## Artist- und Show-Regeln
 
 Jede Runde heisst nicht allgemein `Woodlands Show`, sondern ist ein `DJ SET` eines zufaelligen Acts.
+Die Namen sollen nach Festival-Lineup klingen, aber fiktiv sein. Keine echten Act-Namen 1:1 verwenden.
 
-Aktuelle Artist-Liste:
+Aktuelle fiktive Artist-Liste:
 
-- Konfusia
-- Maka
-- Cocoloris
-- Elbatos
-- Papu
-- Federkern
-- ELS Music
-- Doddy
-- DJ KRSN
-- Mischluft
-- Sarah Wild
-- Melbo & Falke
-- Horst Haller
-- Sinamin
-- Carlo Bonanza
-- Victor Ruiz
-- Susi Paula
-- Sabura
-- Nina Ozono
-- Madria
-- Stacy 9_9
-- Marlon Margiela
-- Dub FX
-- Flox
-- Benjie
-- Illbilly Hitec feat. Longfingah
-- Luisa Laakmann
-- Singing Gold
-- Aio
-- Tober&Tober
+- Konfluxia
+- Mako
+- Cocoluma
+- Elbarto
+- Pabu
+- Felderkern
+- ELX Sounds
+- Dotto
+- DJ KRSX
+- Nebelluft
+- Sira Wald
+- Melbo & Finke
+- Hurst Haller
+- Sinamoon
+- Carlo Bonaro
+- Vektor Ruiz
+- Susi Pola
+- Saburo
+- Nina Osono
+- Madrio
+- Stacy 8_8
+- Marlon Marea
+- Dub Fuzz
+- Flux
+- Bendji
+- Hillbilly HiFi feat. Longfinger
+- Luisa Lakuna
+- Singing Stone
+- Ayo
+- Tober & Tabor
 
 Lineup-Kontext:
 

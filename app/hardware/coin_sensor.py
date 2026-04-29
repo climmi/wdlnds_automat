@@ -34,6 +34,9 @@ class CoinSensor:
         self._last_trigger = now
         self._triggered = True
 
+    def trigger_external(self) -> None:
+        self._enqueue()
+
     def update(self) -> None:
         if self._gpio_button is None:
             return

@@ -11,6 +11,7 @@ from .fonts import FontManager
 from .theme import create_background, draw_logo
 from .hardware.buttons import ButtonManager
 from .hardware.coin_sensor import CoinSensor
+from .hardware.esp32_serial import Esp32SerialController
 from .hardware.lamps import LampController
 from .hardware.payout import PayoutController
 from .hardware.sound import SoundManager
@@ -58,6 +59,7 @@ class App:
 
         self.buttons = ButtonManager()
         self.coin_sensor = CoinSensor()
+        self.esp32 = Esp32SerialController()
         self.sound = SoundManager()
         self.lamps = LampController()
         self.payout = PayoutController()
@@ -96,6 +98,7 @@ class App:
                 self.buttons.handle_event(event)
                 self.coin_sensor.handle_event(event)
 
+            self.esp32.update(self.buttons, self.coin_sensor)
             self.buttons.update()
             self.coin_sensor.update()
 
@@ -137,6 +140,7 @@ class App:
             f"fps: {self.clock.get_fps():.1f}",
             f"gpio btn: {self.buttons.gpio_states()}",
             f"gpio coin: {self.coin_sensor.gpio_state()}",
+            f"esp32: {self.esp32.status()}",
         ]
         x, y = 12, 12
         for line in lines:

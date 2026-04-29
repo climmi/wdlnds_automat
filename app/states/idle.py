@@ -23,6 +23,7 @@ class IdleState(BaseState):
         self._coin_t = 0.0
         self._fade = 0.0
         self._transitioning = False
+        self.app.esp32.send("MODE standby")
 
     def update(self, dt: float) -> None:
         if time.time() - self._last_blink > 0.6:
