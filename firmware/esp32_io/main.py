@@ -26,8 +26,8 @@ BUTTON_LEDS = {
 COIN_ADC_PIN = 34
 DEBOUNCE_MS = 28
 COIN_COOLDOWN_MS = 650
-COIN_DROP_RATIO = 0.65
-COIN_RESET_RATIO = 0.85
+COIN_DROP_RATIO = 0.82
+COIN_RESET_RATIO = 0.92
 
 COLORS = {
     "left": (50, 115, 255),
@@ -236,6 +236,16 @@ class Strip:
         if lane in self.prompts:
             self.prompts[lane] = max(0, min(255, int(intensity)))
 
+    def set_game(self, parts):
+        if len(parts) < 10:
+            return
+        lanes = ("left", "middle", "right")
+        for i, lane in enumerate(lanes):
+            offset = i * 3
+            self.set_lane(lane, parts[offset], parts[offset + 1])
+            self.set_prompt(lane, parts[offset + 2])
+        self.mood_set(parts[9])
+
     def update(self):
         now = time.ticks_ms()
         if self.flash_until and time.ticks_diff(now, self.flash_until) <= 0:
@@ -325,13 +335,18 @@ def handle_command(line, strip):
         strip.set_lane(parts[1], parts[2], parts[3])
     elif parts[0] == "PROMPT" and len(parts) >= 3:
         strip.set_prompt(parts[1], parts[2])
+    elif parts[0] == "GAME" and len(parts) >= 11:
+        strip.set_game(parts[1:11])
     elif parts[0] == "LED" and len(parts) >= 2:
         if parts[1] == "off":
             strip._fill((0, 0, 0))
         elif parts[1] in ("idle", "standby"):
             strip.set_mode("standby")
         elif parts[1] == "flash" and len(parts) >= 3:
-            strip.flash(parts[2])
+            if parts[2] in ("left", "middle", "right", "start"):
+                strip.set_prompt(parts[2], 255)
+            else:
+                strip.flash(parts[2])
     elif parts[0] == "MOOD" and len(parts) >= 2:
         strip.mood_set(parts[1])
 
@@ -352,13 +367,15 @@ def main():
             if event:
                 print("BTN {} {}".format(button.name, event))
                 if event == "down":
-                    strip.flash(button.name)
+                    strip.set_prompt(button.name, 255)
 
         if coin.update():
             print("COIN")
             strip.flash("coin")
 
-        if poll.poll(0):
+        for _ in range(8):
+            if not poll.poll(0):
+                break
             handle_command(sys.stdin.readline(), strip)
 
         strip.update()

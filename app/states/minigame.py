@@ -150,7 +150,7 @@ class MiniGameState(ScoreGameState):
 
     def _update_led_feedback(self, dt: float) -> None:
         self._led_timer += dt
-        if self._led_timer < 0.055:
+        if self._led_timer < 0.09:
             return
         self._led_timer = 0.0
 
@@ -184,11 +184,16 @@ class MiniGameState(ScoreGameState):
                     state["intensity"] = intensity
                 state["prompt"] = max(state["prompt"], prompt)
 
-        for control in self.CONTROL_ORDER:
-            state = lane_state[control]
-            self.app.esp32.send(f"LANE {control} {state['position']} {state['intensity']}")
-            self.app.esp32.send(f"PROMPT {control} {state['prompt']}")
-        self.app.esp32.send(f"MOOD {int(self._mood)}")
+        left = lane_state["left"]
+        middle = lane_state["middle"]
+        right = lane_state["right"]
+        self.app.esp32.send(
+            "GAME "
+            f"{left['position']} {left['intensity']} {left['prompt']} "
+            f"{middle['position']} {middle['intensity']} {middle['prompt']} "
+            f"{right['position']} {right['intensity']} {right['prompt']} "
+            f"{int(self._mood)}"
+        )
 
     def render_game(self, surface) -> None:
         self._draw_level(surface)
