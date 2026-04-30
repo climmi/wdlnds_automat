@@ -17,6 +17,7 @@ from .hardware.payout import PayoutController
 from .hardware.sound import SoundManager
 from .states.idle import IdleState
 from .states.minigame import MiniGameState
+from .states.song_select import SongSelectState
 from .states.state_machine import StateMachine
 
 
@@ -28,6 +29,8 @@ class App:
             flags |= pygame.FULLSCREEN
         self.screen = pygame.display.set_mode((width, height), flags)
         pygame.display.set_caption("Woodlands Automat")
+        pygame.mouse.set_visible(False)
+        pygame.mouse.set_pos((width - 1, height // 2))
 
         self.width = width
         self.height = height
@@ -65,10 +68,12 @@ class App:
         self.payout = PayoutController()
         self.highscores = HighScoreManager(os.path.join(config.DATA_DIR, "highscores.json"))
         self.current_game = "show_control"
+        self.selected_song = {"label": "MITTEL", "difficulty": "medium", "caption": "VOLLER FLOOR"}
         self._attach_gpio_inputs()
 
         self.state_machine = StateMachine({
             "idle": IdleState(self),
+            "song_select": SongSelectState(self),
             "minigame": MiniGameState(self),
         }, "idle")
 
@@ -165,7 +170,7 @@ class App:
 
     def _handle_local_dev_shortcuts(self, event: pygame.event.Event) -> None:
         if event.key == pygame.K_1:
-            self._jump_to_game("show_control")
+            self.state_machine.change("song_select")
         elif event.key == pygame.K_0:
             self.credits = 0
             self.state_machine.change("idle")

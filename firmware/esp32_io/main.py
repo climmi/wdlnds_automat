@@ -17,9 +17,9 @@ BUTTONS = {
 }
 
 BUTTON_LEDS = {
-    "right": 0,
+    "left": 0,
     "middle": 1,
-    "left": 2,
+    "right": 2,
     "start": 3,
 }
 
@@ -107,9 +107,9 @@ LANE_SEGMENTS = {
         FIELDS["venus_multi_55_middle"], FIELDS["multi_middle"], FIELDS["serie_middle"],
         FIELDS["40_middle_top"], FIELDS["50_middle_top"], FIELDS["30_middle_top"],
         FIELDS["sun_4_middle"], FIELDS["sun_3_middle"], FIELDS["coins_3_middle"],
-        FIELDS["coins_2_middle"], FIELDS["start_auto_middle"], FIELDS["0_middle"],
-        FIELDS["20_middle"], FIELDS["40_middle"], FIELDS["70_middle"], FIELDS["150_middle"],
-        FIELDS["3_middle"], FIELDS["4_middle"], FIELDS["ausspielung_middle"],
+        FIELDS["coins_2_middle"], FIELDS["4_middle"], FIELDS["3_middle"],
+        FIELDS["150_middle"], FIELDS["70_middle"], FIELDS["40_middle"], FIELDS["20_middle"],
+        FIELDS["0_middle"], FIELDS["start_auto_middle"], FIELDS["ausspielung_middle"],
     ],
     "right": [
         FIELDS["40_right_top"], FIELDS["20_right_top"], FIELDS["10_right"], FIELDS["4_right"],
@@ -118,18 +118,54 @@ LANE_SEGMENTS = {
     ],
 }
 
-STANDBY_FIELDS = [
-    ("left", FIELDS["teil_left"] + FIELDS["volle_left"]),
-    ("middle", FIELDS["venus_multi_55_middle"]),
-    ("right", FIELDS["40_right_top"] + FIELDS["20_right_top"]),
-    ("middle", FIELDS["sun_4_middle"] + FIELDS["sun_3_middle"]),
-    ("left", FIELDS["start_left"]),
-    ("middle", FIELDS["ausspielung_middle"]),
-    ("right", FIELDS["stop_right"]),
-    ("left", FIELDS["0_left"] + FIELDS["030_left"]),
-    ("middle", FIELDS["3_middle"] + FIELDS["4_middle"]),
-    ("right", FIELDS["2_right"] + FIELDS["160_right"]),
-]
+FIELD_LANES = {
+    "teil_left": "left",
+    "volle_left": "left",
+    "venus_multi_55_middle": "middle",
+    "multi_middle": "middle",
+    "serie_middle": "middle",
+    "40_middle_top": "middle",
+    "50_middle_top": "middle",
+    "30_middle_top": "middle",
+    "sun_4_middle": "middle",
+    "sun_3_middle": "middle",
+    "coins_3_middle": "middle",
+    "coins_2_middle": "middle",
+    "gestoert_left": "left",
+    "start_left": "left",
+    "50_left": "left",
+    "25_left": "left",
+    "12_left": "left",
+    "6_left": "left",
+    "3_left": "left",
+    "260_left": "left",
+    "130_left": "left",
+    "060_left": "left",
+    "030_left": "left",
+    "0_left": "left",
+    "start_auto_middle": "middle",
+    "0_middle": "middle",
+    "20_middle": "middle",
+    "40_middle": "middle",
+    "70_middle": "middle",
+    "150_middle": "middle",
+    "3_middle": "middle",
+    "4_middle": "middle",
+    "ausspielung_middle": "middle",
+    "0_right": "right",
+    "20_right_bottom": "right",
+    "40_right_bottom": "right",
+    "80_right": "right",
+    "160_right": "right",
+    "2_right": "right",
+    "stop_right": "right",
+    "4_right": "right",
+    "10_right": "right",
+    "20_right_top": "right",
+    "40_right_top": "right",
+}
+
+STANDBY_FIELDS = [(lane, FIELDS[name]) for name, lane in FIELD_LANES.items() if FIELDS[name]]
 
 
 class DebouncedButton:
@@ -215,6 +251,9 @@ class Strip:
             return
         if self.mode != mode:
             self.mode = mode
+            self.flash_until = 0
+            self.lanes = {name: [0, 0] for name in ("left", "middle", "right")}
+            self.prompts = {name: 0 for name in ("left", "middle", "right", "start")}
             self.clear()
 
     def clear(self):
@@ -264,6 +303,10 @@ class Strip:
 
     def _draw_standby(self, now):
         self._fill_no_write(scale(COLORS["idle"], 10 + int(self.mood * 0.08)))
+        if not STANDBY_FIELDS:
+            self._set_button("start", scale(COLORS["start"], 48))
+            self.pixels.write()
+            return
         step = (now // 150) % len(STANDBY_FIELDS)
         for offset in range(3):
             lane, pixels = STANDBY_FIELDS[(step + offset) % len(STANDBY_FIELDS)]

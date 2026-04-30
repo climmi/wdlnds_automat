@@ -27,6 +27,7 @@ class MiniGameState(ScoreGameState):
     HOLD_RELEASE_GRACE = 0.16
     HOLD_RELEASE_WINDOW = 0.46
     HOLD_AUTO_COMPLETE_DELAY = 0.36
+    SONG_INTRO_NO_CUES = 2.0
     DJ_ACTS = [
         "Konfluxia",
         "Mako",
@@ -82,6 +83,7 @@ class MiniGameState(ScoreGameState):
         self._beat_interval = self.BEAT_INTERVAL
         self._music_path = None
         self._led_timer = 0.0
+        self._song_option = {"label": "MITTEL", "difficulty": "medium"}
 
     def on_game_start(self) -> None:
         self._time = 0.0
@@ -96,6 +98,7 @@ class MiniGameState(ScoreGameState):
         self._crowd_phase = 0.0
         self._crowd_level = 0.22
         self._crowd_level_target = 0.22
+        self._song_option = getattr(self.app, "selected_song", self._song_option)
         self._dj_name = random.choice(self.DJ_ACTS)
         self._crowd_seed = self._build_crowd_seed()
         self._cues, self._sections, self._duration = self._build_show()
@@ -110,6 +113,7 @@ class MiniGameState(ScoreGameState):
 
     def trigger_game_over(self, score: int) -> None:
         self.app.sound.stop_music()
+        self.app.esp32.send("MODE standby")
         super().trigger_game_over(score)
 
     def handle_game_input(self, pressed):
@@ -216,11 +220,12 @@ class MiniGameState(ScoreGameState):
         pygame.draw.rect(surface, (255, 253, 240), top, border_radius=12)
         pygame.draw.rect(surface, (75, 56, 38), top, width=2, border_radius=12)
         draw_text(surface, "DJ SET", self.app.fonts["title"], (75, 56, 38), (self.app.center_x, 36))
-        act_name = self._dj_name.upper()
-        draw_text(surface, act_name, self.app.fonts["body_bold"], (75, 56, 38), (self.app.center_x, 66))
+        title = str(self._song_option.get("title") or self._dj_name).upper()
+        draw_text(surface, title, self.app.fonts["body_bold"], (75, 56, 38), (self.app.center_x, 66))
+        difficulty = str(self._song_option.get("label", "MITTEL")).upper()
         draw_text(
             surface,
-            f"{self._section_name()} / SCORE {self._score} / STREAK {self._combo}",
+            f"{difficulty} / {self._section_name()} / SCORE {self._score} / STREAK {self._combo}",
             self.app.fonts["body"],
             (92, 79, 56),
             (self.app.center_x, 90),
@@ -491,6 +496,8 @@ class MiniGameState(ScoreGameState):
         return min(upcoming, key=lambda item: item["time"])
 
     def _section_name(self) -> str:
+        if self._time < self.SONG_INTRO_NO_CUES:
+            return "BEREIT"
         for section in self._sections:
             start, end, name = section[:3]
             if start <= self._time < end:
@@ -546,10 +553,12 @@ class MiniGameState(ScoreGameState):
             sections.append((section_start, time_pos, name))
             time_pos += 0.35
         cues.sort(key=lambda item: item["time"])
+        cues = self._prepare_cues_for_song(cues, sections)
         return cues, sections, time_pos + 0.8
 
     def _load_analyzed_show(self):
-        path = os.path.join(config.DATA_DIR, "show_cues.json")
+        cue_file = str(self._song_option.get("cues", "show_cues.json"))
+        path = os.path.join(config.DATA_DIR, cue_file)
         payload = load_json(path, None)
         if not payload or not isinstance(payload, dict):
             return None
@@ -574,20 +583,22 @@ class MiniGameState(ScoreGameState):
                 "duration": float(item.get("duration", 0.0) or 0.0),
                 "done": False,
             })
+        sections = []
+        for item in payload.get("sections", []):
+            try:
+                start, end, name = item[:3]
+                difficulty = str(item[3]) if len(item) > 3 else "medium"
+                sections.append((float(start), float(end), str(name), difficulty))
+            except (TypeError, ValueError):
+                continue
+
         cues = self._remove_hold_lane_conflicts(cues)
+        cues = self._prepare_cues_for_song(cues, sections)
         if not cues:
             return None
 
         bpm = float(payload.get("bpm", 0) or 0)
         self._beat_interval = 60.0 / bpm if bpm > 0 else self.BEAT_INTERVAL
-
-        sections = []
-        for item in payload.get("sections", []):
-            try:
-                start, end, name = item[:3]
-                sections.append((float(start), float(end), str(name)))
-            except (TypeError, ValueError):
-                continue
 
         duration = float(payload.get("duration", cues[-1]["time"] + 1.0))
         if not sections:
@@ -597,6 +608,39 @@ class MiniGameState(ScoreGameState):
         music_path = os.path.abspath(os.path.join(config.BASE_DIR, os.pardir, "audio", source))
         self._music_path = music_path if source and os.path.exists(music_path) else None
         return cues, sections, duration
+
+    def _prepare_cues_for_song(self, cues, sections):
+        first_visible_cue = self.SONG_INTRO_NO_CUES + self.LEAD_TIME
+        prepared = [cue for cue in cues if cue["time"] >= first_visible_cue]
+        difficulty = str(self._song_option.get("difficulty", "medium"))
+        if difficulty == "hard":
+            return prepared
+
+        filtered = []
+        for index, cue in enumerate(prepared):
+            section_difficulty = self._difficulty_for_time(cue["time"], sections)
+            controls = self._cue_controls(cue)
+            if difficulty == "easy":
+                if cue.get("type") == "hold" or len(controls) > 1:
+                    continue
+                if section_difficulty == "hard" and index % 3 != 0:
+                    continue
+                if section_difficulty == "medium" and index % 2 != 0:
+                    continue
+            elif difficulty == "medium":
+                if section_difficulty == "hard" and index % 2 != 0:
+                    continue
+            filtered.append(cue)
+        return filtered
+
+    def _difficulty_for_time(self, time_pos: float, sections) -> str:
+        for section in sections:
+            if len(section) < 4:
+                continue
+            start, end, _, difficulty = section[:4]
+            if float(start) <= time_pos < float(end):
+                return str(difficulty)
+        return "medium"
 
     def _remove_hold_lane_conflicts(self, cues):
         cleaned = []

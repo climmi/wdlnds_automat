@@ -31,11 +31,9 @@ class IdleState(BaseState):
             self._last_blink = time.time()
 
         if self._transitioning:
-            self._fade = min(1.0, self._fade + dt * 2.4)
+            self._fade = min(1.0, self._fade + dt * 1.35)
             if self._fade >= 1.0:
-                self.app.current_game = "show_control"
-                self.app.consume_credit()
-                self.app.state_machine.change("minigame")
+                self.app.state_machine.change("song_select")
             return
 
         if self._coin_anim:
@@ -57,7 +55,6 @@ class IdleState(BaseState):
         soft = (92, 79, 56)
 
         draw_text(surface, "COIN-O-MAT", title_font, ink, (self.app.center_x, 154))
-        draw_text(surface, "WOODLANDS SHOW AUTOMAT", self.app.fonts["body"], soft, (self.app.center_x, 198))
 
         panel_rect = pygame.Rect(108, 224, self.app.width - 216, 206)
         pygame.draw.rect(surface, (255, 253, 240), panel_rect, border_radius=12)
@@ -70,6 +67,13 @@ class IdleState(BaseState):
         self._render_slot(surface, panel_rect)
         if self._coin_anim:
             self._render_coin(surface, panel_rect)
+        if self._transitioning:
+            self._draw_fade(surface)
+
+    def _draw_fade(self, surface) -> None:
+        overlay = pygame.Surface((self.app.width, self.app.height), pygame.SRCALPHA)
+        overlay.fill((255, 253, 240, int(self._fade * 255)))
+        surface.blit(overlay, (0, 0))
 
     def _render_slot(self, surface, panel_rect) -> None:
         slot_rect = pygame.Rect(panel_rect.centerx - 116, panel_rect.top + 144, 232, 26)

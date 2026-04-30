@@ -1,0 +1,23 @@
+[
+  {
+    "label": "LEICHT",
+    "difficulty": "easy",
+    "title": "SONG 02",
+    "audio": "song 02.mp3",
+    "cues": "cues/song_02.json"
+  },
+  {
+    "label": "MITTEL",
+    "difficulty": "medium",
+    "title": "SONG 03",
+    "audio": "song 03.mp3",
+    "cues": "cues/song_03.json"
+  },
+  {
+    "label": "SCHWER",
+    "difficulty": "hard",
+    "title": "SONG 04",
+    "audio": "song 04.mp3",
+    "cues": "cues/song_04.json"
+  }
+]
