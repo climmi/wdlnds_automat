@@ -30,6 +30,12 @@ class MiniGameState(ScoreGameState):
     SONG_INTRO_NO_CUES = 2.0
     MAX_VISIBLE_PEOPLE = 72
     MOOD_DECAY = 0.56
+    COMBO_THRESHOLDS = (3, 8, 15, 25)
+    DIFFICULTY_RULES = {
+        "easy": {"start_mood": 58.0, "mood_decay": 0.42, "miss_penalty": 5.0, "crowd_loss": 0.03},
+        "medium": {"start_mood": 52.0, "mood_decay": 0.68, "miss_penalty": 8.0, "crowd_loss": 0.055},
+        "hard": {"start_mood": 46.0, "mood_decay": 0.86, "miss_penalty": 11.0, "crowd_loss": 0.075},
+    }
     LEVEL_SCORE_IDS = {
         "easy": "show_control_waldwinkel",
         "medium": "show_control_zob",
@@ -96,7 +102,12 @@ class MiniGameState(ScoreGameState):
         self._beat_interval = self.BEAT_INTERVAL
         self._music_path = None
         self._led_timer = 0.0
-        self._song_option = {"label": "ZOB", "difficulty": "medium", "level_image": "ZOB 01.png"}
+        self._song_option = {
+            "label": "WALDWINKEL",
+            "location": "waldwinkel",
+            "difficulty": "easy",
+            "level_image": "Waldwinkel 01.png",
+        }
         self._crowd_by_depth = []
         self._sprite_cache = {}
         self._last_combo_sound_level = 0
@@ -104,7 +115,8 @@ class MiniGameState(ScoreGameState):
     def on_game_start(self) -> None:
         self._time = 0.0
         self._score = 0
-        self._mood = 52.0
+        self._song_option = getattr(self.app, "selected_song", self._song_option)
+        self._mood = self._difficulty_rules()["start_mood"]
         self._combo = 0
         self._last_label = "LOS GEHTS"
         self._label_timer = 0.8
@@ -115,7 +127,6 @@ class MiniGameState(ScoreGameState):
         self._crowd_phase = 0.0
         self._crowd_level = 0.22
         self._crowd_level_target = 0.22
-        self._song_option = getattr(self.app, "selected_song", self._song_option)
         self._dj_name = random.choice(self.DJ_ACTS)
         self._crowd_seed = self._build_crowd_seed()
         self._crowd_by_depth = sorted(self._crowd_seed, key=lambda item: item["y"])
@@ -166,7 +177,7 @@ class MiniGameState(ScoreGameState):
             feedback["timer"] = max(0.0, float(feedback["timer"]) - dt)
 
         self._update_beat()
-        self._mood = max(0.0, self._mood - dt * self.MOOD_DECAY)
+        self._mood = max(0.0, self._mood - dt * self._difficulty_rules()["mood_decay"])
         self._update_led_feedback(dt)
 
         for cue in self._cues:
@@ -313,7 +324,7 @@ class MiniGameState(ScoreGameState):
             sway = int(math.cos(self._crowd_phase * 0.8 + person["phase"]) * 5 * energy)
             x = int(base_x + sway * enter)
             y = int(base_y - bounce * enter)
-            scale = person["scale"] * (0.88 + 0.12 * enter)
+            scale = person["scale"]
             if sprite:
                 frame = self._crowd_sprite(person.get("character", "person"), mood, sprite, scale)
                 surface.blit(frame, frame.get_rect(midbottom=(x, y)))
@@ -493,11 +504,10 @@ class MiniGameState(ScoreGameState):
         self._crowd_level_target = min(1.0, self._crowd_level_target + crowd_gain)
         self._last_label = "YEAH" if self._combo and self._combo % 8 == 0 else label
         self._label_timer = 0.38
-        if self._combo % 3 == 0:
-            combo_level = min(4, self._combo // 3)
-            if combo_level > self._last_combo_sound_level:
-                self.app.sound.play_combo(combo_level)
-                self._last_combo_sound_level = combo_level
+        combo_level = self._combo_level()
+        if combo_level > self._last_combo_sound_level:
+            self.app.sound.play_combo(combo_level)
+            self._last_combo_sound_level = combo_level
         if control:
             color = (89, 181, 96) if label in ("PERFEKT", "GEHALTEN") else (245, 174, 57)
             self._set_button_feedback(control, label, color)
@@ -507,8 +517,9 @@ class MiniGameState(ScoreGameState):
             self.app.sound.play_streak_break()
         self._combo = 0
         self._last_combo_sound_level = 0
-        self._mood = max(0.0, self._mood - 6.5)
-        self._crowd_level_target = max(0.18, self._crowd_level_target - 0.04)
+        rules = self._difficulty_rules()
+        self._mood = max(0.0, self._mood - rules["miss_penalty"])
+        self._crowd_level_target = max(0.18, self._crowd_level_target - rules["crowd_loss"])
         self._last_label = label
         self._label_timer = 0.45
         for control in controls or []:
@@ -532,18 +543,10 @@ class MiniGameState(ScoreGameState):
         }
 
     def _scaled_mood_gain(self, mood_gain: float, label: str) -> float:
-        if self._combo < 3:
+        combo_level = self._combo_level()
+        if combo_level <= 0:
             return 0.0
-        if self._combo < 6:
-            streak_scale = 0.22
-        elif self._combo < 9:
-            streak_scale = 0.42
-        elif self._combo < 12:
-            streak_scale = 0.64
-        elif self._combo < 18:
-            streak_scale = 0.86
-        else:
-            streak_scale = 1.08
+        streak_scale = (0.24, 0.46, 0.74, 1.08)[combo_level - 1]
         if label == "GUT":
             streak_scale *= 0.64
         elif label == "GEHALTEN":
@@ -552,6 +555,17 @@ class MiniGameState(ScoreGameState):
         if self._mood > 72:
             high_mood_drag -= min(0.52, (self._mood - 72.0) / 54.0)
         return mood_gain * streak_scale * high_mood_drag
+
+    def _combo_level(self) -> int:
+        level = 0
+        for threshold in self.COMBO_THRESHOLDS:
+            if self._combo >= threshold:
+                level += 1
+        return level
+
+    def _difficulty_rules(self):
+        difficulty = str(self._song_option.get("difficulty", "medium"))
+        return self.DIFFICULTY_RULES.get(difficulty, self.DIFFICULTY_RULES["medium"])
 
     def _crowd_mood(self) -> str:
         if self._mood < 35:
@@ -587,7 +601,8 @@ class MiniGameState(ScoreGameState):
 
     def _crowd_sprite(self, character: str, mood: str, sprite, scale: float):
         bucket = max(12, int(scale * 20))
-        key = (character, mood, bucket)
+        flipped = self._flip_crowd_sprites()
+        key = (character, mood, bucket, flipped)
         cached = self._sprite_cache.get(key)
         if cached is not None:
             return cached
@@ -595,8 +610,13 @@ class MiniGameState(ScoreGameState):
         w = max(16, int(sprite.get_width() * normalized_scale))
         h = max(24, int(sprite.get_height() * normalized_scale))
         frame = pygame.transform.scale(sprite, (w, h))
+        if flipped:
+            frame = pygame.transform.flip(frame, True, False)
         self._sprite_cache[key] = frame
         return frame
+
+    def _flip_crowd_sprites(self) -> bool:
+        return str(self._song_option.get("difficulty", "medium")) in ("easy", "medium")
 
     def _enter_progress(self, person) -> float:
         span = 0.14
@@ -729,7 +749,7 @@ class MiniGameState(ScoreGameState):
         if not sections:
             sections = [(0.0, duration, "SET")]
 
-        source = str(payload.get("source", ""))
+        source = str(payload.get("source") or self._song_option.get("audio", ""))
         music_path = os.path.abspath(os.path.join(config.BASE_DIR, os.pardir, "audio", source))
         self._music_path = music_path if source and os.path.exists(music_path) else None
         return cues, sections, duration
@@ -750,10 +770,42 @@ class MiniGameState(ScoreGameState):
                 if section_difficulty == "medium" and index % 2 != 0:
                     continue
             elif difficulty == "medium":
-                if section_difficulty == "hard" and index % 2 != 0:
+                if section_difficulty == "hard" and index % 7 == 1:
                     continue
             filtered.append(cue)
+        filtered = self._space_cues_by_difficulty(filtered, sections, difficulty)
         return self._add_cue_variation(filtered, sections, difficulty)
+
+    def _space_cues_by_difficulty(self, cues, sections, difficulty: str):
+        min_gaps = {
+            "easy": {"intro": 1.0, "easy": 0.82, "medium": 0.92, "hard": 1.05},
+            "medium": {"intro": 0.70, "easy": 0.56, "medium": 0.44, "hard": 0.44},
+            "hard": {"intro": 0.56, "easy": 0.44, "medium": 0.34, "hard": 0.34},
+        }
+        gaps = min_gaps.get(difficulty, min_gaps["medium"])
+        spaced = []
+        last_time = -999.0
+        last_controls = None
+        for cue in sorted(cues, key=lambda item: item["time"]):
+            section_difficulty = self._difficulty_for_time(cue["time"], sections)
+            gap = gaps.get(section_difficulty, gaps.get("medium", 0.54))
+            controls = self._cue_controls(cue)
+            if cue.get("type") == "hold":
+                gap += 0.10 if difficulty == "hard" else 0.16
+            if len(controls) > 1 and difficulty != "hard":
+                gap += 0.12
+            if cue["time"] - last_time < gap:
+                continue
+            if difficulty == "easy" and last_controls == controls:
+                cue = dict(cue)
+                replacement = self.CONTROL_ORDER[(self.CONTROL_ORDER.index(controls[0]) + 1) % len(self.CONTROL_ORDER)]
+                cue["controls"] = [replacement]
+                cue["control"] = replacement
+                controls = [replacement]
+            spaced.append(cue)
+            last_time = cue["time"]
+            last_controls = controls
+        return spaced
 
     def _add_cue_variation(self, cues, sections, difficulty: str):
         if not cues:
@@ -768,6 +820,17 @@ class MiniGameState(ScoreGameState):
             ["left", "middle", "left", "right", "middle"],
             ["middle", "right", "left", "right", "middle"],
         ]
+        if difficulty == "medium":
+            phrase_patterns.extend([
+                ["left", "middle", "right", "left", "middle", "right"],
+                ["middle", "right", "middle", "left", "right", "middle"],
+            ])
+        elif difficulty == "hard":
+            phrase_patterns.extend([
+                ["left", "middle", "right", "middle", "left", "right", "middle", "right"],
+                ["right", "middle", "left", "middle", "right", "left", "middle", "left"],
+                ["middle", "left", "right", "middle", "left", "middle", "right", "left", "middle"],
+            ])
         varied = []
         last_single = None
         run_length = 0
@@ -793,7 +856,7 @@ class MiniGameState(ScoreGameState):
                 run_length += 1
             else:
                 run_length = 1
-            should_vary = run_length >= 3 or rng.random() < self._variation_chance(difficulty, section_difficulty)
+            should_vary = run_length >= 2 or rng.random() < self._variation_chance(difficulty, section_difficulty)
             if should_vary:
                 controls = [desired]
                 if controls[0] == last_single and len(pattern) > 1:
@@ -802,7 +865,9 @@ class MiniGameState(ScoreGameState):
                 controls = [original]
 
             if difficulty in ("medium", "hard") and section_difficulty in ("medium", "hard"):
-                if tap_index % (14 if difficulty == "medium" else 10) == 7:
+                dual_every = 9 if difficulty == "medium" else 5
+                dual_offsets = (4,) if difficulty == "medium" else (2, 4)
+                if tap_index % dual_every in dual_offsets:
                     partner = self.CONTROL_ORDER[(self.CONTROL_ORDER.index(controls[0]) + 1) % len(self.CONTROL_ORDER)]
                     controls = [controls[0], partner]
 
@@ -820,7 +885,7 @@ class MiniGameState(ScoreGameState):
         return self._limit_repeated_controls(varied)
 
     def _variation_chance(self, difficulty: str, section_difficulty: str) -> float:
-        base = {"easy": 0.32, "medium": 0.48, "hard": 0.58}.get(difficulty, 0.48)
+        base = {"easy": 0.32, "medium": 0.58, "hard": 0.72}.get(difficulty, 0.48)
         if section_difficulty == "hard":
             base += 0.12
         elif section_difficulty == "easy":
@@ -928,7 +993,7 @@ class MiniGameState(ScoreGameState):
                 y = cy + int(math.sin(angle) * radius_y)
                 y = max(392, min(570, y))
                 depth = (y - 392) / (570 - 392)
-                scale = 1.28 + depth * 0.72 + rng.uniform(-0.06, 0.08)
+                scale = 0.98 + depth * 0.46 + rng.uniform(-0.04, 0.05)
                 join = min(1.0, join_start + idx * 0.008 + rng.uniform(0.0, 0.045))
                 side_left = (len(spots) + idx) % 2 == 0
                 start_x = -70 if side_left else self.app.width + 70

@@ -1,0 +1,7205 @@
+{
+  "source": "songs_optimized/waldwinkel_rackross niemals fallen gelassen.mp3",
+  "sample_rate": 22050,
+  "bpm": 121.0,
+  "beat_phase": 0.248,
+  "duration": 240.0,
+  "cues": [
+    {
+      "time": 2.231,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.681,
+      "bands": {
+        "left": 0.488,
+        "middle": 0.0,
+        "right": 0.0
+      }
+    },
+    {
+      "time": 3.223,
+      "control": "middle",
+      "controls": [
+        "middle"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.629,
+      "bands": {
+        "left": 0.146,
+        "middle": 0.015,
+        "right": 0.0
+      }
+    },
+    {
+      "time": 4.215,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.558,
+      "bands": {
+        "left": 0.246,
+        "middle": 0.0,
+        "right": 0.0
+      }
+    },
+    {
+      "time": 5.207,
+      "control": "middle",
+      "controls": [
+        "middle"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.525,
+      "bands": {
+        "left": 0.259,
+        "middle": 0.001,
+        "right": 0.0
+      }
+    },
+    {
+      "time": 6.198,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.651,
+      "bands": {
+        "left": 0.237,
+        "middle": 0.0,
+        "right": 0.0
+      }
+    },
+    {
+      "time": 7.19,
+      "control": "middle",
+      "controls": [
+        "middle"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.773,
+      "bands": {
+        "left": 0.452,
+        "middle": 0.002,
+        "right": 0.001
+      }
+    },
+    {
+      "time": 8.182,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.642,
+      "bands": {
+        "left": 0.452,
+        "middle": 0.0,
+        "right": 0.0
+      }
+    },
+    {
+      "time": 9.174,
+      "control": "middle",
+      "controls": [
+        "middle"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.604,
+      "bands": {
+        "left": 0.133,
+        "middle": 0.0,
+        "right": 0.0
+      }
+    },
+    {
+      "time": 10.165,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.682,
+      "bands": {
+        "left": 0.574,
+        "middle": 0.0,
+        "right": 0.0
+      }
+    },
+    {
+      "time": 10.661,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.713,
+      "bands": {
+        "left": 0.102,
+        "middle": 0.005,
+        "right": 0.0
+      }
+    },
+    {
+      "time": 11.157,
+      "control": "middle",
+      "controls": [
+        "middle"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.729,
+      "bands": {
+        "left": 0.252,
+        "middle": 0.025,
+        "right": 0.012
+      }
+    },
+    {
+      "time": 11.653,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.825,
+      "bands": {
+        "left": 0.249,
+        "middle": 0.0,
+        "right": 0.0
+      }
+    },
+    {
+      "time": 12.149,
+      "control": "middle",
+      "controls": [
+        "middle"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.739,
+      "bands": {
+        "left": 0.416,
+        "middle": 0.001,
+        "right": 0.0
+      }
+    },
+    {
+      "time": 12.645,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.739,
+      "bands": {
+        "left": 0.502,
+        "middle": 0.002,
+        "right": 0.0
+      }
+    },
+    {
+      "time": 13.14,
+      "control": "middle",
+      "controls": [
+        "middle"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.593,
+      "bands": {
+        "left": 0.051,
+        "middle": 0.004,
+        "right": 0.0
+      }
+    },
+    {
+      "time": 13.636,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.619,
+      "bands": {
+        "left": 0.108,
+        "middle": 0.001,
+        "right": 0.0
+      }
+    },
+    {
+      "time": 14.132,
+      "control": "middle",
+      "controls": [
+        "middle"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.748,
+      "bands": {
+        "left": 0.223,
+        "middle": 0.001,
+        "right": 0.0
+      }
+    },
+    {
+      "time": 14.628,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.842,
+      "bands": {
+        "left": 0.414,
+        "middle": 0.004,
+        "right": 0.001
+      }
+    },
+    {
+      "time": 15.124,
+      "control": "right",
+      "controls": [
+        "right"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.674,
+      "bands": {
+        "left": 0.323,
+        "middle": 0.001,
+        "right": 0.001
+      }
+    },
+    {
+      "time": 15.62,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.696,
+      "bands": {
+        "left": 0.398,
+        "middle": 0.0,
+        "right": 0.0
+      }
+    },
+    {
+      "time": 16.116,
+      "control": "right",
+      "controls": [
+        "right"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.771,
+      "bands": {
+        "left": 0.387,
+        "middle": 0.0,
+        "right": 0.001
+      }
+    },
+    {
+      "time": 16.612,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 1.0,
+      "bands": {
+        "left": 0.274,
+        "middle": 0.004,
+        "right": 0.0
+      }
+    },
+    {
+      "time": 17.107,
+      "control": "right",
+      "controls": [
+        "right"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.798,
+      "bands": {
+        "left": 0.238,
+        "middle": 0.0,
+        "right": 0.001
+      }
+    },
+    {
+      "time": 17.603,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.279,
+      "bands": {
+        "left": 0.041,
+        "middle": 0.009,
+        "right": 0.009
+      }
+    },
+    {
+      "time": 18.099,
+      "control": "middle",
+      "controls": [
+        "middle"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.212,
+      "bands": {
+        "left": 0.0,
+        "middle": 0.024,
+        "right": 0.0
+      }
+    },
+    {
+      "time": 18.595,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.531,
+      "bands": {
+        "left": 0.248,
+        "middle": 0.002,
+        "right": 0.001
+      }
+    },
+    {
+      "time": 19.091,
+      "control": "middle",
+      "controls": [
+        "middle"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.766,
+      "bands": {
+        "left": 0.118,
+        "middle": 0.012,
+        "right": 0.009
+      }
+    },
+    {
+      "time": 19.587,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.844,
+      "bands": {
+        "left": 0.519,
+        "middle": 0.0,
+        "right": 0.0
+      }
+    },
+    {
+      "time": 20.083,
+      "control": "middle",
+      "controls": [
+        "middle"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.693,
+      "bands": {
+        "left": 0.182,
+        "middle": 0.04,
+        "right": 0.014
+      }
+    },
+    {
+      "time": 20.579,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.659,
+      "bands": {
+        "left": 0.271,
+        "middle": 0.002,
+        "right": 0.0
+      }
+    },
+    {
+      "time": 21.074,
+      "control": "middle",
+      "controls": [
+        "middle"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.758,
+      "bands": {
+        "left": 0.476,
+        "middle": 0.005,
+        "right": 0.001
+      }
+    },
+    {
+      "time": 21.57,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.733,
+      "bands": {
+        "left": 0.558,
+        "middle": 0.006,
+        "right": 0.0
+      }
+    },
+    {
+      "time": 22.066,
+      "control": "middle",
+      "controls": [
+        "middle"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.792,
+      "bands": {
+        "left": 0.13,
+        "middle": 0.021,
+        "right": 0.002
+      }
+    },
+    {
+      "time": 22.562,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.82,
+      "bands": {
+        "left": 0.388,
+        "middle": 0.003,
+        "right": 0.001
+      }
+    },
+    {
+      "time": 23.058,
+      "control": "middle",
+      "controls": [
+        "middle"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.594,
+      "bands": {
+        "left": 0.26,
+        "middle": 0.001,
+        "right": 0.0
+      }
+    },
+    {
+      "time": 23.554,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.809,
+      "bands": {
+        "left": 0.629,
+        "middle": 0.0,
+        "right": 0.0
+      }
+    },
+    {
+      "time": 24.05,
+      "control": "middle",
+      "controls": [
+        "middle"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.611,
+      "bands": {
+        "left": 0.129,
+        "middle": 0.005,
+        "right": 0.0
+      }
+    },
+    {
+      "time": 24.545,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.662,
+      "bands": {
+        "left": 0.123,
+        "middle": 0.001,
+        "right": 0.0
+      }
+    },
+    {
+      "time": 25.041,
+      "control": "middle",
+      "controls": [
+        "middle"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.768,
+      "bands": {
+        "left": 0.232,
+        "middle": 0.025,
+        "right": 0.009
+      }
+    },
+    {
+      "time": 25.537,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.848,
+      "bands": {
+        "left": 0.421,
+        "middle": 0.0,
+        "right": 0.0
+      }
+    },
+    {
+      "time": 26.033,
+      "control": "middle",
+      "controls": [
+        "middle"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.626,
+      "bands": {
+        "left": 0.395,
+        "middle": 0.003,
+        "right": 0.001
+      }
+    },
+    {
+      "time": 26.529,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.812,
+      "bands": {
+        "left": 0.25,
+        "middle": 0.003,
+        "right": 0.0
+      }
+    },
+    {
+      "time": 27.025,
+      "control": "middle",
+      "controls": [
+        "middle"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.668,
+      "bands": {
+        "left": 0.256,
+        "middle": 0.004,
+        "right": 0.001
+      }
+    },
+    {
+      "time": 27.521,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.68,
+      "bands": {
+        "left": 0.387,
+        "middle": 0.0,
+        "right": 0.0
+      }
+    },
+    {
+      "time": 28.017,
+      "control": "middle",
+      "controls": [
+        "middle"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.708,
+      "bands": {
+        "left": 0.184,
+        "middle": 0.001,
+        "right": 0.001
+      }
+    },
+    {
+      "time": 28.512,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.708,
+      "bands": {
+        "left": 0.207,
+        "middle": 0.003,
+        "right": 0.0
+      }
+    },
+    {
+      "time": 29.008,
+      "control": "middle",
+      "controls": [
+        "middle"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.735,
+      "bands": {
+        "left": 0.292,
+        "middle": 0.0,
+        "right": 0.0
+      }
+    },
+    {
+      "time": 29.504,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.77,
+      "bands": {
+        "left": 0.292,
+        "middle": 0.0,
+        "right": 0.0
+      }
+    },
+    {
+      "time": 30.0,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.718,
+      "bands": {
+        "left": 0.138,
+        "middle": 0.001,
+        "right": 0.0
+      }
+    },
+    {
+      "time": 30.496,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.782,
+      "bands": {
+        "left": 0.438,
+        "middle": 0.002,
+        "right": 0.001
+      }
+    },
+    {
+      "time": 30.992,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.579,
+      "bands": {
+        "left": 0.226,
+        "middle": 0.002,
+        "right": 0.001
+      }
+    },
+    {
+      "time": 31.488,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.731,
+      "bands": {
+        "left": 0.573,
+        "middle": 0.0,
+        "right": 0.0
+      }
+    },
+    {
+      "time": 31.983,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "hold",
+      "duration": 0.992,
+      "strength": 0.668,
+      "bands": {
+        "left": 0.116,
+        "middle": 0.0,
+        "right": 0.0
+      }
+    },
+    {
+      "time": 33.223,
+      "control": "middle",
+      "controls": [
+        "middle"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.198,
+      "bands": {
+        "left": 0.0,
+        "middle": 0.005,
+        "right": 0.001
+      }
+    },
+    {
+      "time": 33.471,
+      "control": "middle",
+      "controls": [
+        "middle"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.172,
+      "bands": {
+        "left": 0.0,
+        "middle": 0.047,
+        "right": 0.001
+      }
+    },
+    {
+      "time": 34.463,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.614,
+      "bands": {
+        "left": 0.242,
+        "middle": 0.002,
+        "right": 0.003
+      }
+    },
+    {
+      "time": 34.959,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.384,
+      "bands": {
+        "left": 0.128,
+        "middle": 0.001,
+        "right": 0.01
+      }
+    },
+    {
+      "time": 35.455,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.369,
+      "bands": {
+        "left": 0.286,
+        "middle": 0.001,
+        "right": 0.0
+      }
+    },
+    {
+      "time": 35.95,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.545,
+      "bands": {
+        "left": 0.44,
+        "middle": 0.002,
+        "right": 0.0
+      }
+    },
+    {
+      "time": 36.446,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.556,
+      "bands": {
+        "left": 0.512,
+        "middle": 0.003,
+        "right": 0.0
+      }
+    },
+    {
+      "time": 36.942,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.482,
+      "bands": {
+        "left": 0.272,
+        "middle": 0.0,
+        "right": 0.0
+      }
+    },
+    {
+      "time": 37.438,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.334,
+      "bands": {
+        "left": 0.127,
+        "middle": 0.003,
+        "right": 0.0
+      }
+    },
+    {
+      "time": 37.934,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.385,
+      "bands": {
+        "left": 0.139,
+        "middle": 0.001,
+        "right": 0.001
+      }
+    },
+    {
+      "time": 38.43,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.55,
+      "bands": {
+        "left": 0.393,
+        "middle": 0.004,
+        "right": 0.012
+      }
+    },
+    {
+      "time": 38.926,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.466,
+      "bands": {
+        "left": 0.212,
+        "middle": 0.001,
+        "right": 0.007
+      }
+    },
+    {
+      "time": 39.421,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.481,
+      "bands": {
+        "left": 0.206,
+        "middle": 0.001,
+        "right": 0.001
+      }
+    },
+    {
+      "time": 39.917,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "hold",
+      "duration": 0.992,
+      "strength": 0.594,
+      "bands": {
+        "left": 0.286,
+        "middle": 0.002,
+        "right": 0.001
+      }
+    },
+    {
+      "time": 41.405,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.469,
+      "bands": {
+        "left": 0.44,
+        "middle": 0.0,
+        "right": 0.0
+      }
+    },
+    {
+      "time": 41.901,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.295,
+      "bands": {
+        "left": 0.12,
+        "middle": 0.004,
+        "right": 0.001
+      }
+    },
+    {
+      "time": 42.397,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.397,
+      "bands": {
+        "left": 0.218,
+        "middle": 0.02,
+        "right": 0.012
+      }
+    },
+    {
+      "time": 42.893,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.435,
+      "bands": {
+        "left": 0.28,
+        "middle": 0.18,
+        "right": 0.007
+      }
+    },
+    {
+      "time": 43.14,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.375,
+      "bands": {
+        "left": 0.316,
+        "middle": 0.109,
+        "right": 0.001
+      }
+    },
+    {
+      "time": 43.636,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.494,
+      "bands": {
+        "left": 0.37,
+        "middle": 0.149,
+        "right": 0.001
+      }
+    },
+    {
+      "time": 44.38,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.425,
+      "bands": {
+        "left": 0.167,
+        "middle": 0.003,
+        "right": 0.001
+      }
+    },
+    {
+      "time": 44.628,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.422,
+      "bands": {
+        "left": 0.238,
+        "middle": 0.002,
+        "right": 0.001
+      }
+    },
+    {
+      "time": 45.124,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.453,
+      "bands": {
+        "left": 0.236,
+        "middle": 0.002,
+        "right": 0.003
+      }
+    },
+    {
+      "time": 45.62,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.344,
+      "bands": {
+        "left": 0.127,
+        "middle": 0.001,
+        "right": 0.0
+      }
+    },
+    {
+      "time": 46.116,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.541,
+      "bands": {
+        "left": 0.349,
+        "middle": 0.004,
+        "right": 0.002
+      }
+    },
+    {
+      "time": 46.612,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.475,
+      "bands": {
+        "left": 0.443,
+        "middle": 0.001,
+        "right": 0.002
+      }
+    },
+    {
+      "time": 47.107,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.363,
+      "bands": {
+        "left": 0.416,
+        "middle": 0.0,
+        "right": 0.0
+      }
+    },
+    {
+      "time": 47.603,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.526,
+      "bands": {
+        "left": 0.263,
+        "middle": 0.002,
+        "right": 0.001
+      }
+    },
+    {
+      "time": 48.099,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.568,
+      "bands": {
+        "left": 0.261,
+        "middle": 0.003,
+        "right": 0.0
+      }
+    },
+    {
+      "time": 48.595,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.383,
+      "bands": {
+        "left": 0.135,
+        "middle": 0.0,
+        "right": 0.001
+      }
+    },
+    {
+      "time": 49.339,
+      "control": "middle",
+      "controls": [
+        "middle"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.198,
+      "bands": {
+        "left": 0.002,
+        "middle": 0.011,
+        "right": 0.0
+      }
+    },
+    {
+      "time": 49.587,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.257,
+      "bands": {
+        "left": 0.07,
+        "middle": 0.032,
+        "right": 0.02
+      }
+    },
+    {
+      "time": 50.083,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.614,
+      "bands": {
+        "left": 0.528,
+        "middle": 0.002,
+        "right": 0.001
+      }
+    },
+    {
+      "time": 50.579,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.425,
+      "bands": {
+        "left": 0.25,
+        "middle": 0.067,
+        "right": 0.001
+      }
+    },
+    {
+      "time": 51.074,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.318,
+      "bands": {
+        "left": 0.167,
+        "middle": 0.017,
+        "right": 0.025
+      }
+    },
+    {
+      "time": 51.57,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.424,
+      "bands": {
+        "left": 0.127,
+        "middle": 0.003,
+        "right": 0.001
+      }
+    },
+    {
+      "time": 52.066,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.49,
+      "bands": {
+        "left": 0.394,
+        "middle": 0.002,
+        "right": 0.001
+      }
+    },
+    {
+      "time": 52.562,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.273,
+      "bands": {
+        "left": 0.119,
+        "middle": 0.025,
+        "right": 0.002
+      }
+    },
+    {
+      "time": 53.058,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.529,
+      "bands": {
+        "left": 0.214,
+        "middle": 0.003,
+        "right": 0.0
+      }
+    },
+    {
+      "time": 53.554,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.682,
+      "bands": {
+        "left": 0.301,
+        "middle": 0.002,
+        "right": 0.0
+      }
+    },
+    {
+      "time": 54.05,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.548,
+      "bands": {
+        "left": 0.307,
+        "middle": 0.003,
+        "right": 0.001
+      }
+    },
+    {
+      "time": 54.545,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.367,
+      "bands": {
+        "left": 0.122,
+        "middle": 0.008,
+        "right": 0.001
+      }
+    },
+    {
+      "time": 55.041,
+      "control": "right",
+      "controls": [
+        "right"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.409,
+      "bands": {
+        "left": 0.157,
+        "middle": 0.01,
+        "right": 0.173
+      }
+    },
+    {
+      "time": 55.537,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.366,
+      "bands": {
+        "left": 0.223,
+        "middle": 0.002,
+        "right": 0.001
+      }
+    },
+    {
+      "time": 56.033,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.426,
+      "bands": {
+        "left": 0.449,
+        "middle": 0.038,
+        "right": 0.006
+      }
+    },
+    {
+      "time": 56.529,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.427,
+      "bands": {
+        "left": 0.276,
+        "middle": 0.081,
+        "right": 0.0
+      }
+    },
+    {
+      "time": 57.025,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.348,
+      "bands": {
+        "left": 0.301,
+        "middle": 0.043,
+        "right": 0.002
+      }
+    },
+    {
+      "time": 57.521,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.433,
+      "bands": {
+        "left": 0.37,
+        "middle": 0.006,
+        "right": 0.002
+      }
+    },
+    {
+      "time": 58.017,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.435,
+      "bands": {
+        "left": 0.17,
+        "middle": 0.001,
+        "right": 0.002
+      }
+    },
+    {
+      "time": 58.512,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.349,
+      "bands": {
+        "left": 0.122,
+        "middle": 0.005,
+        "right": 0.003
+      }
+    },
+    {
+      "time": 59.008,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.442,
+      "bands": {
+        "left": 0.241,
+        "middle": 0.008,
+        "right": 0.003
+      }
+    },
+    {
+      "time": 59.504,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.424,
+      "bands": {
+        "left": 0.276,
+        "middle": 0.005,
+        "right": 0.057
+      }
+    },
+    {
+      "time": 60.0,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.466,
+      "bands": {
+        "left": 0.344,
+        "middle": 0.002,
+        "right": 0.0
+      }
+    },
+    {
+      "time": 60.496,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.394,
+      "bands": {
+        "left": 0.156,
+        "middle": 0.002,
+        "right": 0.006
+      }
+    },
+    {
+      "time": 60.992,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.338,
+      "bands": {
+        "left": 0.099,
+        "middle": 0.016,
+        "right": 0.0
+      }
+    },
+    {
+      "time": 61.488,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.603,
+      "bands": {
+        "left": 0.244,
+        "middle": 0.011,
+        "right": 0.001
+      }
+    },
+    {
+      "time": 61.983,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.53,
+      "bands": {
+        "left": 0.248,
+        "middle": 0.004,
+        "right": 0.001
+      }
+    },
+    {
+      "time": 62.479,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.322,
+      "bands": {
+        "left": 0.13,
+        "middle": 0.006,
+        "right": 0.001
+      }
+    },
+    {
+      "time": 62.975,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.451,
+      "bands": {
+        "left": 0.345,
+        "middle": 0.001,
+        "right": 0.009
+      }
+    },
+    {
+      "time": 63.471,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.482,
+      "bands": {
+        "left": 0.167,
+        "middle": 0.0,
+        "right": 0.002
+      }
+    },
+    {
+      "time": 63.967,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.47,
+      "bands": {
+        "left": 0.433,
+        "middle": 0.002,
+        "right": 0.129
+      }
+    },
+    {
+      "time": 64.463,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.422,
+      "bands": {
+        "left": 0.247,
+        "middle": 0.001,
+        "right": 0.001
+      }
+    },
+    {
+      "time": 64.959,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.486,
+      "bands": {
+        "left": 0.261,
+        "middle": 0.0,
+        "right": 0.0
+      }
+    },
+    {
+      "time": 65.455,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.392,
+      "bands": {
+        "left": 0.134,
+        "middle": 0.001,
+        "right": 0.004
+      }
+    },
+    {
+      "time": 65.95,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.496,
+      "bands": {
+        "left": 0.381,
+        "middle": 0.005,
+        "right": 0.088
+      }
+    },
+    {
+      "time": 66.446,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.363,
+      "bands": {
+        "left": 0.175,
+        "middle": 0.001,
+        "right": 0.018
+      }
+    },
+    {
+      "time": 66.942,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.41,
+      "bands": {
+        "left": 0.2,
+        "middle": 0.002,
+        "right": 0.004
+      }
+    },
+    {
+      "time": 67.438,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.48,
+      "bands": {
+        "left": 0.267,
+        "middle": 0.025,
+        "right": 0.006
+      }
+    },
+    {
+      "time": 67.934,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.356,
+      "bands": {
+        "left": 0.114,
+        "middle": 0.001,
+        "right": 0.003
+      }
+    },
+    {
+      "time": 68.43,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.418,
+      "bands": {
+        "left": 0.341,
+        "middle": 0.002,
+        "right": 0.003
+      }
+    },
+    {
+      "time": 68.926,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.506,
+      "bands": {
+        "left": 0.416,
+        "middle": 0.001,
+        "right": 0.003
+      }
+    },
+    {
+      "time": 69.174,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.502,
+      "bands": {
+        "left": 0.132,
+        "middle": 0.032,
+        "right": 0.017
+      }
+    },
+    {
+      "time": 69.917,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.458,
+      "bands": {
+        "left": 0.22,
+        "middle": 0.002,
+        "right": 0.003
+      }
+    },
+    {
+      "time": 70.413,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.515,
+      "bands": {
+        "left": 0.299,
+        "middle": 0.001,
+        "right": 0.0
+      }
+    },
+    {
+      "time": 70.661,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.356,
+      "bands": {
+        "left": 0.213,
+        "middle": 0.017,
+        "right": 0.003
+      }
+    },
+    {
+      "time": 71.405,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.466,
+      "bands": {
+        "left": 0.146,
+        "middle": 0.001,
+        "right": 0.003
+      }
+    },
+    {
+      "time": 71.901,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.454,
+      "bands": {
+        "left": 0.168,
+        "middle": 0.001,
+        "right": 0.0
+      }
+    },
+    {
+      "time": 72.397,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.436,
+      "bands": {
+        "left": 0.218,
+        "middle": 0.001,
+        "right": 0.002
+      }
+    },
+    {
+      "time": 72.893,
+      "control": "middle",
+      "controls": [
+        "middle"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.164,
+      "bands": {
+        "left": 0.0,
+        "middle": 0.048,
+        "right": 0.001
+      }
+    },
+    {
+      "time": 73.14,
+      "control": "middle",
+      "controls": [
+        "middle"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.208,
+      "bands": {
+        "left": 0.011,
+        "middle": 0.268,
+        "right": 0.008
+      }
+    },
+    {
+      "time": 73.636,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.418,
+      "bands": {
+        "left": 0.15,
+        "middle": 0.012,
+        "right": 0.027
+      }
+    },
+    {
+      "time": 74.132,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.323,
+      "bands": {
+        "left": 0.348,
+        "middle": 0.006,
+        "right": 0.002
+      }
+    },
+    {
+      "time": 74.628,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.426,
+      "bands": {
+        "left": 0.396,
+        "middle": 0.001,
+        "right": 0.005
+      }
+    },
+    {
+      "time": 75.124,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.48,
+      "bands": {
+        "left": 0.26,
+        "middle": 0.004,
+        "right": 0.002
+      }
+    },
+    {
+      "time": 75.62,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.333,
+      "bands": {
+        "left": 0.125,
+        "middle": 0.006,
+        "right": 0.011
+      }
+    },
+    {
+      "time": 76.116,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.296,
+      "bands": {
+        "left": 0.118,
+        "middle": 0.002,
+        "right": 0.001
+      }
+    },
+    {
+      "time": 76.86,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.214,
+      "bands": {
+        "left": 0.094,
+        "middle": 0.01,
+        "right": 0.001
+      }
+    },
+    {
+      "time": 77.107,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.332,
+      "bands": {
+        "left": 0.165,
+        "middle": 0.004,
+        "right": 0.001
+      }
+    },
+    {
+      "time": 77.603,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.341,
+      "bands": {
+        "left": 0.199,
+        "middle": 0.002,
+        "right": 0.036
+      }
+    },
+    {
+      "time": 78.099,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.421,
+      "bands": {
+        "left": 0.268,
+        "middle": 0.002,
+        "right": 0.01
+      }
+    },
+    {
+      "time": 78.595,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.311,
+      "bands": {
+        "left": 0.127,
+        "middle": 0.023,
+        "right": 0.002
+      }
+    },
+    {
+      "time": 79.091,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.519,
+      "bands": {
+        "left": 0.394,
+        "middle": 0.001,
+        "right": 0.001
+      }
+    },
+    {
+      "time": 79.587,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.432,
+      "bands": {
+        "left": 0.364,
+        "middle": 0.002,
+        "right": 0.005
+      }
+    },
+    {
+      "time": 80.083,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.343,
+      "bands": {
+        "left": 0.367,
+        "middle": 0.008,
+        "right": 0.006
+      }
+    },
+    {
+      "time": 80.579,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.381,
+      "bands": {
+        "left": 0.232,
+        "middle": 0.014,
+        "right": 0.0
+      }
+    },
+    {
+      "time": 81.074,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.295,
+      "bands": {
+        "left": 0.123,
+        "middle": 0.003,
+        "right": 0.001
+      }
+    },
+    {
+      "time": 81.57,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.379,
+      "bands": {
+        "left": 0.128,
+        "middle": 0.11,
+        "right": 0.005
+      }
+    },
+    {
+      "time": 82.314,
+      "control": "right",
+      "controls": [
+        "right"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.258,
+      "bands": {
+        "left": 0.026,
+        "middle": 0.005,
+        "right": 0.034
+      }
+    },
+    {
+      "time": 82.562,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.247,
+      "bands": {
+        "left": 0.162,
+        "middle": 0.002,
+        "right": 0.002
+      }
+    },
+    {
+      "time": 83.058,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.422,
+      "bands": {
+        "left": 0.226,
+        "middle": 0.001,
+        "right": 0.001
+      }
+    },
+    {
+      "time": 83.554,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.308,
+      "bands": {
+        "left": 0.215,
+        "middle": 0.001,
+        "right": 0.012
+      }
+    },
+    {
+      "time": 84.05,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.305,
+      "bands": {
+        "left": 0.228,
+        "middle": 0.019,
+        "right": 0.016
+      }
+    },
+    {
+      "time": 85.041,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.326,
+      "bands": {
+        "left": 0.355,
+        "middle": 0.014,
+        "right": 0.002
+      }
+    },
+    {
+      "time": 85.537,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.391,
+      "bands": {
+        "left": 0.353,
+        "middle": 0.006,
+        "right": 0.02
+      }
+    },
+    {
+      "time": 86.033,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.392,
+      "bands": {
+        "left": 0.391,
+        "middle": 0.003,
+        "right": 0.016
+      }
+    },
+    {
+      "time": 86.529,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.309,
+      "bands": {
+        "left": 0.257,
+        "middle": 0.002,
+        "right": 0.019
+      }
+    },
+    {
+      "time": 87.025,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.458,
+      "bands": {
+        "left": 0.37,
+        "middle": 0.001,
+        "right": 0.001
+      }
+    },
+    {
+      "time": 87.521,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.351,
+      "bands": {
+        "left": 0.301,
+        "middle": 0.011,
+        "right": 0.021
+      }
+    },
+    {
+      "time": 88.017,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.344,
+      "bands": {
+        "left": 0.114,
+        "middle": 0.042,
+        "right": 0.012
+      }
+    },
+    {
+      "time": 88.264,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.189,
+      "bands": {
+        "left": 0.166,
+        "middle": 0.031,
+        "right": 0.002
+      }
+    },
+    {
+      "time": 88.512,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.355,
+      "bands": {
+        "left": 0.205,
+        "middle": 0.008,
+        "right": 0.0
+      }
+    },
+    {
+      "time": 89.008,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.463,
+      "bands": {
+        "left": 0.248,
+        "middle": 0.004,
+        "right": 0.001
+      }
+    },
+    {
+      "time": 89.504,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.533,
+      "bands": {
+        "left": 0.312,
+        "middle": 0.001,
+        "right": 0.002
+      }
+    },
+    {
+      "time": 90.0,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.324,
+      "bands": {
+        "left": 0.132,
+        "middle": 0.01,
+        "right": 0.033
+      }
+    },
+    {
+      "time": 90.496,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.342,
+      "bands": {
+        "left": 0.156,
+        "middle": 0.007,
+        "right": 0.026
+      }
+    },
+    {
+      "time": 90.992,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.372,
+      "bands": {
+        "left": 0.228,
+        "middle": 0.002,
+        "right": 0.0
+      }
+    },
+    {
+      "time": 91.488,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.496,
+      "bands": {
+        "left": 0.227,
+        "middle": 0.001,
+        "right": 0.0
+      }
+    },
+    {
+      "time": 91.983,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.327,
+      "bands": {
+        "left": 0.12,
+        "middle": 0.01,
+        "right": 0.003
+      }
+    },
+    {
+      "time": 92.479,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.389,
+      "bands": {
+        "left": 0.131,
+        "middle": 0.006,
+        "right": 0.0
+      }
+    },
+    {
+      "time": 92.975,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.599,
+      "bands": {
+        "left": 0.16,
+        "middle": 0.002,
+        "right": 0.001
+      }
+    },
+    {
+      "time": 93.471,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.495,
+      "bands": {
+        "left": 0.176,
+        "middle": 0.001,
+        "right": 0.0
+      }
+    },
+    {
+      "time": 93.967,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.396,
+      "bands": {
+        "left": 0.228,
+        "middle": 0.036,
+        "right": 0.003
+      }
+    },
+    {
+      "time": 94.463,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.458,
+      "bands": {
+        "left": 0.244,
+        "middle": 0.007,
+        "right": 0.013
+      }
+    },
+    {
+      "time": 94.959,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.403,
+      "bands": {
+        "left": 0.116,
+        "middle": 0.016,
+        "right": 0.0
+      }
+    },
+    {
+      "time": 95.455,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.501,
+      "bands": {
+        "left": 0.368,
+        "middle": 0.002,
+        "right": 0.0
+      }
+    },
+    {
+      "time": 95.95,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.366,
+      "bands": {
+        "left": 0.165,
+        "middle": 0.091,
+        "right": 0.002
+      }
+    },
+    {
+      "time": 96.446,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.417,
+      "bands": {
+        "left": 0.452,
+        "middle": 0.002,
+        "right": 0.001
+      }
+    },
+    {
+      "time": 96.942,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.336,
+      "bands": {
+        "left": 0.114,
+        "middle": 0.001,
+        "right": 0.001
+      }
+    },
+    {
+      "time": 97.438,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.371,
+      "bands": {
+        "left": 0.281,
+        "middle": 0.001,
+        "right": 0.005
+      }
+    },
+    {
+      "time": 97.934,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.383,
+      "bands": {
+        "left": 0.134,
+        "middle": 0.0,
+        "right": 0.025
+      }
+    },
+    {
+      "time": 98.43,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.432,
+      "bands": {
+        "left": 0.377,
+        "middle": 0.013,
+        "right": 0.008
+      }
+    },
+    {
+      "time": 98.926,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.424,
+      "bands": {
+        "left": 0.193,
+        "middle": 0.001,
+        "right": 0.001
+      }
+    },
+    {
+      "time": 99.421,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.437,
+      "bands": {
+        "left": 0.209,
+        "middle": 0.002,
+        "right": 0.004
+      }
+    },
+    {
+      "time": 99.917,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.364,
+      "bands": {
+        "left": 0.227,
+        "middle": 0.004,
+        "right": 0.002
+      }
+    },
+    {
+      "time": 100.413,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.364,
+      "bands": {
+        "left": 0.122,
+        "middle": 0.025,
+        "right": 0.0
+      }
+    },
+    {
+      "time": 100.909,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.532,
+      "bands": {
+        "left": 0.139,
+        "middle": 0.013,
+        "right": 0.0
+      }
+    },
+    {
+      "time": 101.405,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.515,
+      "bands": {
+        "left": 0.425,
+        "middle": 0.008,
+        "right": 0.001
+      }
+    },
+    {
+      "time": 101.901,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.27,
+      "bands": {
+        "left": 0.118,
+        "middle": 0.002,
+        "right": 0.005
+      }
+    },
+    {
+      "time": 102.397,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.353,
+      "bands": {
+        "left": 0.21,
+        "middle": 0.005,
+        "right": 0.005
+      }
+    },
+    {
+      "time": 102.893,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.434,
+      "bands": {
+        "left": 0.264,
+        "middle": 0.085,
+        "right": 0.005
+      }
+    },
+    {
+      "time": 103.14,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.195,
+      "bands": {
+        "left": 0.046,
+        "middle": 0.003,
+        "right": 0.0
+      }
+    },
+    {
+      "time": 103.636,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.209,
+      "bands": {
+        "left": 0.02,
+        "middle": 0.012,
+        "right": 0.012
+      }
+    },
+    {
+      "time": 104.628,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.311,
+      "bands": {
+        "left": 0.163,
+        "middle": 0.003,
+        "right": 0.005
+      }
+    },
+    {
+      "time": 105.124,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.423,
+      "bands": {
+        "left": 0.226,
+        "middle": 0.003,
+        "right": 0.004
+      }
+    },
+    {
+      "time": 105.62,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.311,
+      "bands": {
+        "left": 0.13,
+        "middle": 0.01,
+        "right": 0.002
+      }
+    },
+    {
+      "time": 106.116,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.349,
+      "bands": {
+        "left": 0.133,
+        "middle": 0.004,
+        "right": 0.009
+      }
+    },
+    {
+      "time": 106.612,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.425,
+      "bands": {
+        "left": 0.147,
+        "middle": 0.001,
+        "right": 0.002
+      }
+    },
+    {
+      "time": 107.107,
+      "control": "left",
+      "controls": [
+        "left",
+        "middle"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.385,
+      "bands": {
+        "left": 0.173,
+        "middle": 0.002,
+        "right": 0.001
+      }
+    },
+    {
+      "time": 107.603,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.411,
+      "bands": {
+        "left": 0.225,
+        "middle": 0.002,
+        "right": 0.001
+      }
+    },
+    {
+      "time": 108.099,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.559,
+      "bands": {
+        "left": 0.24,
+        "middle": 0.003,
+        "right": 0.0
+      }
+    },
+    {
+      "time": 108.595,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.535,
+      "bands": {
+        "left": 0.13,
+        "middle": 0.018,
+        "right": 0.001
+      }
+    },
+    {
+      "time": 109.091,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.467,
+      "bands": {
+        "left": 0.36,
+        "middle": 0.015,
+        "right": 0.003
+      }
+    },
+    {
+      "time": 109.587,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.439,
+      "bands": {
+        "left": 0.167,
+        "middle": 0.001,
+        "right": 0.001
+      }
+    },
+    {
+      "time": 110.083,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.252,
+      "bands": {
+        "left": 0.181,
+        "middle": 0.007,
+        "right": 0.0
+      }
+    },
+    {
+      "time": 110.579,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.394,
+      "bands": {
+        "left": 0.222,
+        "middle": 0.002,
+        "right": 0.002
+      }
+    },
+    {
+      "time": 111.074,
+      "control": "left",
+      "controls": [
+        "left",
+        "middle"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.425,
+      "bands": {
+        "left": 0.266,
+        "middle": 0.001,
+        "right": 0.0
+      }
+    },
+    {
+      "time": 111.57,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.398,
+      "bands": {
+        "left": 0.314,
+        "middle": 0.001,
+        "right": 0.002
+      }
+    },
+    {
+      "time": 112.066,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.161,
+      "bands": {
+        "left": 0.064,
+        "middle": 0.017,
+        "right": 0.005
+      }
+    },
+    {
+      "time": 112.562,
+      "control": "middle",
+      "controls": [
+        "middle"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.199,
+      "bands": {
+        "left": 0.005,
+        "middle": 0.196,
+        "right": 0.018
+      }
+    },
+    {
+      "time": 113.058,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.371,
+      "bands": {
+        "left": 0.161,
+        "middle": 0.06,
+        "right": 0.039
+      }
+    },
+    {
+      "time": 113.554,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.204,
+      "bands": {
+        "left": 0.104,
+        "middle": 0.014,
+        "right": 0.008
+      }
+    },
+    {
+      "time": 114.05,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.387,
+      "bands": {
+        "left": 0.243,
+        "middle": 0.002,
+        "right": 0.001
+      }
+    },
+    {
+      "time": 114.545,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.467,
+      "bands": {
+        "left": 0.312,
+        "middle": 0.013,
+        "right": 0.001
+      }
+    },
+    {
+      "time": 115.041,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.342,
+      "bands": {
+        "left": 0.13,
+        "middle": 0.003,
+        "right": 0.002
+      }
+    },
+    {
+      "time": 115.785,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.282,
+      "bands": {
+        "left": 0.134,
+        "middle": 0.012,
+        "right": 0.023
+      }
+    },
+    {
+      "time": 116.033,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.259,
+      "bands": {
+        "left": 0.11,
+        "middle": 0.004,
+        "right": 0.011
+      }
+    },
+    {
+      "time": 116.529,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.413,
+      "bands": {
+        "left": 0.264,
+        "middle": 0.002,
+        "right": 0.001
+      }
+    },
+    {
+      "time": 117.025,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.301,
+      "bands": {
+        "left": 0.13,
+        "middle": 0.001,
+        "right": 0.086
+      }
+    },
+    {
+      "time": 117.521,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.357,
+      "bands": {
+        "left": 0.139,
+        "middle": 0.003,
+        "right": 0.026
+      }
+    },
+    {
+      "time": 118.017,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.381,
+      "bands": {
+        "left": 0.157,
+        "middle": 0.014,
+        "right": 0.001
+      }
+    },
+    {
+      "time": 118.512,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.421,
+      "bands": {
+        "left": 0.228,
+        "middle": 0.002,
+        "right": 0.001
+      }
+    },
+    {
+      "time": 119.008,
+      "control": "left",
+      "controls": [
+        "left",
+        "right"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.419,
+      "bands": {
+        "left": 0.462,
+        "middle": 0.008,
+        "right": 0.009
+      }
+    },
+    {
+      "time": 119.504,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.373,
+      "bands": {
+        "left": 0.264,
+        "middle": 0.008,
+        "right": 0.005
+      }
+    },
+    {
+      "time": 120.0,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.354,
+      "bands": {
+        "left": 0.14,
+        "middle": 0.012,
+        "right": 0.0
+      }
+    },
+    {
+      "time": 120.496,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.279,
+      "bands": {
+        "left": 0.134,
+        "middle": 0.024,
+        "right": 0.008
+      }
+    },
+    {
+      "time": 120.992,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.328,
+      "bands": {
+        "left": 0.089,
+        "middle": 0.073,
+        "right": 0.006
+      }
+    },
+    {
+      "time": 121.488,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.332,
+      "bands": {
+        "left": 0.197,
+        "middle": 0.006,
+        "right": 0.007
+      }
+    },
+    {
+      "time": 121.983,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.344,
+      "bands": {
+        "left": 0.225,
+        "middle": 0.004,
+        "right": 0.016
+      }
+    },
+    {
+      "time": 122.479,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.381,
+      "bands": {
+        "left": 0.312,
+        "middle": 0.005,
+        "right": 0.002
+      }
+    },
+    {
+      "time": 122.975,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.268,
+      "bands": {
+        "left": 0.123,
+        "middle": 0.002,
+        "right": 0.01
+      }
+    },
+    {
+      "time": 123.471,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.371,
+      "bands": {
+        "left": 0.223,
+        "middle": 0.018,
+        "right": 0.013
+      }
+    },
+    {
+      "time": 123.719,
+      "control": "right",
+      "controls": [
+        "right"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.297,
+      "bands": {
+        "left": 0.061,
+        "middle": 0.02,
+        "right": 0.109
+      }
+    },
+    {
+      "time": 123.967,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.304,
+      "bands": {
+        "left": 0.183,
+        "middle": 0.006,
+        "right": 0.016
+      }
+    },
+    {
+      "time": 124.463,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.307,
+      "bands": {
+        "left": 0.215,
+        "middle": 0.01,
+        "right": 0.002
+      }
+    },
+    {
+      "time": 124.959,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.31,
+      "bands": {
+        "left": 0.224,
+        "middle": 0.009,
+        "right": 0.014
+      }
+    },
+    {
+      "time": 125.455,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.379,
+      "bands": {
+        "left": 0.375,
+        "middle": 0.001,
+        "right": 0.015
+      }
+    },
+    {
+      "time": 125.95,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.405,
+      "bands": {
+        "left": 0.159,
+        "middle": 0.005,
+        "right": 0.009
+      }
+    },
+    {
+      "time": 126.198,
+      "control": "middle",
+      "controls": [
+        "middle"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.214,
+      "bands": {
+        "left": 0.002,
+        "middle": 0.031,
+        "right": 0.012
+      }
+    },
+    {
+      "time": 126.942,
+      "control": "right",
+      "controls": [
+        "right"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.151,
+      "bands": {
+        "left": 0.0,
+        "middle": 0.012,
+        "right": 0.027
+      }
+    },
+    {
+      "time": 127.19,
+      "control": "right",
+      "controls": [
+        "right"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.166,
+      "bands": {
+        "left": 0.0,
+        "middle": 0.004,
+        "right": 0.012
+      }
+    },
+    {
+      "time": 127.934,
+      "control": "right",
+      "controls": [
+        "right"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.131,
+      "bands": {
+        "left": 0.0,
+        "middle": 0.001,
+        "right": 0.006
+      }
+    },
+    {
+      "time": 128.43,
+      "control": "middle",
+      "controls": [
+        "middle"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.17,
+      "bands": {
+        "left": 0.001,
+        "middle": 0.074,
+        "right": 0.035
+      }
+    },
+    {
+      "time": 128.926,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.337,
+      "bands": {
+        "left": 0.143,
+        "middle": 0.007,
+        "right": 0.023
+      }
+    },
+    {
+      "time": 129.421,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.352,
+      "bands": {
+        "left": 0.375,
+        "middle": 0.003,
+        "right": 0.001
+      }
+    },
+    {
+      "time": 129.917,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.402,
+      "bands": {
+        "left": 0.488,
+        "middle": 0.004,
+        "right": 0.001
+      }
+    },
+    {
+      "time": 130.165,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.522,
+      "bands": {
+        "left": 0.444,
+        "middle": 0.029,
+        "right": 0.005
+      }
+    },
+    {
+      "time": 130.909,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.379,
+      "bands": {
+        "left": 0.286,
+        "middle": 0.004,
+        "right": 0.004
+      }
+    },
+    {
+      "time": 131.405,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.349,
+      "bands": {
+        "left": 0.336,
+        "middle": 0.004,
+        "right": 0.002
+      }
+    },
+    {
+      "time": 131.901,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.337,
+      "bands": {
+        "left": 0.165,
+        "middle": 0.002,
+        "right": 0.017
+      }
+    },
+    {
+      "time": 132.397,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.357,
+      "bands": {
+        "left": 0.211,
+        "middle": 0.003,
+        "right": 0.002
+      }
+    },
+    {
+      "time": 132.893,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.277,
+      "bands": {
+        "left": 0.114,
+        "middle": 0.001,
+        "right": 0.024
+      }
+    },
+    {
+      "time": 133.388,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.346,
+      "bands": {
+        "left": 0.12,
+        "middle": 0.001,
+        "right": 0.009
+      }
+    },
+    {
+      "time": 133.636,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.269,
+      "bands": {
+        "left": 0.272,
+        "middle": 0.018,
+        "right": 0.001
+      }
+    },
+    {
+      "time": 134.132,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.478,
+      "bands": {
+        "left": 0.438,
+        "middle": 0.002,
+        "right": 0.001
+      }
+    },
+    {
+      "time": 134.628,
+      "control": "left",
+      "controls": [
+        "left",
+        "middle"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.396,
+      "bands": {
+        "left": 0.396,
+        "middle": 0.008,
+        "right": 0.004
+      }
+    },
+    {
+      "time": 135.124,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.381,
+      "bands": {
+        "left": 0.494,
+        "middle": 0.018,
+        "right": 0.004
+      }
+    },
+    {
+      "time": 135.868,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.267,
+      "bands": {
+        "left": 0.126,
+        "middle": 0.005,
+        "right": 0.0
+      }
+    },
+    {
+      "time": 136.116,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.334,
+      "bands": {
+        "left": 0.123,
+        "middle": 0.026,
+        "right": 0.003
+      }
+    },
+    {
+      "time": 136.612,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.44,
+      "bands": {
+        "left": 0.308,
+        "middle": 0.094,
+        "right": 0.008
+      }
+    },
+    {
+      "time": 137.107,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.325,
+      "bands": {
+        "left": 0.157,
+        "middle": 0.011,
+        "right": 0.005
+      }
+    },
+    {
+      "time": 137.603,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.248,
+      "bands": {
+        "left": 0.097,
+        "middle": 0.005,
+        "right": 0.005
+      }
+    },
+    {
+      "time": 138.099,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.508,
+      "bands": {
+        "left": 0.478,
+        "middle": 0.006,
+        "right": 0.002
+      }
+    },
+    {
+      "time": 138.595,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.27,
+      "bands": {
+        "left": 0.235,
+        "middle": 0.0,
+        "right": 0.021
+      }
+    },
+    {
+      "time": 139.091,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.412,
+      "bands": {
+        "left": 0.075,
+        "middle": 0.022,
+        "right": 0.018
+      }
+    },
+    {
+      "time": 139.587,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.227,
+      "bands": {
+        "left": 0.145,
+        "middle": 0.003,
+        "right": 0.01
+      }
+    },
+    {
+      "time": 140.083,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.257,
+      "bands": {
+        "left": 0.199,
+        "middle": 0.003,
+        "right": 0.001
+      }
+    },
+    {
+      "time": 140.579,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.375,
+      "bands": {
+        "left": 0.191,
+        "middle": 0.002,
+        "right": 0.022
+      }
+    },
+    {
+      "time": 141.074,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.41,
+      "bands": {
+        "left": 0.447,
+        "middle": 0.006,
+        "right": 0.007
+      }
+    },
+    {
+      "time": 141.57,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.294,
+      "bands": {
+        "left": 0.122,
+        "middle": 0.002,
+        "right": 0.006
+      }
+    },
+    {
+      "time": 142.066,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.498,
+      "bands": {
+        "left": 0.402,
+        "middle": 0.001,
+        "right": 0.0
+      }
+    },
+    {
+      "time": 142.562,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.341,
+      "bands": {
+        "left": 0.376,
+        "middle": 0.017,
+        "right": 0.015
+      }
+    },
+    {
+      "time": 143.058,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.271,
+      "bands": {
+        "left": 0.104,
+        "middle": 0.042,
+        "right": 0.008
+      }
+    },
+    {
+      "time": 143.306,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.132,
+      "bands": {
+        "left": 0.16,
+        "middle": 0.019,
+        "right": 0.001
+      }
+    },
+    {
+      "time": 144.05,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.216,
+      "bands": {
+        "left": 0.033,
+        "middle": 0.022,
+        "right": 0.009
+      }
+    },
+    {
+      "time": 144.545,
+      "control": "middle",
+      "controls": [
+        "middle"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.272,
+      "bands": {
+        "left": 0.0,
+        "middle": 0.078,
+        "right": 0.002
+      }
+    },
+    {
+      "time": 145.041,
+      "control": "middle",
+      "controls": [
+        "middle"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.406,
+      "bands": {
+        "left": 0.137,
+        "middle": 0.451,
+        "right": 0.007
+      }
+    },
+    {
+      "time": 145.537,
+      "control": "middle",
+      "controls": [
+        "middle"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.236,
+      "bands": {
+        "left": 0.043,
+        "middle": 0.842,
+        "right": 0.0
+      }
+    },
+    {
+      "time": 146.033,
+      "control": "middle",
+      "controls": [
+        "middle"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.488,
+      "bands": {
+        "left": 0.153,
+        "middle": 0.379,
+        "right": 0.005
+      }
+    },
+    {
+      "time": 146.529,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.165,
+      "bands": {
+        "left": 0.019,
+        "middle": 0.009,
+        "right": 0.001
+      }
+    },
+    {
+      "time": 146.777,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.306,
+      "bands": {
+        "left": 0.056,
+        "middle": 0.024,
+        "right": 0.002
+      }
+    },
+    {
+      "time": 147.025,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.437,
+      "bands": {
+        "left": 0.042,
+        "middle": 0.016,
+        "right": 0.001
+      }
+    },
+    {
+      "time": 147.273,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.166,
+      "bands": {
+        "left": 0.024,
+        "middle": 0.023,
+        "right": 0.008
+      }
+    },
+    {
+      "time": 147.769,
+      "control": "middle",
+      "controls": [
+        "middle"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.222,
+      "bands": {
+        "left": 0.0,
+        "middle": 0.001,
+        "right": 0.0
+      }
+    },
+    {
+      "time": 148.017,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.679,
+      "bands": {
+        "left": 0.047,
+        "middle": 0.022,
+        "right": 0.003
+      }
+    },
+    {
+      "time": 148.512,
+      "control": "middle",
+      "controls": [
+        "middle"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.408,
+      "bands": {
+        "left": 0.023,
+        "middle": 0.204,
+        "right": 0.001
+      }
+    },
+    {
+      "time": 149.008,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.544,
+      "bands": {
+        "left": 0.186,
+        "middle": 0.162,
+        "right": 0.008
+      }
+    },
+    {
+      "time": 149.504,
+      "control": "middle",
+      "controls": [
+        "middle"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.234,
+      "bands": {
+        "left": 0.072,
+        "middle": 0.725,
+        "right": 0.005
+      }
+    },
+    {
+      "time": 149.752,
+      "control": "middle",
+      "controls": [
+        "middle"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.172,
+      "bands": {
+        "left": 0.074,
+        "middle": 0.374,
+        "right": 0.005
+      }
+    },
+    {
+      "time": 150.0,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.455,
+      "bands": {
+        "left": 0.165,
+        "middle": 0.097,
+        "right": 0.007
+      }
+    },
+    {
+      "time": 150.992,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.522,
+      "bands": {
+        "left": 0.061,
+        "middle": 0.017,
+        "right": 0.001
+      }
+    },
+    {
+      "time": 151.736,
+      "control": "right",
+      "controls": [
+        "right"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.196,
+      "bands": {
+        "left": 0.0,
+        "middle": 0.002,
+        "right": 0.003
+      }
+    },
+    {
+      "time": 151.983,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.716,
+      "bands": {
+        "left": 0.077,
+        "middle": 0.028,
+        "right": 0.003
+      }
+    },
+    {
+      "time": 152.479,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.523,
+      "bands": {
+        "left": 0.241,
+        "middle": 0.029,
+        "right": 0.0
+      }
+    },
+    {
+      "time": 152.975,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.459,
+      "bands": {
+        "left": 0.18,
+        "middle": 0.067,
+        "right": 0.047
+      }
+    },
+    {
+      "time": 153.223,
+      "control": "middle",
+      "controls": [
+        "middle"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.335,
+      "bands": {
+        "left": 0.015,
+        "middle": 0.278,
+        "right": 0.061
+      }
+    },
+    {
+      "time": 153.471,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.344,
+      "bands": {
+        "left": 0.35,
+        "middle": 0.069,
+        "right": 0.014
+      }
+    },
+    {
+      "time": 153.967,
+      "control": "middle",
+      "controls": [
+        "middle"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.456,
+      "bands": {
+        "left": 0.073,
+        "middle": 0.163,
+        "right": 0.14
+      }
+    },
+    {
+      "time": 154.463,
+      "control": "left",
+      "controls": [
+        "left",
+        "middle"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.426,
+      "bands": {
+        "left": 0.093,
+        "middle": 0.044,
+        "right": 0.003
+      }
+    },
+    {
+      "time": 154.959,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.588,
+      "bands": {
+        "left": 0.093,
+        "middle": 0.019,
+        "right": 0.001
+      }
+    },
+    {
+      "time": 155.207,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.156,
+      "bands": {
+        "left": 0.043,
+        "middle": 0.027,
+        "right": 0.01
+      }
+    },
+    {
+      "time": 155.455,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.547,
+      "bands": {
+        "left": 0.139,
+        "middle": 0.008,
+        "right": 0.0
+      }
+    },
+    {
+      "time": 155.95,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.793,
+      "bands": {
+        "left": 0.109,
+        "middle": 0.02,
+        "right": 0.002
+      }
+    },
+    {
+      "time": 156.446,
+      "control": "middle",
+      "controls": [
+        "middle"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.43,
+      "bands": {
+        "left": 0.149,
+        "middle": 0.29,
+        "right": 0.002
+      }
+    },
+    {
+      "time": 156.942,
+      "control": "middle",
+      "controls": [
+        "middle"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.474,
+      "bands": {
+        "left": 0.072,
+        "middle": 0.258,
+        "right": 0.152
+      }
+    },
+    {
+      "time": 157.19,
+      "control": "right",
+      "controls": [
+        "right"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.195,
+      "bands": {
+        "left": 0.011,
+        "middle": 0.022,
+        "right": 0.12
+      }
+    },
+    {
+      "time": 157.438,
+      "control": "middle",
+      "controls": [
+        "middle"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.452,
+      "bands": {
+        "left": 0.299,
+        "middle": 0.404,
+        "right": 0.014
+      }
+    },
+    {
+      "time": 157.934,
+      "control": "middle",
+      "controls": [
+        "middle"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.522,
+      "bands": {
+        "left": 0.066,
+        "middle": 0.221,
+        "right": 0.061
+      }
+    },
+    {
+      "time": 158.182,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.248,
+      "bands": {
+        "left": 0.071,
+        "middle": 0.032,
+        "right": 0.002
+      }
+    },
+    {
+      "time": 158.43,
+      "control": "left",
+      "controls": [
+        "left",
+        "middle"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.471,
+      "bands": {
+        "left": 0.106,
+        "middle": 0.009,
+        "right": 0.002
+      }
+    },
+    {
+      "time": 158.926,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.581,
+      "bands": {
+        "left": 0.166,
+        "middle": 0.026,
+        "right": 0.002
+      }
+    },
+    {
+      "time": 159.174,
+      "control": "right",
+      "controls": [
+        "right"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.167,
+      "bands": {
+        "left": 0.033,
+        "middle": 0.026,
+        "right": 0.075
+      }
+    },
+    {
+      "time": 159.421,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.499,
+      "bands": {
+        "left": 0.196,
+        "middle": 0.005,
+        "right": 0.0
+      }
+    },
+    {
+      "time": 159.917,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.702,
+      "bands": {
+        "left": 0.26,
+        "middle": 0.074,
+        "right": 0.002
+      }
+    },
+    {
+      "time": 160.661,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "hold",
+      "duration": 1.488,
+      "strength": 0.753,
+      "bands": {
+        "left": 0.601,
+        "middle": 0.001,
+        "right": 0.001
+      }
+    },
+    {
+      "time": 162.645,
+      "control": "left",
+      "controls": [
+        "left",
+        "middle"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.691,
+      "bands": {
+        "left": 0.677,
+        "middle": 0.001,
+        "right": 0.0
+      }
+    },
+    {
+      "time": 163.14,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.485,
+      "bands": {
+        "left": 0.653,
+        "middle": 0.008,
+        "right": 0.006
+      }
+    },
+    {
+      "time": 163.636,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.686,
+      "bands": {
+        "left": 0.628,
+        "middle": 0.007,
+        "right": 0.0
+      }
+    },
+    {
+      "time": 164.132,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.696,
+      "bands": {
+        "left": 0.644,
+        "middle": 0.012,
+        "right": 0.005
+      }
+    },
+    {
+      "time": 164.628,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.683,
+      "bands": {
+        "left": 0.742,
+        "middle": 0.002,
+        "right": 0.0
+      }
+    },
+    {
+      "time": 165.124,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.474,
+      "bands": {
+        "left": 0.629,
+        "middle": 0.011,
+        "right": 0.002
+      }
+    },
+    {
+      "time": 165.372,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.31,
+      "bands": {
+        "left": 0.237,
+        "middle": 0.05,
+        "right": 0.001
+      }
+    },
+    {
+      "time": 165.62,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.619,
+      "bands": {
+        "left": 0.759,
+        "middle": 0.004,
+        "right": 0.008
+      }
+    },
+    {
+      "time": 166.116,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.549,
+      "bands": {
+        "left": 0.646,
+        "middle": 0.011,
+        "right": 0.007
+      }
+    },
+    {
+      "time": 166.612,
+      "control": "left",
+      "controls": [
+        "left",
+        "middle"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.686,
+      "bands": {
+        "left": 0.821,
+        "middle": 0.003,
+        "right": 0.0
+      }
+    },
+    {
+      "time": 167.107,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.483,
+      "bands": {
+        "left": 0.668,
+        "middle": 0.028,
+        "right": 0.001
+      }
+    },
+    {
+      "time": 167.603,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.638,
+      "bands": {
+        "left": 0.802,
+        "middle": 0.003,
+        "right": 0.001
+      }
+    },
+    {
+      "time": 168.099,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.494,
+      "bands": {
+        "left": 0.657,
+        "middle": 0.011,
+        "right": 0.003
+      }
+    },
+    {
+      "time": 168.595,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.632,
+      "bands": {
+        "left": 0.857,
+        "middle": 0.002,
+        "right": 0.003
+      }
+    },
+    {
+      "time": 169.091,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.44,
+      "bands": {
+        "left": 0.666,
+        "middle": 0.013,
+        "right": 0.006
+      }
+    },
+    {
+      "time": 169.339,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.274,
+      "bands": {
+        "left": 0.24,
+        "middle": 0.038,
+        "right": 0.007
+      }
+    },
+    {
+      "time": 169.587,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.584,
+      "bands": {
+        "left": 0.871,
+        "middle": 0.004,
+        "right": 0.008
+      }
+    },
+    {
+      "time": 170.083,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.485,
+      "bands": {
+        "left": 0.561,
+        "middle": 0.004,
+        "right": 0.001
+      }
+    },
+    {
+      "time": 170.579,
+      "control": "left",
+      "controls": [
+        "left",
+        "right"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.606,
+      "bands": {
+        "left": 0.946,
+        "middle": 0.002,
+        "right": 0.002
+      }
+    },
+    {
+      "time": 171.074,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.449,
+      "bands": {
+        "left": 0.574,
+        "middle": 0.005,
+        "right": 0.002
+      }
+    },
+    {
+      "time": 171.57,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.624,
+      "bands": {
+        "left": 0.42,
+        "middle": 0.027,
+        "right": 0.0
+      }
+    },
+    {
+      "time": 172.066,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.751,
+      "bands": {
+        "left": 0.632,
+        "middle": 0.007,
+        "right": 0.001
+      }
+    },
+    {
+      "time": 172.562,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.6,
+      "bands": {
+        "left": 0.479,
+        "middle": 0.004,
+        "right": 0.002
+      }
+    },
+    {
+      "time": 173.058,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.465,
+      "bands": {
+        "left": 0.573,
+        "middle": 0.007,
+        "right": 0.002
+      }
+    },
+    {
+      "time": 173.554,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.513,
+      "bands": {
+        "left": 0.466,
+        "middle": 0.009,
+        "right": 0.001
+      }
+    },
+    {
+      "time": 174.05,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.557,
+      "bands": {
+        "left": 0.646,
+        "middle": 0.031,
+        "right": 0.003
+      }
+    },
+    {
+      "time": 174.545,
+      "control": "left",
+      "controls": [
+        "left",
+        "middle"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.676,
+      "bands": {
+        "left": 0.531,
+        "middle": 0.003,
+        "right": 0.0
+      }
+    },
+    {
+      "time": 175.041,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.473,
+      "bands": {
+        "left": 0.624,
+        "middle": 0.013,
+        "right": 0.003
+      }
+    },
+    {
+      "time": 175.537,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.577,
+      "bands": {
+        "left": 0.539,
+        "middle": 0.074,
+        "right": 0.002
+      }
+    },
+    {
+      "time": 176.033,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.461,
+      "bands": {
+        "left": 0.63,
+        "middle": 0.004,
+        "right": 0.002
+      }
+    },
+    {
+      "time": 176.529,
+      "control": "right",
+      "controls": [
+        "right"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.142,
+      "bands": {
+        "left": 0.023,
+        "middle": 0.034,
+        "right": 0.684
+      }
+    },
+    {
+      "time": 177.769,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.187,
+      "bands": {
+        "left": 0.022,
+        "middle": 0.012,
+        "right": 0.01
+      }
+    },
+    {
+      "time": 178.264,
+      "control": "middle",
+      "controls": [
+        "middle"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.138,
+      "bands": {
+        "left": 0.025,
+        "middle": 0.081,
+        "right": 0.004
+      }
+    },
+    {
+      "time": 178.512,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.274,
+      "bands": {
+        "left": 0.013,
+        "middle": 0.012,
+        "right": 0.004
+      }
+    },
+    {
+      "time": 179.256,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.179,
+      "bands": {
+        "left": 0.031,
+        "middle": 0.018,
+        "right": 0.0
+      }
+    },
+    {
+      "time": 179.504,
+      "control": "right",
+      "controls": [
+        "right"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.209,
+      "bands": {
+        "left": 0.004,
+        "middle": 0.006,
+        "right": 0.008
+      }
+    },
+    {
+      "time": 180.248,
+      "control": "right",
+      "controls": [
+        "right"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.155,
+      "bands": {
+        "left": 0.045,
+        "middle": 0.019,
+        "right": 0.125
+      }
+    },
+    {
+      "time": 180.744,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.245,
+      "bands": {
+        "left": 0.07,
+        "middle": 0.014,
+        "right": 0.002
+      }
+    },
+    {
+      "time": 181.24,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.257,
+      "bands": {
+        "left": 0.057,
+        "middle": 0.013,
+        "right": 0.004
+      }
+    },
+    {
+      "time": 181.488,
+      "control": "middle",
+      "controls": [
+        "middle"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.344,
+      "bands": {
+        "left": 0.001,
+        "middle": 0.061,
+        "right": 0.035
+      }
+    },
+    {
+      "time": 181.736,
+      "control": "middle",
+      "controls": [
+        "middle"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.35,
+      "bands": {
+        "left": 0.065,
+        "middle": 0.136,
+        "right": 0.003
+      }
+    },
+    {
+      "time": 182.231,
+      "control": "middle",
+      "controls": [
+        "middle"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.216,
+      "bands": {
+        "left": 0.034,
+        "middle": 0.038,
+        "right": 0.019
+      }
+    },
+    {
+      "time": 182.727,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.416,
+      "bands": {
+        "left": 0.073,
+        "middle": 0.055,
+        "right": 0.032
+      }
+    },
+    {
+      "time": 183.223,
+      "control": "middle",
+      "controls": [
+        "middle"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.267,
+      "bands": {
+        "left": 0.007,
+        "middle": 0.041,
+        "right": 0.029
+      }
+    },
+    {
+      "time": 183.719,
+      "control": "middle",
+      "controls": [
+        "middle"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.222,
+      "bands": {
+        "left": 0.0,
+        "middle": 0.198,
+        "right": 0.002
+      }
+    },
+    {
+      "time": 183.967,
+      "control": "middle",
+      "controls": [
+        "middle"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.491,
+      "bands": {
+        "left": 0.012,
+        "middle": 0.512,
+        "right": 0.015
+      }
+    },
+    {
+      "time": 184.463,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.477,
+      "bands": {
+        "left": 0.498,
+        "middle": 0.01,
+        "right": 0.118
+      }
+    },
+    {
+      "time": 184.959,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.297,
+      "bands": {
+        "left": 0.513,
+        "middle": 0.036,
+        "right": 0.005
+      }
+    },
+    {
+      "time": 185.455,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.395,
+      "bands": {
+        "left": 0.676,
+        "middle": 0.004,
+        "right": 0.003
+      }
+    },
+    {
+      "time": 185.95,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.484,
+      "bands": {
+        "left": 0.537,
+        "middle": 0.01,
+        "right": 0.001
+      }
+    },
+    {
+      "time": 186.446,
+      "control": "left",
+      "controls": [
+        "left",
+        "middle"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.451,
+      "bands": {
+        "left": 0.567,
+        "middle": 0.008,
+        "right": 0.002
+      }
+    },
+    {
+      "time": 186.942,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.355,
+      "bands": {
+        "left": 0.547,
+        "middle": 0.003,
+        "right": 0.009
+      }
+    },
+    {
+      "time": 187.686,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.301,
+      "bands": {
+        "left": 0.376,
+        "middle": 0.003,
+        "right": 0.015
+      }
+    },
+    {
+      "time": 188.182,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.441,
+      "bands": {
+        "left": 0.571,
+        "middle": 0.005,
+        "right": 0.002
+      }
+    },
+    {
+      "time": 188.43,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.399,
+      "bands": {
+        "left": 0.624,
+        "middle": 0.014,
+        "right": 0.032
+      }
+    },
+    {
+      "time": 188.926,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.4,
+      "bands": {
+        "left": 0.613,
+        "middle": 0.009,
+        "right": 0.012
+      }
+    },
+    {
+      "time": 189.669,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.515,
+      "bands": {
+        "left": 0.488,
+        "middle": 0.023,
+        "right": 0.002
+      }
+    },
+    {
+      "time": 190.165,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.572,
+      "bands": {
+        "left": 0.67,
+        "middle": 0.008,
+        "right": 0.002
+      }
+    },
+    {
+      "time": 190.661,
+      "control": "left",
+      "controls": [
+        "left",
+        "right"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.381,
+      "bands": {
+        "left": 0.342,
+        "middle": 0.003,
+        "right": 0.01
+      }
+    },
+    {
+      "time": 190.909,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.458,
+      "bands": {
+        "left": 0.576,
+        "middle": 0.028,
+        "right": 0.004
+      }
+    },
+    {
+      "time": 191.653,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.488,
+      "bands": {
+        "left": 0.581,
+        "middle": 0.015,
+        "right": 0.001
+      }
+    },
+    {
+      "time": 192.149,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.373,
+      "bands": {
+        "left": 0.513,
+        "middle": 0.028,
+        "right": 0.001
+      }
+    },
+    {
+      "time": 192.645,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.412,
+      "bands": {
+        "left": 0.428,
+        "middle": 0.127,
+        "right": 0.015
+      }
+    },
+    {
+      "time": 193.14,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.372,
+      "bands": {
+        "left": 0.503,
+        "middle": 0.051,
+        "right": 0.004
+      }
+    },
+    {
+      "time": 193.636,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.448,
+      "bands": {
+        "left": 0.502,
+        "middle": 0.003,
+        "right": 0.008
+      }
+    },
+    {
+      "time": 194.132,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.528,
+      "bands": {
+        "left": 0.578,
+        "middle": 0.019,
+        "right": 0.003
+      }
+    },
+    {
+      "time": 194.628,
+      "control": "left",
+      "controls": [
+        "left",
+        "right"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.384,
+      "bands": {
+        "left": 0.491,
+        "middle": 0.004,
+        "right": 0.025
+      }
+    },
+    {
+      "time": 195.124,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.457,
+      "bands": {
+        "left": 0.473,
+        "middle": 0.015,
+        "right": 0.018
+      }
+    },
+    {
+      "time": 195.62,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.381,
+      "bands": {
+        "left": 0.626,
+        "middle": 0.021,
+        "right": 0.019
+      }
+    },
+    {
+      "time": 196.116,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.394,
+      "bands": {
+        "left": 0.641,
+        "middle": 0.026,
+        "right": 0.01
+      }
+    },
+    {
+      "time": 196.612,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.434,
+      "bands": {
+        "left": 0.488,
+        "middle": 0.013,
+        "right": 0.013
+      }
+    },
+    {
+      "time": 197.107,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.456,
+      "bands": {
+        "left": 0.485,
+        "middle": 0.011,
+        "right": 0.008
+      }
+    },
+    {
+      "time": 197.603,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.48,
+      "bands": {
+        "left": 0.745,
+        "middle": 0.003,
+        "right": 0.009
+      }
+    },
+    {
+      "time": 198.099,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.519,
+      "bands": {
+        "left": 0.507,
+        "middle": 0.002,
+        "right": 0.001
+      }
+    },
+    {
+      "time": 198.595,
+      "control": "left",
+      "controls": [
+        "left",
+        "right"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.462,
+      "bands": {
+        "left": 0.595,
+        "middle": 0.01,
+        "right": 0.013
+      }
+    },
+    {
+      "time": 199.091,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.54,
+      "bands": {
+        "left": 0.386,
+        "middle": 0.09,
+        "right": 0.017
+      }
+    },
+    {
+      "time": 199.339,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.185,
+      "bands": {
+        "left": 0.259,
+        "middle": 0.025,
+        "right": 0.003
+      }
+    },
+    {
+      "time": 199.587,
+      "control": "middle",
+      "controls": [
+        "middle"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.179,
+      "bands": {
+        "left": 0.006,
+        "middle": 0.104,
+        "right": 0.001
+      }
+    },
+    {
+      "time": 200.083,
+      "control": "middle",
+      "controls": [
+        "middle"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.273,
+      "bands": {
+        "left": 0.092,
+        "middle": 0.128,
+        "right": 0.043
+      }
+    },
+    {
+      "time": 200.579,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.389,
+      "bands": {
+        "left": 0.579,
+        "middle": 0.033,
+        "right": 0.024
+      }
+    },
+    {
+      "time": 201.074,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.324,
+      "bands": {
+        "left": 0.436,
+        "middle": 0.02,
+        "right": 0.006
+      }
+    },
+    {
+      "time": 201.57,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.392,
+      "bands": {
+        "left": 0.34,
+        "middle": 0.002,
+        "right": 0.001
+      }
+    },
+    {
+      "time": 202.066,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.497,
+      "bands": {
+        "left": 0.5,
+        "middle": 0.007,
+        "right": 0.001
+      }
+    },
+    {
+      "time": 202.562,
+      "control": "left",
+      "controls": [
+        "left",
+        "middle"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.439,
+      "bands": {
+        "left": 0.614,
+        "middle": 0.015,
+        "right": 0.002
+      }
+    },
+    {
+      "time": 202.81,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.156,
+      "bands": {
+        "left": 0.145,
+        "middle": 0.004,
+        "right": 0.001
+      }
+    },
+    {
+      "time": 203.058,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.386,
+      "bands": {
+        "left": 0.486,
+        "middle": 0.007,
+        "right": 0.004
+      }
+    },
+    {
+      "time": 203.554,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.335,
+      "bands": {
+        "left": 0.389,
+        "middle": 0.01,
+        "right": 0.013
+      }
+    },
+    {
+      "time": 204.05,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.428,
+      "bands": {
+        "left": 0.561,
+        "middle": 0.002,
+        "right": 0.004
+      }
+    },
+    {
+      "time": 204.545,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.407,
+      "bands": {
+        "left": 0.379,
+        "middle": 0.004,
+        "right": 0.146
+      }
+    },
+    {
+      "time": 205.041,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.427,
+      "bands": {
+        "left": 0.603,
+        "middle": 0.005,
+        "right": 0.036
+      }
+    },
+    {
+      "time": 205.537,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.524,
+      "bands": {
+        "left": 0.529,
+        "middle": 0.022,
+        "right": 0.004
+      }
+    },
+    {
+      "time": 206.033,
+      "control": "left",
+      "controls": [
+        "left",
+        "middle"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.555,
+      "bands": {
+        "left": 0.651,
+        "middle": 0.006,
+        "right": 0.001
+      }
+    },
+    {
+      "time": 206.529,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.369,
+      "bands": {
+        "left": 0.433,
+        "middle": 0.004,
+        "right": 0.005
+      }
+    },
+    {
+      "time": 207.025,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.421,
+      "bands": {
+        "left": 0.545,
+        "middle": 0.017,
+        "right": 0.0
+      }
+    },
+    {
+      "time": 207.521,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.498,
+      "bands": {
+        "left": 0.595,
+        "middle": 0.011,
+        "right": 0.0
+      }
+    },
+    {
+      "time": 208.017,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.399,
+      "bands": {
+        "left": 0.529,
+        "middle": 0.035,
+        "right": 0.002
+      }
+    },
+    {
+      "time": 208.512,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.436,
+      "bands": {
+        "left": 0.446,
+        "middle": 0.141,
+        "right": 0.01
+      }
+    },
+    {
+      "time": 209.008,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.331,
+      "bands": {
+        "left": 0.614,
+        "middle": 0.006,
+        "right": 0.005
+      }
+    },
+    {
+      "time": 209.504,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.48,
+      "bands": {
+        "left": 0.529,
+        "middle": 0.005,
+        "right": 0.004
+      }
+    },
+    {
+      "time": 210.0,
+      "control": "left",
+      "controls": [
+        "left",
+        "middle"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.499,
+      "bands": {
+        "left": 0.578,
+        "middle": 0.023,
+        "right": 0.007
+      }
+    },
+    {
+      "time": 210.496,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.364,
+      "bands": {
+        "left": 0.519,
+        "middle": 0.006,
+        "right": 0.013
+      }
+    },
+    {
+      "time": 210.992,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.454,
+      "bands": {
+        "left": 0.495,
+        "middle": 0.02,
+        "right": 0.006
+      }
+    },
+    {
+      "time": 211.488,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.371,
+      "bands": {
+        "left": 0.612,
+        "middle": 0.016,
+        "right": 0.008
+      }
+    },
+    {
+      "time": 211.983,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.367,
+      "bands": {
+        "left": 0.453,
+        "middle": 0.011,
+        "right": 0.002
+      }
+    },
+    {
+      "time": 212.479,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.439,
+      "bands": {
+        "left": 0.556,
+        "middle": 0.016,
+        "right": 0.06
+      }
+    },
+    {
+      "time": 212.975,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.451,
+      "bands": {
+        "left": 0.437,
+        "middle": 0.009,
+        "right": 0.025
+      }
+    },
+    {
+      "time": 213.471,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.453,
+      "bands": {
+        "left": 0.743,
+        "middle": 0.003,
+        "right": 0.002
+      }
+    },
+    {
+      "time": 213.967,
+      "control": "left",
+      "controls": [
+        "left",
+        "middle"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.518,
+      "bands": {
+        "left": 0.695,
+        "middle": 0.01,
+        "right": 0.002
+      }
+    },
+    {
+      "time": 214.463,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.452,
+      "bands": {
+        "left": 0.507,
+        "middle": 0.032,
+        "right": 0.053
+      }
+    },
+    {
+      "time": 214.959,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.453,
+      "bands": {
+        "left": 0.341,
+        "middle": 0.08,
+        "right": 0.013
+      }
+    },
+    {
+      "time": 215.207,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.161,
+      "bands": {
+        "left": 0.284,
+        "middle": 0.123,
+        "right": 0.003
+      }
+    },
+    {
+      "time": 215.95,
+      "control": "middle",
+      "controls": [
+        "middle"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.324,
+      "bands": {
+        "left": 0.084,
+        "middle": 0.196,
+        "right": 0.034
+      }
+    },
+    {
+      "time": 216.446,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.344,
+      "bands": {
+        "left": 0.544,
+        "middle": 0.045,
+        "right": 0.03
+      }
+    },
+    {
+      "time": 216.942,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.322,
+      "bands": {
+        "left": 0.437,
+        "middle": 0.008,
+        "right": 0.006
+      }
+    },
+    {
+      "time": 217.686,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.423,
+      "bands": {
+        "left": 0.351,
+        "middle": 0.001,
+        "right": 0.001
+      }
+    },
+    {
+      "time": 218.182,
+      "control": "left",
+      "controls": [
+        "left",
+        "middle"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.537,
+      "bands": {
+        "left": 0.595,
+        "middle": 0.009,
+        "right": 0.004
+      }
+    },
+    {
+      "time": 218.43,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.467,
+      "bands": {
+        "left": 0.609,
+        "middle": 0.007,
+        "right": 0.003
+      }
+    },
+    {
+      "time": 218.926,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.401,
+      "bands": {
+        "left": 0.629,
+        "middle": 0.019,
+        "right": 0.004
+      }
+    },
+    {
+      "time": 219.669,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.34,
+      "bands": {
+        "left": 0.422,
+        "middle": 0.005,
+        "right": 0.009
+      }
+    },
+    {
+      "time": 220.165,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.401,
+      "bands": {
+        "left": 0.592,
+        "middle": 0.016,
+        "right": 0.007
+      }
+    },
+    {
+      "time": 220.661,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.422,
+      "bands": {
+        "left": 0.409,
+        "middle": 0.006,
+        "right": 0.108
+      }
+    },
+    {
+      "time": 221.157,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.413,
+      "bands": {
+        "left": 0.524,
+        "middle": 0.005,
+        "right": 0.009
+      }
+    },
+    {
+      "time": 221.653,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.502,
+      "bands": {
+        "left": 0.506,
+        "middle": 0.024,
+        "right": 0.002
+      }
+    },
+    {
+      "time": 222.149,
+      "control": "left",
+      "controls": [
+        "left",
+        "middle"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.567,
+      "bands": {
+        "left": 0.689,
+        "middle": 0.008,
+        "right": 0.004
+      }
+    },
+    {
+      "time": 222.645,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.397,
+      "bands": {
+        "left": 0.461,
+        "middle": 0.012,
+        "right": 0.003
+      }
+    },
+    {
+      "time": 223.14,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.463,
+      "bands": {
+        "left": 0.583,
+        "middle": 0.032,
+        "right": 0.001
+      }
+    },
+    {
+      "time": 223.636,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.493,
+      "bands": {
+        "left": 0.598,
+        "middle": 0.01,
+        "right": 0.0
+      }
+    },
+    {
+      "time": 224.132,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.366,
+      "bands": {
+        "left": 0.527,
+        "middle": 0.029,
+        "right": 0.004
+      }
+    },
+    {
+      "time": 224.628,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.45,
+      "bands": {
+        "left": 0.501,
+        "middle": 0.034,
+        "right": 0.016
+      }
+    },
+    {
+      "time": 225.124,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.338,
+      "bands": {
+        "left": 0.579,
+        "middle": 0.032,
+        "right": 0.01
+      }
+    },
+    {
+      "time": 225.62,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.45,
+      "bands": {
+        "left": 0.551,
+        "middle": 0.005,
+        "right": 0.01
+      }
+    },
+    {
+      "time": 226.116,
+      "control": "left",
+      "controls": [
+        "left",
+        "middle"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.547,
+      "bands": {
+        "left": 0.569,
+        "middle": 0.025,
+        "right": 0.005
+      }
+    },
+    {
+      "time": 226.612,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.349,
+      "bands": {
+        "left": 0.553,
+        "middle": 0.003,
+        "right": 0.019
+      }
+    },
+    {
+      "time": 227.107,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.472,
+      "bands": {
+        "left": 0.464,
+        "middle": 0.051,
+        "right": 0.009
+      }
+    },
+    {
+      "time": 227.603,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.338,
+      "bands": {
+        "left": 0.64,
+        "middle": 0.013,
+        "right": 0.009
+      }
+    },
+    {
+      "time": 228.099,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.339,
+      "bands": {
+        "left": 0.577,
+        "middle": 0.02,
+        "right": 0.007
+      }
+    },
+    {
+      "time": 228.595,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.449,
+      "bands": {
+        "left": 0.567,
+        "middle": 0.01,
+        "right": 0.006
+      }
+    },
+    {
+      "time": 229.091,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.447,
+      "bands": {
+        "left": 0.41,
+        "middle": 0.021,
+        "right": 0.046
+      }
+    },
+    {
+      "time": 229.587,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.475,
+      "bands": {
+        "left": 0.79,
+        "middle": 0.001,
+        "right": 0.003
+      }
+    },
+    {
+      "time": 230.083,
+      "control": "left",
+      "controls": [
+        "left",
+        "middle"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.513,
+      "bands": {
+        "left": 0.561,
+        "middle": 0.003,
+        "right": 0.001
+      }
+    },
+    {
+      "time": 230.579,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.418,
+      "bands": {
+        "left": 0.554,
+        "middle": 0.017,
+        "right": 0.021
+      }
+    },
+    {
+      "time": 231.074,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.404,
+      "bands": {
+        "left": 0.357,
+        "middle": 0.064,
+        "right": 0.008
+      }
+    },
+    {
+      "time": 231.322,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.136,
+      "bands": {
+        "left": 0.32,
+        "middle": 0.061,
+        "right": 0.004
+      }
+    },
+    {
+      "time": 232.066,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.247,
+      "bands": {
+        "left": 0.106,
+        "middle": 0.051,
+        "right": 0.032
+      }
+    },
+    {
+      "time": 232.562,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.557,
+      "bands": {
+        "left": 0.44,
+        "middle": 0.0,
+        "right": 0.002
+      }
+    },
+    {
+      "time": 233.058,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.591,
+      "bands": {
+        "left": 0.628,
+        "middle": 0.003,
+        "right": 0.001
+      }
+    },
+    {
+      "time": 233.554,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.655,
+      "bands": {
+        "left": 0.498,
+        "middle": 0.0,
+        "right": 0.0
+      }
+    },
+    {
+      "time": 234.05,
+      "control": "left",
+      "controls": [
+        "left",
+        "middle"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.664,
+      "bands": {
+        "left": 0.654,
+        "middle": 0.005,
+        "right": 0.001
+      }
+    },
+    {
+      "time": 234.545,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.713,
+      "bands": {
+        "left": 0.549,
+        "middle": 0.0,
+        "right": 0.0
+      }
+    },
+    {
+      "time": 235.041,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.578,
+      "bands": {
+        "left": 0.677,
+        "middle": 0.005,
+        "right": 0.001
+      }
+    },
+    {
+      "time": 235.537,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.588,
+      "bands": {
+        "left": 0.556,
+        "middle": 0.0,
+        "right": 0.0
+      }
+    },
+    {
+      "time": 236.033,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.538,
+      "bands": {
+        "left": 0.684,
+        "middle": 0.005,
+        "right": 0.001
+      }
+    },
+    {
+      "time": 236.529,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.703,
+      "bands": {
+        "left": 0.601,
+        "middle": 0.0,
+        "right": 0.001
+      }
+    },
+    {
+      "time": 237.025,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.61,
+      "bands": {
+        "left": 0.701,
+        "middle": 0.006,
+        "right": 0.001
+      }
+    },
+    {
+      "time": 237.521,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.718,
+      "bands": {
+        "left": 0.663,
+        "middle": 0.0,
+        "right": 0.0
+      }
+    },
+    {
+      "time": 238.017,
+      "control": "left",
+      "controls": [
+        "left",
+        "middle"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.683,
+      "bands": {
+        "left": 0.694,
+        "middle": 0.007,
+        "right": 0.001
+      }
+    },
+    {
+      "time": 238.512,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.741,
+      "bands": {
+        "left": 0.706,
+        "middle": 0.001,
+        "right": 0.0
+      }
+    },
+    {
+      "time": 239.008,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.577,
+      "bands": {
+        "left": 0.735,
+        "middle": 0.011,
+        "right": 0.006
+      }
+    },
+    {
+      "time": 239.256,
+      "control": "left",
+      "controls": [
+        "left"
+      ],
+      "type": "tap",
+      "duration": 0.0,
+      "strength": 0.288,
+      "bands": {
+        "left": 0.071,
+        "middle": 0.014,
+        "right": 0.011
+      }
+    }
+  ],
+  "sections": [
+    [
+      0.0,
+      10.0,
+      "ANKOMMEN",
+      "intro"
+    ],
+    [
+      10.0,
+      30.0,
+      "EINFACH",
+      "easy"
+    ],
+    [
+      30.0,
+      105.0,
+      "GROOVE",
+      "medium"
+    ],
+    [
+      105.0,
+      190.0,
+      "DROP",
+      "hard"
+    ],
+    [
+      190.0,
+      240.0,
+      "FINALE",
+      "hard"
+    ]
+  ]
+}

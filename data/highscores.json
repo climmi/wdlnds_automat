@@ -115,6 +115,76 @@
       ],
       "last_score": 24066,
       "last_name": "?9-"
+    },
+    "show_control_waldwinkel": {
+      "scores": [
+        {
+          "name": "AAA",
+          "score": 1814
+        },
+        {
+          "name": "AAA",
+          "score": 1306
+        },
+        {
+          "name": "AAA",
+          "score": 1150
+        },
+        {
+          "name": "AAA",
+          "score": 286
+        }
+      ],
+      "last_score": 1814,
+      "last_name": "AAA"
+    },
+    "show_control_zob": {
+      "scores": [
+        {
+          "name": "AAA",
+          "score": 5028
+        },
+        {
+          "name": "AAA",
+          "score": 3084
+        },
+        {
+          "name": "AAA",
+          "score": 2068
+        },
+        {
+          "name": "AAA",
+          "score": 542
+        }
+      ],
+      "last_score": 3084,
+      "last_name": "AAA"
+    },
+    "show_control_marktplatz": {
+      "scores": [
+        {
+          "name": "DDC",
+          "score": 29344
+        },
+        {
+          "name": "AAB",
+          "score": 18108
+        },
+        {
+          "name": "AAA",
+          "score": 11172
+        },
+        {
+          "name": "AAA",
+          "score": 10558
+        },
+        {
+          "name": "AAA",
+          "score": 5802
+        }
+      ],
+      "last_score": 18108,
+      "last_name": "AAB"
     }
   }
 }

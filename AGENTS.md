@@ -17,7 +17,7 @@ The app is a pygame-based Raspberry Pi arcade/coin machine for Woodlands. It run
 The current main flow is:
 
 - `IdleState`: standby screen, waits for coin.
-- `SongSelectState`: chooses difficulty/location.
+- `SongSelectState`: first chooses difficulty/location, then chooses one of the tracks for that location.
 - `MiniGameState`: current main game, `game_id = "show_control"`.
 - `ScoreGameState`: shared result/highscore/name-entry flow.
 
@@ -40,12 +40,10 @@ Cues fall toward target buttons. The player hits cues in time to keep the mood h
 Tracks and cues are loaded from:
 
 - `data/song_catalog.json`
-- `data/cues/song_02.json`
-- `data/cues/song_03.json`
-- `data/cues/song_04.json`
-- `audio/song 02.mp3`
-- `audio/song 03.mp3`
-- `audio/song 04.mp3`
+- `data/cues/generated/*.json`
+- `audio/songs_optimized/*.mp3`
+
+Original imported songs live in `audio/songs/*`. Runtime uses optimized MP3 copies in `audio/songs_optimized/*` so the Pi has less decoding/file-size pressure.
 
 Difficulty/location mapping should stay:
 
@@ -151,6 +149,7 @@ sudo systemctl start wdlnds-automat.service
 - Make cue feedback clear: early, late, good, perfect.
 - Use separate scoreboards for Waldwinkel, ZOB, and Marktplatz.
 - Keep Pi performance stable, especially with large crowds.
+- Location selection should stay visually clean; do not show "3 tracks" on the location cards.
 
 ## Current Stabilization Notes
 
@@ -158,9 +157,11 @@ sudo systemctl start wdlnds-automat.service
 - Coin, combo, streak-break, scoreboard, and early-game-over sound effects are wired through `SoundManager`.
 - The crowd renderer caches scaled sprites and caps drawn people per frame.
 - Crowd character sets are loaded dynamically from `graphic/charakters/*`; each person can have individual `bored`, `normal`, and `happy` sprites plus different mood/combo thresholds.
-- Character sprites are cleaned and normalized at load time in `app/main.py`: white matte/fringe pixels are removed and every runtime sprite is placed on a shared `58x90` canvas.
+- Character sprites are now loaded as exported, without runtime white-matte cleanup or normalization. If the people look wrong, fix the source exports instead of adding destructive runtime image processing.
+- Crowd people are intentionally smaller and keep a fixed scale while entering; do not scale them up as the player hits more notes. Waldwinkel and ZOB mirror crowd sprites horizontally at runtime, Marktplatz keeps the original direction.
 - Mood gain is streak-gated: low combos do not raise mood, longer streaks raise mood faster, and high mood has drag so 100% is harder to reach.
-- Cue controls are varied at runtime to avoid long single-lane runs from the analyzed cue data.
+- Combo sound tiers trigger at streak totals 3, 8, 15, and 25.
+- Cue controls are spaced and varied at runtime to avoid long single-lane runs from the analyzed cue data. Waldwinkel is thinned to simple taps, ZOB is medium-hard density with longer connected sequences, and Marktplatz keeps much denser/harder patterns without very short gaps.
 - Pi-side ESP32 serial now has heartbeat/reconnect logic.
 - ESP32 firmware now has watchdog, parser guards, `PING`/`PONG`, and a game-command timeout that falls back to standby.
 

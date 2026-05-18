@@ -69,10 +69,11 @@ class App:
         self.highscores = HighScoreManager(os.path.join(config.DATA_DIR, "highscores.json"))
         self.current_game = "show_control"
         self.selected_song = {
-            "label": "ZOB",
-            "difficulty": "medium",
-            "caption": "VOLLER FLOOR",
-            "level_image": "ZOB 01.png",
+            "label": "WALDWINKEL",
+            "location": "waldwinkel",
+            "difficulty": "easy",
+            "caption": "LOCKERER GROOVE",
+            "level_image": "Waldwinkel 01.png",
         }
         self._attach_gpio_inputs()
 
@@ -267,7 +268,7 @@ class App:
                     continue
                 image = self._load_graphic(os.path.join(folder_path, filename))
                 if image:
-                    sprites[state] = self._prepare_character_sprite(image)
+                    sprites[state] = image
             if sprites:
                 normal = sprites.get("normal") or next(iter(sprites.values()))
                 sprites.setdefault("normal", normal)
@@ -275,98 +276,6 @@ class App:
                 sprites.setdefault("happy", normal)
                 people.append({"id": folder, "sprites": sprites})
         return people
-
-    def _prepare_character_sprite(self, image):
-        cleaned = self._remove_white_matte(image)
-        return self._normalize_character_sprite(cleaned, target_height=82, canvas_size=(58, 90))
-
-    def _remove_white_matte(self, image):
-        surface = image.copy().convert_alpha()
-        width, height = surface.get_size()
-        remove = set()
-        queue = []
-
-        for x in range(width):
-            queue.append((x, 0))
-            queue.append((x, height - 1))
-        for y in range(height):
-            queue.append((0, y))
-            queue.append((width - 1, y))
-
-        seen = set()
-        while queue:
-            x, y = queue.pop()
-            if (x, y) in seen or not (0 <= x < width and 0 <= y < height):
-                continue
-            seen.add((x, y))
-            color = surface.get_at((x, y))
-            if color.a == 0:
-                for nx, ny in ((x - 1, y), (x + 1, y), (x, y - 1), (x, y + 1)):
-                    queue.append((nx, ny))
-                continue
-            if self._is_white_matte(color, threshold=235):
-                remove.add((x, y))
-                for nx, ny in ((x - 1, y), (x + 1, y), (x, y - 1), (x, y + 1)):
-                    queue.append((nx, ny))
-
-        for x, y in remove:
-            surface.set_at((x, y), (255, 255, 255, 0))
-
-        # Remove bright anti-aliased fringe pixels left next to transparent matte.
-        for _ in range(2):
-            fringe = []
-            for y in range(height):
-                for x in range(width):
-                    color = surface.get_at((x, y))
-                    if color.a == 0 or not self._is_white_matte(color, threshold=244):
-                        continue
-                    for nx, ny in ((x - 1, y), (x + 1, y), (x, y - 1), (x, y + 1)):
-                        if 0 <= nx < width and 0 <= ny < height and surface.get_at((nx, ny)).a == 0:
-                            fringe.append((x, y))
-                            break
-            if not fringe:
-                break
-            for x, y in fringe:
-                surface.set_at((x, y), (255, 255, 255, 0))
-
-        return surface
-
-    def _is_white_matte(self, color, threshold: int) -> bool:
-        return color.r >= threshold and color.g >= threshold and color.b >= threshold
-
-    def _normalize_character_sprite(self, image, target_height: int, canvas_size: tuple[int, int]):
-        bounds = self._alpha_bounds(image)
-        if bounds is None:
-            return image
-        source = image.subsurface(bounds).copy()
-        scale = target_height / max(1, source.get_height())
-        target_w = max(1, int(source.get_width() * scale))
-        target_h = max(1, int(source.get_height() * scale))
-        if target_w > canvas_size[0]:
-            scale = canvas_size[0] / max(1, source.get_width())
-            target_w = canvas_size[0]
-            target_h = max(1, int(source.get_height() * scale))
-        scaled = pygame.transform.smoothscale(source, (target_w, target_h))
-        canvas = pygame.Surface(canvas_size, pygame.SRCALPHA)
-        x = (canvas_size[0] - target_w) // 2
-        y = canvas_size[1] - target_h
-        canvas.blit(scaled, (x, y))
-        return canvas.convert_alpha()
-
-    def _alpha_bounds(self, image, threshold: int = 12):
-        width, height = image.get_size()
-        min_x, min_y = width, height
-        max_x, max_y = -1, -1
-        for y in range(height):
-            for x in range(width):
-                if image.get_at((x, y)).a > threshold:
-                    min_x = min(min_x, x)
-                    min_y = min(min_y, y)
-                    max_x = max(max_x, x)
-                    max_y = max(max_y, y)
-        if max_x < min_x or max_y < min_y:
-            return None
-        return pygame.Rect(min_x, min_y, max_x - min_x + 1, max_y - min_y + 1)
 
     def _scale_to_cover(self, image, width: int, height: int):
         src_w, src_h = image.get_size()
