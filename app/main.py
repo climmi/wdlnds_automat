@@ -68,7 +68,12 @@ class App:
         self.payout = PayoutController()
         self.highscores = HighScoreManager(os.path.join(config.DATA_DIR, "highscores.json"))
         self.current_game = "show_control"
-        self.selected_song = {"label": "MITTEL", "difficulty": "medium", "caption": "VOLLER FLOOR"}
+        self.selected_song = {
+            "label": "ZOB",
+            "difficulty": "medium",
+            "caption": "VOLLER FLOOR",
+            "level_image": "ZOB 01.png",
+        }
         self._attach_gpio_inputs()
 
         self.state_machine = StateMachine({
@@ -111,6 +116,8 @@ class App:
                 self.add_credit(1)
                 self._coin_event = True
                 self._last_coin_ts = time.time()
+                if self.state_machine.current.__class__.__name__ != "IdleState":
+                    self.sound.play_coin()
 
             pressed = self.buttons.consume()
             if pressed:
@@ -203,15 +210,15 @@ class App:
             w, h = logo.get_size()
             target_h = max(1, int(h * (target_w / max(1, w))))
             logo = pygame.transform.smoothscale(logo, (target_w, target_h))
-        level_bg = self._load_graphic(os.path.join(root_dir, "graphic", "level", "isometric_pixel_art_scene_of_an_outdoor_indoor_hyb.png"))
-        if level_bg:
-            level_bg = self._scale_to_cover(level_bg, self.width, self.height)
-        normie_dir = os.path.join(root_dir, "graphic", "charakters", "normie 01")
-        normie = {
-            "normal": self._load_graphic(os.path.join(normie_dir, "normie_anim_normal.png")),
-            "bored": self._load_graphic(os.path.join(normie_dir, "normie_anim_bored.png")),
-            "happy": self._load_graphic(os.path.join(normie_dir, "normie_anim_happy.png")),
-        }
+        level_dir = os.path.join(root_dir, "graphic", "level")
+        level_bgs = {}
+        for filename in ("Waldwinkel 01.png", "ZOB 01.png", "Marktplatz 01.png"):
+            image = self._load_graphic(os.path.join(level_dir, filename))
+            if image:
+                level_bgs[filename] = self._scale_to_cover(image, self.width, self.height)
+        characters_dir = os.path.join(root_dir, "graphic", "charakters")
+        people = self._load_character_sets(characters_dir)
+        normie = people[0]["sprites"] if people else {}
         return {
             "player": manager.load("woodlands_coin_effect1.png"),
             "stickers": [
@@ -225,14 +232,141 @@ class App:
             "form_right": manager.load("forms_2.png"),
             "cursor": manager.load("forms_11.png"),
             "ball": manager.load("forms_3.png"),
-            "level_bg": level_bg,
+            "level_bg": level_bgs.get("ZOB 01.png"),
+            "level_bgs": level_bgs,
             "normie": normie,
+            "people": people,
         }
 
     def _load_graphic(self, path: str):
         if not os.path.exists(path):
             return None
         return pygame.image.load(path).convert_alpha()
+
+    def _load_character_sets(self, characters_dir: str):
+        if not os.path.isdir(characters_dir):
+            return []
+        people = []
+        for folder in sorted(os.listdir(characters_dir)):
+            folder_path = os.path.join(characters_dir, folder)
+            if not os.path.isdir(folder_path):
+                continue
+            sprites = {}
+            for filename in sorted(os.listdir(folder_path)):
+                lower = filename.lower()
+                if not lower.endswith((".png", ".jpg", ".jpeg", ".webp")):
+                    continue
+                state = None
+                if "bored" in lower:
+                    state = "bored"
+                elif "happy" in lower:
+                    state = "happy"
+                elif "normal" in lower:
+                    state = "normal"
+                if state is None:
+                    continue
+                image = self._load_graphic(os.path.join(folder_path, filename))
+                if image:
+                    sprites[state] = self._prepare_character_sprite(image)
+            if sprites:
+                normal = sprites.get("normal") or next(iter(sprites.values()))
+                sprites.setdefault("normal", normal)
+                sprites.setdefault("bored", normal)
+                sprites.setdefault("happy", normal)
+                people.append({"id": folder, "sprites": sprites})
+        return people
+
+    def _prepare_character_sprite(self, image):
+        cleaned = self._remove_white_matte(image)
+        return self._normalize_character_sprite(cleaned, target_height=82, canvas_size=(58, 90))
+
+    def _remove_white_matte(self, image):
+        surface = image.copy().convert_alpha()
+        width, height = surface.get_size()
+        remove = set()
+        queue = []
+
+        for x in range(width):
+            queue.append((x, 0))
+            queue.append((x, height - 1))
+        for y in range(height):
+            queue.append((0, y))
+            queue.append((width - 1, y))
+
+        seen = set()
+        while queue:
+            x, y = queue.pop()
+            if (x, y) in seen or not (0 <= x < width and 0 <= y < height):
+                continue
+            seen.add((x, y))
+            color = surface.get_at((x, y))
+            if color.a == 0:
+                for nx, ny in ((x - 1, y), (x + 1, y), (x, y - 1), (x, y + 1)):
+                    queue.append((nx, ny))
+                continue
+            if self._is_white_matte(color, threshold=235):
+                remove.add((x, y))
+                for nx, ny in ((x - 1, y), (x + 1, y), (x, y - 1), (x, y + 1)):
+                    queue.append((nx, ny))
+
+        for x, y in remove:
+            surface.set_at((x, y), (255, 255, 255, 0))
+
+        # Remove bright anti-aliased fringe pixels left next to transparent matte.
+        for _ in range(2):
+            fringe = []
+            for y in range(height):
+                for x in range(width):
+                    color = surface.get_at((x, y))
+                    if color.a == 0 or not self._is_white_matte(color, threshold=244):
+                        continue
+                    for nx, ny in ((x - 1, y), (x + 1, y), (x, y - 1), (x, y + 1)):
+                        if 0 <= nx < width and 0 <= ny < height and surface.get_at((nx, ny)).a == 0:
+                            fringe.append((x, y))
+                            break
+            if not fringe:
+                break
+            for x, y in fringe:
+                surface.set_at((x, y), (255, 255, 255, 0))
+
+        return surface
+
+    def _is_white_matte(self, color, threshold: int) -> bool:
+        return color.r >= threshold and color.g >= threshold and color.b >= threshold
+
+    def _normalize_character_sprite(self, image, target_height: int, canvas_size: tuple[int, int]):
+        bounds = self._alpha_bounds(image)
+        if bounds is None:
+            return image
+        source = image.subsurface(bounds).copy()
+        scale = target_height / max(1, source.get_height())
+        target_w = max(1, int(source.get_width() * scale))
+        target_h = max(1, int(source.get_height() * scale))
+        if target_w > canvas_size[0]:
+            scale = canvas_size[0] / max(1, source.get_width())
+            target_w = canvas_size[0]
+            target_h = max(1, int(source.get_height() * scale))
+        scaled = pygame.transform.smoothscale(source, (target_w, target_h))
+        canvas = pygame.Surface(canvas_size, pygame.SRCALPHA)
+        x = (canvas_size[0] - target_w) // 2
+        y = canvas_size[1] - target_h
+        canvas.blit(scaled, (x, y))
+        return canvas.convert_alpha()
+
+    def _alpha_bounds(self, image, threshold: int = 12):
+        width, height = image.get_size()
+        min_x, min_y = width, height
+        max_x, max_y = -1, -1
+        for y in range(height):
+            for x in range(width):
+                if image.get_at((x, y)).a > threshold:
+                    min_x = min(min_x, x)
+                    min_y = min(min_y, y)
+                    max_x = max(max_x, x)
+                    max_y = max(max_y, y)
+        if max_x < min_x or max_y < min_y:
+            return None
+        return pygame.Rect(min_x, min_y, max_x - min_x + 1, max_y - min_y + 1)
 
     def _scale_to_cover(self, image, width: int, height: int):
         src_w, src_h = image.get_size()

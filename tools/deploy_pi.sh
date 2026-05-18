@@ -78,7 +78,8 @@ zip -qr "$ARCHIVE" . \
   -x "__pycache__/*" \
   -x "*.pyc" \
   -x "*.pyo" \
-  -x ".DS_Store"
+  -x ".DS_Store" \
+  -x "audio/soundeffects/standby_sound.opus"
 popd >/dev/null
 
 echo "[2/5] Upload archive to Pi..."

@@ -4,6 +4,11 @@ import select
 import sys
 import time
 
+try:
+    from machine import WDT
+except ImportError:
+    WDT = None
+
 
 LED_PIN = 19
 LED_COUNT = 172
@@ -28,6 +33,7 @@ DEBOUNCE_MS = 28
 COIN_COOLDOWN_MS = 650
 COIN_DROP_RATIO = 0.82
 COIN_RESET_RATIO = 0.92
+COMMAND_TIMEOUT_MS = 2200
 
 COLORS = {
     "left": (50, 115, 255),
@@ -41,6 +47,13 @@ COLORS = {
 
 def scale(color, brightness=LED_BRIGHTNESS):
     return tuple(min(255, max(0, int(channel * brightness / 255))) for channel in color)
+
+
+def safe_int(value, default=0):
+    try:
+        return int(value)
+    except (TypeError, ValueError):
+        return default
 
 
 def logical_range(start, end):
@@ -230,7 +243,11 @@ class Strip:
         self.lanes = {name: [0, 0] for name in ("left", "middle", "right")}
         self.prompts = {name: 0 for name in ("left", "middle", "right", "start")}
         self.last_frame = 0
+        self.last_command = time.ticks_ms()
         self.boot()
+
+    def mark_command(self):
+        self.last_command = time.ticks_ms()
 
     def boot(self):
         for i in range(LED_COUNT):
@@ -255,6 +272,7 @@ class Strip:
             self.lanes = {name: [0, 0] for name in ("left", "middle", "right")}
             self.prompts = {name: 0 for name in ("left", "middle", "right", "start")}
             self.clear()
+        self.mark_command()
 
     def clear(self):
         self._fill(scale(COLORS["idle"], 9))
@@ -263,17 +281,24 @@ class Strip:
         self.flash_color = COLORS.get(name, COLORS["coin"])
         self.flash_until = time.ticks_add(time.ticks_ms(), 160)
         self._fill(scale(self.flash_color, LED_BRIGHTNESS))
+        self.mark_command()
 
     def mood_set(self, value):
-        self.mood = max(0, min(100, int(value)))
+        self.mood = max(0, min(100, safe_int(value, self.mood)))
+        self.mark_command()
 
     def set_lane(self, lane, position, intensity):
         if lane in self.lanes:
-            self.lanes[lane] = [max(0, min(100, int(position))), max(0, min(255, int(intensity)))]
+            self.lanes[lane] = [
+                max(0, min(100, safe_int(position, 0))),
+                max(0, min(255, safe_int(intensity, 0))),
+            ]
+            self.mark_command()
 
     def set_prompt(self, lane, intensity):
         if lane in self.prompts:
-            self.prompts[lane] = max(0, min(255, int(intensity)))
+            self.prompts[lane] = max(0, min(255, safe_int(intensity, 0)))
+            self.mark_command()
 
     def set_game(self, parts):
         if len(parts) < 10:
@@ -284,9 +309,13 @@ class Strip:
             self.set_lane(lane, parts[offset], parts[offset + 1])
             self.set_prompt(lane, parts[offset + 2])
         self.mood_set(parts[9])
+        self.mark_command()
 
     def update(self):
         now = time.ticks_ms()
+        if self.mode == "game" and time.ticks_diff(now, self.last_command) > COMMAND_TIMEOUT_MS:
+            self.set_mode("standby")
+
         if self.flash_until and time.ticks_diff(now, self.flash_until) <= 0:
             return
         if self.flash_until:
@@ -372,7 +401,9 @@ def handle_command(line, strip):
     parts = line.strip().split()
     if not parts:
         return
-    if parts[0] == "MODE" and len(parts) >= 2:
+    if parts[0] == "PING":
+        print("PONG")
+    elif parts[0] == "MODE" and len(parts) >= 2:
         strip.set_mode(parts[1])
     elif parts[0] == "LANE" and len(parts) >= 4:
         strip.set_lane(parts[1], parts[2], parts[3])
@@ -395,6 +426,7 @@ def handle_command(line, strip):
 
 
 def main():
+    wdt = WDT(timeout=5000) if WDT else None
     buttons = [DebouncedButton(name, pin) for name, pin in BUTTONS.items()]
     coin = CoinGate()
     strip = Strip()
@@ -405,6 +437,9 @@ def main():
     print("LDR baseline {}".format(coin.baseline))
 
     while True:
+        if wdt:
+            wdt.feed()
+
         for button in buttons:
             event = button.update()
             if event:
@@ -419,7 +454,10 @@ def main():
         for _ in range(8):
             if not poll.poll(0):
                 break
-            handle_command(sys.stdin.readline(), strip)
+            try:
+                handle_command(sys.stdin.readline(), strip)
+            except Exception as exc:
+                print("ERR command {}".format(exc))
 
         strip.update()
         time.sleep_ms(5)

@@ -24,8 +24,14 @@ class IdleState(BaseState):
         self._fade = 0.0
         self._transitioning = False
         self.app.esp32.send("MODE standby")
+        self.app.sound.start_standby_ambient()
+
+    def on_exit(self) -> None:
+        self.app.sound.stop_standby_ambient()
 
     def update(self, dt: float) -> None:
+        self.app.sound.update_standby_ambient()
+
         if time.time() - self._last_blink > 0.6:
             self._blink_on = not self._blink_on
             self._last_blink = time.time()
@@ -44,6 +50,7 @@ class IdleState(BaseState):
             return
 
         if self.app.consume_coin_event():
+            self.app.sound.play_coin()
             self._coin_anim = True
             self._coin_t = 0.0
 

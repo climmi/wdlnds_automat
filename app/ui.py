@@ -56,3 +56,35 @@ def draw_orb(surface, center, radius: int, color, alpha: int = 170):
         pygame.draw.circle(orb, (*color, a), (cx, cy), r)
     pygame.draw.circle(orb, (*color, min(255, alpha + 40)), (cx, cy), max(2, radius // 2))
     surface.blit(orb, orb.get_rect(center=center), special_flags=pygame.BLEND_RGBA_ADD)
+
+
+def draw_button_hints(
+    surface,
+    app,
+    *,
+    confirm=False,
+    left=False,
+    middle=False,
+    right=False,
+    confirm_label="OK",
+    middle_label="AUSWAHL",
+):
+    ink = (75, 56, 38)
+    soft = (255, 253, 240)
+    font = app.fonts["body"]
+    if confirm:
+        _draw_hint(surface, font, confirm_label, (126, 58), ink, soft)
+    if left:
+        _draw_hint(surface, font, "LINKS", (126, app.height - 30), ink, soft)
+    if middle:
+        _draw_hint(surface, font, middle_label, (app.center_x, app.height - 30), ink, soft)
+    if right:
+        _draw_hint(surface, font, "RECHTS", (app.width - 126, app.height - 30), ink, soft)
+
+
+def _draw_hint(surface, font, label: str, label_center, color, fill):
+    text = font.render(label, True, color)
+    rect = text.get_rect(center=label_center).inflate(14, 6)
+    pygame.draw.rect(surface, fill, rect, border_radius=8)
+    pygame.draw.rect(surface, color, rect, width=2, border_radius=8)
+    surface.blit(text, text.get_rect(center=label_center))

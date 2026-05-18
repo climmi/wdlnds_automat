@@ -3,15 +3,15 @@ import random
 
 from .. import config
 from ..storage import load_json
-from ..ui import draw_text
+from ..ui import draw_button_hints, draw_text
 from .base import BaseState
 
 
 class SongSelectState(BaseState):
     OPTIONS = [
-        {"label": "LEICHT", "difficulty": "easy", "caption": "LOCKERER GROOVE"},
-        {"label": "MITTEL", "difficulty": "medium", "caption": "VOLLER FLOOR"},
-        {"label": "SCHWER", "difficulty": "hard", "caption": "SPAEtes SET"},
+        {"label": "WALDWINKEL", "difficulty": "easy", "caption": "LOCKERER GROOVE", "level_image": "Waldwinkel 01.png"},
+        {"label": "ZOB", "difficulty": "medium", "caption": "VOLLER FLOOR", "level_image": "ZOB 01.png"},
+        {"label": "MARKTPLATZ", "difficulty": "hard", "caption": "SPAETES SET", "level_image": "Marktplatz 01.png"},
     ]
 
     def __init__(self, app) -> None:
@@ -29,6 +29,10 @@ class SongSelectState(BaseState):
         self._leaving = False
         self._catalog = self._load_catalog()
         self.app.esp32.send("MODE standby")
+        self.app.sound.play_scoreboard_loop()
+
+    def on_exit(self) -> None:
+        self.app.sound.stop_scoreboard_loop()
 
     def handle_input(self, pressed):
         if self._leaving:
@@ -84,8 +88,7 @@ class SongSelectState(BaseState):
             if count > 1:
                 draw_text(surface, f"{count} TRACKS", self.app.fonts["body"], soft, (rect.centerx, rect.top + 132))
 
-        draw_text(surface, "LINKS / RECHTS", self.app.fonts["body"], soft, (self.app.center_x, 446))
-        draw_text(surface, "MITTE STARTET", self.app.fonts["body_bold"], ink, (self.app.center_x, 480))
+        draw_button_hints(surface, self.app, left=True, middle=True, right=True)
 
         if self._fade_in < 1.0:
             self._draw_fade(surface, 1.0 - self._fade_in)
@@ -109,4 +112,5 @@ class SongSelectState(BaseState):
         picked = dict(random.choice(matches))
         picked.setdefault("label", option["label"])
         picked.setdefault("caption", option["caption"])
+        picked.setdefault("level_image", option.get("level_image"))
         return picked

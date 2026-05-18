@@ -1,22 +1,25 @@
 [
   {
-    "label": "LEICHT",
+    "label": "WALDWINKEL",
     "difficulty": "easy",
-    "title": "SONG 02",
+    "title": "WALDWINKEL",
+    "level_image": "Waldwinkel 01.png",
     "audio": "song 02.mp3",
     "cues": "cues/song_02.json"
   },
   {
-    "label": "MITTEL",
+    "label": "ZOB",
     "difficulty": "medium",
-    "title": "SONG 03",
+    "title": "ZOB",
+    "level_image": "ZOB 01.png",
     "audio": "song 03.mp3",
     "cues": "cues/song_03.json"
   },
   {
-    "label": "SCHWER",
+    "label": "MARKTPLATZ",
     "difficulty": "hard",
-    "title": "SONG 04",
+    "title": "MARKTPLATZ",
+    "level_image": "Marktplatz 01.png",
     "audio": "song 04.mp3",
     "cues": "cues/song_04.json"
   }

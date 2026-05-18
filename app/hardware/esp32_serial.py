@@ -10,27 +10,49 @@ class Esp32SerialController:
         self._last_open_attempt = 0.0
         self._last_message = ""
         self._connected = False
+        self._last_rx = 0.0
+        self._last_tx = 0.0
+        self._last_mode = "standby"
+        self._heartbeat_interval = 1.2
+        self._silence_timeout = 6.0
 
     def update(self, buttons, coin_sensor) -> None:
         serial_port = self._ensure_serial()
         if serial_port is None:
             return
 
+        now = time.time()
         try:
             while serial_port.in_waiting:
                 line = serial_port.readline().decode("utf-8", errors="ignore").strip()
                 if line:
+                    self._last_rx = now
                     self._handle_line(line, buttons, coin_sensor)
-        except OSError:
+        except Exception:
+            self.close()
+            return
+
+        if now - self._last_tx >= self._heartbeat_interval:
+            self._write_line("PING")
+
+        if now - self._last_rx >= self._silence_timeout:
+            self._last_message = "timeout"
             self.close()
 
     def send(self, command: str) -> None:
+        command = command.strip()
+        if command.startswith("MODE "):
+            self._last_mode = command.split(maxsplit=1)[1]
+        self._write_line(command)
+
+    def _write_line(self, command: str) -> None:
         serial_port = self._ensure_serial()
         if serial_port is None:
             return
         try:
             serial_port.write((command.strip() + "\n").encode("utf-8"))
-        except OSError:
+            self._last_tx = time.time()
+        except Exception:
             self.close()
 
     def status(self) -> str:
@@ -61,7 +83,10 @@ class Esp32SerialController:
 
             self._serial = serial.Serial(self.port, self.baudrate, timeout=0)
             self._connected = True
+            self._last_rx = now
+            self._last_tx = 0.0
             self._last_message = f"open {self.port}"
+            self._write_line(f"MODE {self._last_mode}")
             return self._serial
         except (ImportError, OSError):
             self._serial = None
@@ -74,7 +99,11 @@ class Esp32SerialController:
         if not parts:
             return
 
-        if parts[0] == "BTN" and len(parts) >= 3:
+        if parts[0] == "PONG":
+            return
+        if parts[0] == "READY":
+            self._write_line(f"MODE {self._last_mode}")
+        elif parts[0] == "BTN" and len(parts) >= 3:
             logical = parts[1]
             state = parts[2]
             buttons.set_external_state(logical, state == "down")
