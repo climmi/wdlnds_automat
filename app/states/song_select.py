@@ -8,10 +8,11 @@ from .base import BaseState
 
 class SongSelectState(BaseState):
     OPTIONS = [
-        {"label": "WALDWINKEL", "difficulty": "easy", "caption": "LOCKERER GROOVE", "level_image": "Waldwinkel 01.png"},
-        {"label": "ZOB", "difficulty": "medium", "caption": "VOLLER FLOOR", "level_image": "ZOB 01.png"},
-        {"label": "MARKTPLATZ", "difficulty": "hard", "caption": "SPAETES SET", "level_image": "Marktplatz 01.png"},
+        {"label": "WALDWINKEL", "difficulty": "easy", "caption": "EINFACH", "level_image": "Waldwinkel 01.png"},
+        {"label": "ZOB", "difficulty": "medium", "caption": "MITTEL", "level_image": "ZOB 01.png"},
+        {"label": "MARKTPLATZ", "difficulty": "hard", "caption": "SCHWER", "level_image": "Marktplatz 01.png"},
     ]
+    BUTTON_TO_INDEX = {"left": 0, "middle": 1, "right": 2}
 
     def __init__(self, app) -> None:
         super().__init__(app)
@@ -19,6 +20,7 @@ class SongSelectState(BaseState):
         self._track_selected = 0
         self._phase = "location"
         self._location = self.OPTIONS[1]
+        self._armed_index = None
         self._fade_in = 0.0
         self._fade_out = 0.0
         self._leaving = False
@@ -29,6 +31,7 @@ class SongSelectState(BaseState):
         self._track_selected = 0
         self._phase = "location"
         self._location = self.OPTIONS[self._selected]
+        self._armed_index = None
         self._fade_in = 0.0
         self._fade_out = 0.0
         self._leaving = False
@@ -46,34 +49,19 @@ class SongSelectState(BaseState):
             tracks = self._tracks_for_location(self._location)
             if "start" in pressed:
                 self._phase = "location"
+                self._armed_index = None
                 self.app.esp32.send("LED flash start")
                 return
-            if "left" in pressed and tracks:
-                self._track_selected = (self._track_selected - 1) % len(tracks)
-                self.app.esp32.send("LED flash left")
-            if "right" in pressed and tracks:
-                self._track_selected = (self._track_selected + 1) % len(tracks)
-                self.app.esp32.send("LED flash right")
-            if ("middle" in pressed or "start" in pressed) and tracks:
-                self.app.selected_song = tracks[self._track_selected]
-                self.app.current_game = "show_control"
-                self.app.consume_credit()
-                self._leaving = True
-                self._fade_out = 0.0
-                self.app.esp32.send("LED flash middle")
+            for control in self.BUTTON_TO_INDEX:
+                if control in pressed and tracks:
+                    self._choose_track(control, tracks)
+                    return
             return
 
-        if "left" in pressed:
-            self._selected = (self._selected - 1) % len(self.OPTIONS)
-            self.app.esp32.send("LED flash left")
-        if "right" in pressed:
-            self._selected = (self._selected + 1) % len(self.OPTIONS)
-            self.app.esp32.send("LED flash right")
-        if "middle" in pressed or "start" in pressed:
-            self._location = self.OPTIONS[self._selected]
-            self._track_selected = 0
-            self._phase = "track"
-            self.app.esp32.send("LED flash middle")
+        for control in self.BUTTON_TO_INDEX:
+            if control in pressed:
+                self._choose_location(control)
+                return
 
     def update(self, dt: float) -> None:
         if self._leaving:
@@ -99,7 +87,7 @@ class SongSelectState(BaseState):
         ink = config.COLOR_TEXT_DARK
         soft = (92, 79, 56)
 
-        draw_text(surface, "ORT WAEHLEN", self.app.fonts["title"], ink, (self.app.center_x, 130))
+        draw_text(surface, "FLOOR WAEHLEN", self.app.fonts["title"], ink, (self.app.center_x, 130))
 
         card_w = 252
         card_h = 166
@@ -118,8 +106,10 @@ class SongSelectState(BaseState):
             pygame.draw.rect(surface, border, rect, width=4 if active else 2, border_radius=10)
             draw_text(surface, option["label"], self.app.fonts["body_bold"], ink, (rect.centerx, rect.top + 54))
             draw_text(surface, option["caption"], self.app.fonts["body"], soft, (rect.centerx, rect.top + 98))
+            if active and self._armed_index == index:
+                draw_text(surface, "NOCHMAL DRUECKEN", self.app.fonts["body"], border, (rect.centerx, rect.top + 132))
 
-        draw_button_hints(surface, self.app, left=True, middle=True, right=True)
+        draw_button_hints(surface, self.app, left=True, middle=True, right=True, middle_label="MITTE")
 
     def _render_track_select(self, surface) -> None:
         ink = config.COLOR_TEXT_DARK
@@ -158,7 +148,8 @@ class SongSelectState(BaseState):
             bpm = song.get("bpm")
             detail = f"BPM {bpm}" if bpm else str(song.get("caption", ""))
             draw_text(surface, detail, self.app.fonts["body"], soft, (rect.centerx, rect.top + 132))
-            draw_text(surface, self._difficulty_label(song), self.app.fonts["body"], border, (rect.centerx, rect.top + 162))
+            footer = "NOCHMAL DRUECKEN" if active and self._armed_index == index else self._difficulty_label(song)
+            draw_text(surface, footer, self.app.fonts["body"], border, (rect.centerx, rect.top + 162))
 
         draw_button_hints(
             surface,
@@ -168,7 +159,7 @@ class SongSelectState(BaseState):
             left=True,
             middle=True,
             right=True,
-            middle_label="START",
+            middle_label="MITTE",
         )
 
     def _draw_fade(self, surface, amount: float) -> None:
@@ -180,6 +171,32 @@ class SongSelectState(BaseState):
         path = f"{config.DATA_DIR}/song_catalog.json"
         payload = load_json(path, [])
         return payload if isinstance(payload, list) else []
+
+    def _choose_location(self, control: str) -> None:
+        index = self.BUTTON_TO_INDEX[control]
+        self.app.esp32.send(f"LED flash {control}")
+        if self._armed_index == index:
+            self._location = self.OPTIONS[index]
+            tracks = self._tracks_for_location(self._location)
+            self._track_selected = 1 if len(tracks) >= 3 else 0
+            self._phase = "track"
+            self._armed_index = None
+            return
+        self._selected = index
+        self._armed_index = index
+
+    def _choose_track(self, control: str, tracks) -> None:
+        index = min(self.BUTTON_TO_INDEX[control], len(tracks) - 1)
+        self.app.esp32.send(f"LED flash {control}")
+        if self._armed_index == index:
+            self.app.selected_song = tracks[index]
+            self.app.current_game = "show_control"
+            self.app.consume_credit()
+            self._leaving = True
+            self._fade_out = 0.0
+            return
+        self._track_selected = index
+        self._armed_index = index
 
     def _tracks_for_location(self, option):
         location = str(option.get("location") or option.get("label", "")).lower()

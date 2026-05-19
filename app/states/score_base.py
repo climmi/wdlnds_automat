@@ -20,6 +20,7 @@ class ScoreGameState(BaseState):
         self._pending_score = 0
         self._name_chars = ["A", "A", "A"]
         self._name_index = 0
+        self._name_hold = self._empty_name_hold()
         self._alphabet = list("ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-!?*+")
         self._result_label = "GAME OVER"
         self._result_complete = False
@@ -35,6 +36,7 @@ class ScoreGameState(BaseState):
         self._pending_score = 0
         self._name_chars = ["A", "A", "A"]
         self._name_index = 0
+        self._name_hold = self._empty_name_hold()
         self._result_label = "GAME OVER"
         self._result_complete = False
         self._scoreboard_sound_started = False
@@ -72,6 +74,7 @@ class ScoreGameState(BaseState):
             elif self._phase == "entry":
                 self._fade = min(1.0, self._fade + dt * 2.2)
                 self._entry_timer += dt
+                self._update_name_entry(dt)
                 if self._entry_timer >= 25.0:
                     self._finalize_score()
             return
@@ -135,21 +138,45 @@ class ScoreGameState(BaseState):
     def _handle_name_entry(self, pressed) -> None:
         if self._phase != "entry":
             return
-        if "left" in pressed:
-            current = self._name_chars[self._name_index]
-            idx = self._alphabet.index(current) if current in self._alphabet else 0
-            self._name_chars[self._name_index] = self._alphabet[(idx - 1) % len(self._alphabet)]
-            self._entry_timer = 0.0
-        if "right" in pressed:
-            current = self._name_chars[self._name_index]
-            idx = self._alphabet.index(current) if current in self._alphabet else 0
-            self._name_chars[self._name_index] = self._alphabet[(idx + 1) % len(self._alphabet)]
-            self._entry_timer = 0.0
-        if "middle" in pressed:
-            self._name_index = (self._name_index + 1) % len(self._name_chars)
-            self._entry_timer = 0.0
+        for control, index in (("left", 0), ("middle", 1), ("right", 2)):
+            if control in pressed:
+                self._name_index = index
+                self._advance_name_char(index)
+                self._name_hold[control] = {"held": 0.0, "next": 0.38}
+                self._entry_timer = 0.0
         if "start" in pressed:
             self._finalize_score()
+
+    def _update_name_entry(self, dt: float) -> None:
+        for control, index in (("left", 0), ("middle", 1), ("right", 2)):
+            if not self.app.buttons.is_down(control):
+                self._name_hold[control] = {"held": 0.0, "next": 0.0}
+                continue
+            state = self._name_hold[control]
+            state["held"] += dt
+            if state["next"] <= 0.0:
+                state["next"] = 0.38
+                continue
+            state["next"] -= dt
+            if state["next"] > 0.0:
+                continue
+            self._name_index = index
+            self._advance_name_char(index)
+            interval = max(0.055, 0.22 - state["held"] * 0.075)
+            state["next"] += interval
+            self._entry_timer = 0.0
+
+    def _advance_name_char(self, index: int) -> None:
+        current = self._name_chars[index]
+        idx = self._alphabet.index(current) if current in self._alphabet else 0
+        self._name_chars[index] = self._alphabet[(idx + 1) % len(self._alphabet)]
+
+    def _empty_name_hold(self):
+        return {
+            "left": {"held": 0.0, "next": 0.0},
+            "middle": {"held": 0.0, "next": 0.0},
+            "right": {"held": 0.0, "next": 0.0},
+        }
 
     def _render_name_entry(self, surface) -> None:
         body_font = self.app.fonts["body"]
@@ -173,7 +200,9 @@ class ScoreGameState(BaseState):
             middle=True,
             right=True,
             confirm_label="BESTAETIGEN",
-            middle_label="NAECHSTER",
+            left_label="BUCHSTABE 1",
+            middle_label="BUCHSTABE 2",
+            right_label="BUCHSTABE 3",
         )
 
     def _render_scoreboard(self, surface, y: int, include_pending: bool = False) -> None:

@@ -72,7 +72,7 @@ class App:
             "label": "WALDWINKEL",
             "location": "waldwinkel",
             "difficulty": "easy",
-            "caption": "LOCKERER GROOVE",
+            "caption": "EINFACH",
             "level_image": "Waldwinkel 01.png",
         }
         self._attach_gpio_inputs()

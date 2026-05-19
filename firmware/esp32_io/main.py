@@ -27,6 +27,7 @@ BUTTON_LEDS = {
     "right": 2,
     "start": 3,
 }
+BUTTON_LED_INDICES = tuple(BUTTON_LEDS.values())
 
 COIN_ADC_PIN = 34
 DEBOUNCE_MS = 28
@@ -34,6 +35,11 @@ COIN_COOLDOWN_MS = 650
 COIN_DROP_RATIO = 0.82
 COIN_RESET_RATIO = 0.92
 COMMAND_TIMEOUT_MS = 2200
+STANDBY_ATTRACT_MS = 5000
+STANDBY_SHOW_MS = 15000
+STANDBY_CHARGE_MS = 1800
+BUTTON_IDENTIFY_MS = 45000
+DIAGNOSTIC_BUTTON_IDENTIFY = False
 
 COLORS = {
     "left": (50, 115, 255),
@@ -42,7 +48,18 @@ COLORS = {
     "start": (255, 240, 120),
     "idle": (18, 12, 6),
     "coin": (80, 255, 120),
+    "button": (255, 255, 255),
 }
+
+SHOW_PALETTE = [
+    (255, 32, 68),
+    (255, 142, 26),
+    (255, 235, 45),
+    (58, 240, 105),
+    (42, 174, 255),
+    (112, 74, 255),
+    (236, 54, 255),
+]
 
 
 def scale(color, brightness=LED_BRIGHTNESS):
@@ -242,6 +259,11 @@ class Strip:
         self.flash_color = COLORS["idle"]
         self.lanes = {name: [0, 0] for name in ("left", "middle", "right")}
         self.prompts = {name: 0 for name in ("left", "middle", "right", "start")}
+        self.button_down = {name: False for name in ("left", "middle", "right", "start")}
+        self.charge = {name: 0 for name in ("left", "middle", "right")}
+        self.attract_until = 0
+        self.show_until = 0
+        self.identify_until = time.ticks_add(time.ticks_ms(), BUTTON_IDENTIFY_MS) if DIAGNOSTIC_BUTTON_IDENTIFY else 0
         self.last_frame = 0
         self.last_command = time.ticks_ms()
         self.boot()
@@ -251,15 +273,15 @@ class Strip:
 
     def boot(self):
         for i in range(LED_COUNT):
-            if i in BUTTON_LEDS.values():
-                self.pixels[i] = scale(COLORS["start"], 70)
+            if i in BUTTON_LED_INDICES:
+                self.pixels[i] = scale(COLORS["button"], 70)
             elif i % 3 == 0:
                 self.pixels[i] = scale(COLORS["left"], 32)
             elif i % 3 == 1:
                 self.pixels[i] = scale(COLORS["middle"], 32)
             else:
                 self.pixels[i] = scale(COLORS["right"], 32)
-        self.pixels.write()
+        self._write_pixels()
         time.sleep_ms(220)
         self.clear()
 
@@ -271,8 +293,34 @@ class Strip:
             self.flash_until = 0
             self.lanes = {name: [0, 0] for name in ("left", "middle", "right")}
             self.prompts = {name: 0 for name in ("left", "middle", "right", "start")}
+            self.button_down = {name: False for name in ("left", "middle", "right", "start")}
+            self.charge = {name: 0 for name in ("left", "middle", "right")}
+            self.attract_until = 0
+            self.show_until = 0
+            if not DIAGNOSTIC_BUTTON_IDENTIFY:
+                self.identify_until = 0
             self.clear()
         self.mark_command()
+
+    def identify_buttons(self):
+        self.mode = "standby"
+        self.flash_until = 0
+        self.attract_until = 0
+        self.show_until = 0
+        self.identify_until = time.ticks_add(time.ticks_ms(), BUTTON_IDENTIFY_MS)
+        self.mark_command()
+
+    def set_button_down(self, name, is_down):
+        if name not in self.button_down:
+            return
+        self.button_down[name] = bool(is_down)
+        if self.mode != "standby":
+            return
+        if name == "start" and is_down:
+            self.attract_until = time.ticks_add(time.ticks_ms(), STANDBY_ATTRACT_MS)
+        elif name in self.charge and not is_down:
+            # Keep a little progress as feedback, but do not continue charging after release.
+            self.charge[name] = max(0, self.charge[name] - 10)
 
     def clear(self):
         self._fill(scale(COLORS["idle"], 9))
@@ -331,10 +379,34 @@ class Strip:
             self._draw_standby(now)
 
     def _draw_standby(self, now):
+        if DIAGNOSTIC_BUTTON_IDENTIFY:
+            self._draw_button_identifier(now)
+            return
+
+        if self.identify_until and time.ticks_diff(now, self.identify_until) <= 0:
+            self._draw_button_identifier(now)
+            return
+        if self.identify_until:
+            self.identify_until = 0
+
+        self._update_standby_charges(now)
+        if self.show_until and time.ticks_diff(now, self.show_until) <= 0:
+            self._draw_standby_show(now)
+            return
+        if self.show_until:
+            self.show_until = 0
+            self.charge = {name: 0 for name in ("left", "middle", "right")}
+
+        if self.attract_until and time.ticks_diff(now, self.attract_until) <= 0:
+            self._draw_attract(now)
+            return
+        if self.attract_until:
+            self.attract_until = 0
+
         self._fill_no_write(scale(COLORS["idle"], 10 + int(self.mood * 0.08)))
         if not STANDBY_FIELDS:
-            self._set_button("start", scale(COLORS["start"], 48))
-            self.pixels.write()
+            self._set_standby_buttons(now)
+            self._write_pixels()
             return
         step = (now // 150) % len(STANDBY_FIELDS)
         for offset in range(3):
@@ -342,9 +414,127 @@ class Strip:
             brightness = (90, 48, 24)[offset]
             self._set_pixels(pixels, scale(COLORS[lane], brightness))
 
-        pulse = 36 + ((now // 18) % 38)
-        self._set_button("start", scale(COLORS["start"], pulse))
+        for lane in ("left", "middle", "right"):
+            self._draw_charge_lane(lane, self.charge[lane], active=self.button_down[lane])
+        self._set_standby_buttons(now)
+        self._write_pixels()
+
+    def _update_standby_charges(self, now):
+        frame_ms = 42
+        step = max(1, int(100 * frame_ms / STANDBY_CHARGE_MS))
+        for lane in ("left", "middle", "right"):
+            if self.button_down[lane]:
+                self.charge[lane] = min(100, self.charge[lane] + step)
+            elif self.charge[lane] > 0 and not self.show_until:
+                self.charge[lane] = max(0, self.charge[lane] - 1)
+        if not self.show_until and all(self.charge[lane] >= 100 for lane in ("left", "middle", "right")):
+            self.show_until = time.ticks_add(now, STANDBY_SHOW_MS)
+            self.attract_until = 0
+
+    def _draw_charge_lane(self, lane, percent, active=False):
+        segments = list(reversed(LANE_SEGMENTS.get(lane, [])))
+        if not segments:
+            return
+        color = COLORS[lane]
+        lit = int((max(0, min(100, percent)) * len(segments) + 99) / 100)
+        for index, segment in enumerate(segments):
+            if index < lit:
+                brightness = 70 + min(90, index * 7)
+                if active:
+                    brightness = min(210, brightness + 45)
+                self._set_pixels(segment, scale(color, brightness))
+
+    def _draw_button_identifier(self, now):
+        slot_ms = 2200
+        blink_ms = 220
+        off_ms = 160
+        candidate = (now // slot_ms) % 4
+        blink_count = candidate + 1
+        led_index = candidate
+        within = now % slot_ms
+        cycle = blink_ms + off_ms
+        is_on = within < blink_count * cycle and (within % cycle) < blink_ms
+
+        self._fill_no_write((0, 0, 0))
+        if is_on and 0 <= led_index < LED_COUNT:
+            self.pixels[led_index] = scale(COLORS["button"], 255)
         self.pixels.write()
+
+    def _draw_attract(self, now):
+        phase = now // 85
+        self._fill_no_write(scale(COLORS["idle"], 6))
+        lanes = ("left", "middle", "right")
+        for lane_index, lane in enumerate(lanes):
+            segments = list(reversed(LANE_SEGMENTS.get(lane, [])))
+            color = COLORS[lane]
+            for index, segment in enumerate(segments):
+                wave = (phase + index + lane_index * 2) % 9
+                if wave < 4:
+                    self._set_pixels(segment, scale(color, 120 - wave * 18))
+        sweep_lane = lanes[phase % len(lanes)]
+        segments = LANE_SEGMENTS.get(sweep_lane, [])
+        if segments:
+            self._set_pixels(segments[phase % len(segments)], scale((255, 255, 210), 150))
+        self._set_standby_buttons(now, boost=36)
+        self._write_pixels()
+
+    def _draw_standby_show(self, now):
+        phase = now // 28
+        scene = (now // 1700) % 5
+        self._fill_no_write(scale(COLORS["idle"], 1))
+        lanes = ("left", "middle", "right")
+
+        if scene == 0:
+            for index in range(LED_COUNT):
+                color = SHOW_PALETTE[(index // 4 + phase) % len(SHOW_PALETTE)]
+                brightness = 95 + ((index * 11 + phase * 23) % 120)
+                self.pixels[index] = scale(color, brightness)
+        elif scene == 1:
+            for lane_index, lane in enumerate(lanes):
+                segments = LANE_SEGMENTS.get(lane, [])
+                for index, segment in enumerate(segments):
+                    color = SHOW_PALETTE[(phase + index + lane_index * 2) % len(SHOW_PALETTE)]
+                    wave = (phase + index * 2 + lane_index * 5) % 11
+                    if wave < 7:
+                        self._set_pixels(segment, scale(color, 235 - wave * 24))
+        elif scene == 2:
+            for lane_index, lane in enumerate(lanes):
+                segments = list(reversed(LANE_SEGMENTS.get(lane, [])))
+                for index, segment in enumerate(segments):
+                    if (index + phase + lane_index) % 3 == 0:
+                        color = SHOW_PALETTE[(phase // 2 + lane_index * 3 + index) % len(SHOW_PALETTE)]
+                        self._set_pixels(segment, scale(color, 220))
+            if phase % 6 in (0, 1):
+                for index in range(4, LED_COUNT, 9):
+                    self.pixels[index] = scale((255, 255, 255), 245)
+        elif scene == 3:
+            for lane_index, lane in enumerate(lanes):
+                segments = LANE_SEGMENTS.get(lane, [])
+                head = phase % max(1, len(segments))
+                for trail in range(7):
+                    seg_index = head - trail
+                    if 0 <= seg_index < len(segments):
+                        color = SHOW_PALETTE[(phase + trail + lane_index) % len(SHOW_PALETTE)]
+                        self._set_pixels(segments[seg_index], scale(color, 245 - trail * 28))
+                mirror = len(segments) - 1 - head
+                if 0 <= mirror < len(segments):
+                    self._set_pixels(segments[mirror], scale((255, 255, 255), 190))
+        else:
+            color = SHOW_PALETTE[(phase // 2) % len(SHOW_PALETTE)]
+            for lane_index, lane in enumerate(lanes):
+                segments = LANE_SEGMENTS.get(lane, [])
+                for index, segment in enumerate(segments):
+                    if (index + phase) % 2 == lane_index % 2:
+                        self._set_pixels(segment, scale(color, 240))
+            if phase % 8 in (0, 1, 2):
+                self._fill_no_write(scale((255, 255, 255), 190))
+
+        if phase % 17 in (0, 1):
+            for index in range(4, LED_COUNT, 5):
+                self.pixels[index] = scale((255, 255, 255), 255)
+
+        self._set_show_buttons(phase)
+        self._write_pixels()
 
     def _draw_game(self, now):
         self._fill_no_write(scale(COLORS["idle"], 6))
@@ -357,13 +547,13 @@ class Strip:
         for lane, intensity in self.prompts.items():
             if intensity > 0:
                 color = COLORS.get(lane, COLORS["start"])
-                self._set_button(lane, scale(color, min(255, intensity)))
+                self._set_button(lane, scale(COLORS["button"], min(255, intensity)))
                 if lane in LANE_SEGMENTS:
                     for segment in LANE_SEGMENTS[lane]:
                         self._set_pixels(segment, scale(color, min(150, max(40, intensity // 2))))
                 self.prompts[lane] = max(0, intensity - 28)
 
-        self.pixels.write()
+        self._write_pixels()
 
     def _draw_lane(self, lane, position, intensity):
         segments = LANE_SEGMENTS.get(lane, [])
@@ -383,6 +573,32 @@ class Strip:
         if index is not None and 0 <= index < LED_COUNT:
             self.pixels[index] = color
 
+    def _protect_button_leds(self):
+        for index in BUTTON_LED_INDICES:
+            if 0 <= index < LED_COUNT:
+                current = self.pixels[index]
+                level = max(current) if current else 0
+                if level <= 0:
+                    level = max(1, LED_BRIGHTNESS // 8)
+                self.pixels[index] = (level, level, level)
+
+    def _set_standby_buttons(self, now, boost=0):
+        pulse = 30 + ((now // 28) % 44)
+        if ((now // 28) // 44) % 2:
+            pulse = 74 - (pulse - 30)
+        for name in ("left", "middle", "right", "start"):
+            brightness = pulse + boost
+            if self.button_down.get(name, False) or self.prompts.get(name, 0) > 0:
+                brightness = 230
+            self._set_button(name, scale(COLORS["button"], min(255, brightness)))
+
+    def _set_show_buttons(self, phase):
+        pulse = 160 + ((phase * 29) % 95)
+        if phase % 11 in (0, 1):
+            pulse = 255
+        for name in ("left", "middle", "right", "start"):
+            self._set_button(name, scale(COLORS["button"], pulse))
+
     def _set_pixels(self, pixels, color):
         for index in pixels:
             if 0 <= index < LED_COUNT:
@@ -390,11 +606,15 @@ class Strip:
 
     def _fill(self, color):
         self._fill_no_write(color)
-        self.pixels.write()
+        self._write_pixels()
 
     def _fill_no_write(self, color):
         for i in range(LED_COUNT):
             self.pixels[i] = color
+
+    def _write_pixels(self):
+        self._protect_button_leds()
+        self.pixels.write()
 
 
 def handle_command(line, strip):
@@ -421,6 +641,8 @@ def handle_command(line, strip):
                 strip.set_prompt(parts[2], 255)
             else:
                 strip.flash(parts[2])
+        elif parts[1] == "identify_buttons":
+            strip.identify_buttons()
     elif parts[0] == "MOOD" and len(parts) >= 2:
         strip.mood_set(parts[1])
 
@@ -444,6 +666,7 @@ def main():
             event = button.update()
             if event:
                 print("BTN {} {}".format(button.name, event))
+                strip.set_button_down(button.name, event == "down")
                 if event == "down":
                     strip.set_prompt(button.name, 255)
 

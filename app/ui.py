@@ -67,7 +67,9 @@ def draw_button_hints(
     middle=False,
     right=False,
     confirm_label="OK",
+    left_label="LINKS",
     middle_label="AUSWAHL",
+    right_label="RECHTS",
 ):
     ink = (75, 56, 38)
     soft = (255, 253, 240)
@@ -75,11 +77,11 @@ def draw_button_hints(
     if confirm:
         _draw_hint(surface, font, confirm_label, (126, 58), ink, soft)
     if left:
-        _draw_hint(surface, font, "LINKS", (126, app.height - 30), ink, soft)
+        _draw_hint(surface, font, left_label, (126, app.height - 30), ink, soft)
     if middle:
         _draw_hint(surface, font, middle_label, (app.center_x, app.height - 30), ink, soft)
     if right:
-        _draw_hint(surface, font, "RECHTS", (app.width - 126, app.height - 30), ink, soft)
+        _draw_hint(surface, font, right_label, (app.width - 126, app.height - 30), ink, soft)
 
 
 def _draw_hint(surface, font, label: str, label_center, color, fill):

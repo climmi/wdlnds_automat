@@ -150,6 +150,8 @@ sudo systemctl start wdlnds-automat.service
 - Use separate scoreboards for Waldwinkel, ZOB, and Marktplatz.
 - Keep Pi performance stable, especially with large crowds.
 - Location selection should stay visually clean; do not show "3 tracks" on the location cards.
+- Floor/track selection is direct-button based: left/middle/right selects the corresponding card, then pressing the same button again confirms.
+- Highscore name entry maps left/middle/right to character slots 1/2/3; holding a button scrolls that character faster until release.
 
 ## Current Stabilization Notes
 
@@ -162,6 +164,7 @@ sudo systemctl start wdlnds-automat.service
 - Mood gain is streak-gated: low combos do not raise mood, longer streaks raise mood faster, and high mood has drag so 100% is harder to reach.
 - Combo sound tiers trigger at streak totals 3, 8, 15, and 25.
 - Cue controls are spaced and varied at runtime to avoid long single-lane runs from the analyzed cue data. Waldwinkel is thinned to simple taps, ZOB is medium-hard density with longer connected sequences, and Marktplatz keeps much denser/harder patterns without very short gaps.
+- Cue fall speed adapts to track BPM via per-song lead time: faster BPM means faster falling blocks, slower BPM means slower falling blocks.
 - Pi-side ESP32 serial now has heartbeat/reconnect logic.
 - ESP32 firmware now has watchdog, parser guards, `PING`/`PONG`, and a game-command timeout that falls back to standby.
 

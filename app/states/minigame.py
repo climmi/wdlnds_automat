@@ -100,6 +100,7 @@ class MiniGameState(ScoreGameState):
         self._crowd_level_target = 0.22
         self._dj_name = "Konfluxia"
         self._beat_interval = self.BEAT_INTERVAL
+        self._lead_time = self.LEAD_TIME
         self._music_path = None
         self._led_timer = 0.0
         self._song_option = {
@@ -128,6 +129,7 @@ class MiniGameState(ScoreGameState):
         self._crowd_level = 0.22
         self._crowd_level_target = 0.22
         self._dj_name = random.choice(self.DJ_ACTS)
+        self._lead_time = self.LEAD_TIME
         self._crowd_seed = self._build_crowd_seed()
         self._crowd_by_depth = sorted(self._crowd_seed, key=lambda item: item["y"])
         self._sprite_cache = {}
@@ -213,7 +215,7 @@ class MiniGameState(ScoreGameState):
                 continue
             active_hold = cue.get("type") == "hold" and cue.get("active")
             delta = cue["time"] - self._time
-            if not active_hold and (delta < -self.GOOD_WINDOW or delta > self.LEAD_TIME):
+            if not active_hold and (delta < -self.GOOD_WINDOW or delta > self._lead_time):
                 continue
 
             if active_hold:
@@ -221,8 +223,8 @@ class MiniGameState(ScoreGameState):
                 intensity = 210
                 prompt = 255
             else:
-                position = max(0, min(100, int((1.0 - delta / self.LEAD_TIME) * 100)))
-                closeness = max(0.0, 1.0 - abs(delta) / self.LEAD_TIME)
+                position = max(0, min(100, int((1.0 - delta / self._lead_time) * 100)))
+                closeness = max(0.0, 1.0 - abs(delta) / self._lead_time)
                 intensity = int(50 + closeness * 155)
                 prompt = 255 if abs(delta) <= self.GOOD_WINDOW * 1.15 else 0
 
@@ -375,12 +377,12 @@ class MiniGameState(ScoreGameState):
             if is_active_hold:
                 if self._time > hold_end_time + self.HOLD_AUTO_COMPLETE_DELAY:
                     continue
-            elif delta < -self.GOOD_WINDOW or delta > self.LEAD_TIME:
+            elif delta < -self.GOOD_WINDOW or delta > self._lead_time:
                 continue
             if is_active_hold:
                 y = target_y
             elif delta >= 0:
-                y = target_y - int((delta / self.LEAD_TIME) * (target_y - top_y))
+                y = target_y - int((delta / self._lead_time) * (target_y - top_y))
             else:
                 y = target_y + int((-delta / self.GOOD_WINDOW) * (exit_y - target_y))
             for control in self._cue_controls(cue):
@@ -391,7 +393,7 @@ class MiniGameState(ScoreGameState):
                 if cue.get("type") == "hold":
                     end_delta = cue["time"] + float(cue.get("duration", 0.0)) - self._time
                     if end_delta >= 0:
-                        end_y = target_y - int((end_delta / self.LEAD_TIME) * (target_y - top_y))
+                        end_y = target_y - int((end_delta / self._lead_time) * (target_y - top_y))
                     else:
                         end_y = target_y + int((-end_delta / self.GOOD_WINDOW) * (exit_y - target_y))
                     top = min(y, end_y)
@@ -663,6 +665,7 @@ class MiniGameState(ScoreGameState):
 
         self._music_path = None
         self._beat_interval = self.BEAT_INTERVAL
+        self._lead_time = self.LEAD_TIME
         patterns = [
             ("ANKOMMEN", 5, ["left", "right", "middle"]),
             ("TANZEN", 6, ["left", "middle", "right", "left"]),
@@ -737,13 +740,14 @@ class MiniGameState(ScoreGameState):
             except (TypeError, ValueError):
                 continue
 
+        bpm = float(payload.get("bpm", 0) or 0)
+        self._beat_interval = 60.0 / bpm if bpm > 0 else self.BEAT_INTERVAL
+        self._lead_time = self._lead_time_for_bpm(bpm)
+
         cues = self._remove_hold_lane_conflicts(cues)
         cues = self._prepare_cues_for_song(cues, sections)
         if not cues:
             return None
-
-        bpm = float(payload.get("bpm", 0) or 0)
-        self._beat_interval = 60.0 / bpm if bpm > 0 else self.BEAT_INTERVAL
 
         duration = float(payload.get("duration", cues[-1]["time"] + 1.0))
         if not sections:
@@ -755,7 +759,7 @@ class MiniGameState(ScoreGameState):
         return cues, sections, duration
 
     def _prepare_cues_for_song(self, cues, sections):
-        first_visible_cue = self.SONG_INTRO_NO_CUES + self.LEAD_TIME
+        first_visible_cue = self.SONG_INTRO_NO_CUES + self._lead_time
         prepared = [cue for cue in cues if cue["time"] >= first_visible_cue]
         difficulty = str(self._song_option.get("difficulty", "medium"))
         filtered = []
@@ -891,6 +895,12 @@ class MiniGameState(ScoreGameState):
         elif section_difficulty == "easy":
             base -= 0.10
         return max(0.18, min(0.75, base))
+
+    def _lead_time_for_bpm(self, bpm: float) -> float:
+        if bpm <= 0:
+            return self.LEAD_TIME
+        # Higher BPM should feel faster visually, slower BPM gives more travel time.
+        return max(1.85, min(3.05, self.LEAD_TIME * (120.0 / bpm)))
 
     def _limit_repeated_controls(self, cues):
         result = []
